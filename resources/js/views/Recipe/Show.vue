@@ -18,7 +18,7 @@
 		<div class="recipe__row">
 			<div class="recipe__ingredients">
 				<div class="recipe__box">
-					<h3 class="recipe__sub_title">Ingredients</h3>
+					<h3 class="recipe__sub_title">Ingrédients</h3>
 					<ul>
 						<li v-for="ingredient in recipe.ingredients">
 							<span>{{ingredient.name}}</span>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="recipe__directions">
 				<div class="recipe__directions_inner">
-					<h3 class="recipe__sub_title">Directions</h3>
+					<h3 class="recipe__sub_title">Étapes</h3>
 					<ul>
 						<li v-for="(direction, i) in recipe.directions">
 							<p>

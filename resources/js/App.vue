@@ -6,16 +6,16 @@
 			</div>
 			<ul class="navbar__list">
 				<li class="navbar__item"  v-if="guest">
-					<router-link to="/login">LOGIN</router-link>
+					<router-link to="/login">Se conneter</router-link>
 				</li>
 				<li class="navbar__item"  v-if="guest">
-					<router-link to="/register">REGISTER</router-link>
+					<router-link to="/register">Créer un compte</router-link>
 				</li>
 				<li class="navbar__item"  v-if="auth">
-					<router-link to="/recipes/create">CREATE RECIPE</router-link>
+					<router-link to="/recipes/create">Ajouter ma recette</router-link>
 				</li>
 				<li class="navbar__item"  v-if="auth">
-					<a @click.stop="logout">LOGOUT</a>
+					<a @click.stop="logout">Se déconnecter</a>
 				</li>
 			</ul>
 		</div>

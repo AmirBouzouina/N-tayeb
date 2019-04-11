@@ -32,7 +32,7 @@
 		<div class="recipe__row">
 			<div class="recipe__ingredients">
 				<div class="recipe__box">
-					<h3 class="recipe__sub_title">Ingredients</h3>
+					<h3 class="recipe__sub_title">Ingrédients</h3>
 					<div v-for="(ingredient, index) in form.ingredients" class="recipe__form">
 						<input type="text" class="form__control" v-model="ingredient.name"
 							:class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
@@ -45,7 +45,7 @@
 			</div>
 			<div class="recipe__directions">
 				<div class="recipe__directions_inner">
-					<h3 class="recipe__sub_title">Directions</h3>
+					<h3 class="recipe__sub_title">Étapes</h3>
 					<div v-for="(direction, index) in form.directions" class="recipe__form">
 						<textarea class="form__control form__margin" v-model="direction.description"
 							:class="[error[`directions.${index}.description`] ? 'error__bg' : '']"

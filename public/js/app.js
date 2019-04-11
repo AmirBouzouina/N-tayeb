@@ -2936,7 +2936,7 @@ var render = function() {
                 { staticClass: "navbar__item" },
                 [
                   _c("router-link", { attrs: { to: "/login" } }, [
-                    _vm._v("LOGIN")
+                    _vm._v("Se conneter")
                   ])
                 ],
                 1
@@ -2949,7 +2949,7 @@ var render = function() {
                 { staticClass: "navbar__item" },
                 [
                   _c("router-link", { attrs: { to: "/register" } }, [
-                    _vm._v("REGISTER")
+                    _vm._v("Créer un compte")
                   ])
                 ],
                 1
@@ -2962,7 +2962,7 @@ var render = function() {
                 { staticClass: "navbar__item" },
                 [
                   _c("router-link", { attrs: { to: "/recipes/create" } }, [
-                    _vm._v("CREATE RECIPE")
+                    _vm._v("Ajouter ma recette")
                   ])
                 ],
                 1
@@ -2981,7 +2981,7 @@ var render = function() {
                       }
                     }
                   },
-                  [_vm._v("LOGOUT")]
+                  [_vm._v("Se déconnecter")]
                 )
               ])
             : _vm._e()
@@ -3564,7 +3564,7 @@ var render = function() {
           { staticClass: "recipe__box" },
           [
             _c("h3", { staticClass: "recipe__sub_title" }, [
-              _vm._v("Ingredients")
+              _vm._v("Ingrédients")
             ]),
             _vm._v(" "),
             _vm._l(_vm.form.ingredients, function(ingredient, index) {
@@ -3653,9 +3653,7 @@ var render = function() {
           "div",
           { staticClass: "recipe__directions_inner" },
           [
-            _c("h3", { staticClass: "recipe__sub_title" }, [
-              _vm._v("Directions")
-            ]),
+            _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Étapes")]),
             _vm._v(" "),
             _vm._l(_vm.form.directions, function(direction, index) {
               return _c("div", { staticClass: "recipe__form" }, [
@@ -3818,7 +3816,7 @@ var render = function() {
       _c("div", { staticClass: "recipe__ingredients" }, [
         _c("div", { staticClass: "recipe__box" }, [
           _c("h3", { staticClass: "recipe__sub_title" }, [
-            _vm._v("Ingredients")
+            _vm._v("Ingrédients")
           ]),
           _vm._v(" "),
           _c(
@@ -3837,9 +3835,7 @@ var render = function() {
       _vm._v(" "),
       _c("div", { staticClass: "recipe__directions" }, [
         _c("div", { staticClass: "recipe__directions_inner" }, [
-          _c("h3", { staticClass: "recipe__sub_title" }, [
-            _vm._v("Directions")
-          ]),
+          _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Étapes")]),
           _vm._v(" "),
           _c(
             "ul",
@@ -19499,8 +19495,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/grow/Desktop/projects/clean/ntayeb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/grow/Desktop/projects/clean/ntayeb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/grow/Desktop/projects/clin/N-tayeb/N-tayeb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/grow/Desktop/projects/clin/N-tayeb/N-tayeb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
