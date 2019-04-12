@@ -1847,7 +1847,7 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data.done) {
           // remove token
           _store_auth__WEBPACK_IMPORTED_MODULE_0__["default"].remove();
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_1__["default"].setSuccess('You have successfully logged out.');
+          _helpers_flash__WEBPACK_IMPORTED_MODULE_1__["default"].setSuccess('Vous êtes maintenant déconnecté !');
 
           _this2.$router.push('/login');
         }
@@ -2016,7 +2016,7 @@ __webpack_require__.r(__webpack_exports__);
         if (res.data.authenticated) {
           // set token
           _store_auth__WEBPACK_IMPORTED_MODULE_1__["default"].set(res.data.api_token, res.data.user_id);
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('You have successfully logged in.');
+          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('Vous êtes maintenant connecté ! .');
 
           _this.$router.push('/');
         }
@@ -2130,6 +2130,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
 /* harmony import */ var _helpers_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/form */ "./resources/js/helpers/form.js");
 /* harmony import */ var _components_ImageUpload_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/ImageUpload.vue */ "./resources/js/components/ImageUpload.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2936,7 +2961,7 @@ var render = function() {
                 { staticClass: "navbar__item" },
                 [
                   _c("router-link", { attrs: { to: "/login" } }, [
-                    _vm._v("Se conneter")
+                    _vm._v("Se connecter")
                   ])
                 ],
                 1
@@ -3121,7 +3146,7 @@ var render = function() {
       }
     },
     [
-      _c("h1", { staticClass: "form__title" }, [_vm._v("Welcome back!")]),
+      _c("h1", { staticClass: "form__title" }, [_vm._v("Se connecter")]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
         _c("label", [_vm._v("Email")]),
@@ -3156,7 +3181,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Password")]),
+        _c("label", [_vm._v("Mot de passe")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -3194,7 +3219,7 @@ var render = function() {
             staticClass: "btn btn__primary",
             attrs: { disabled: _vm.isProcessing }
           },
-          [_vm._v("Login")]
+          [_vm._v("Connecter")]
         )
       ])
     ]
@@ -3234,10 +3259,10 @@ var render = function() {
       }
     },
     [
-      _c("h1", { staticClass: "form__title" }, [_vm._v("Create an Account")]),
+      _c("h1", { staticClass: "form__title" }, [_vm._v("Crér un compte")]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Name")]),
+        _c("label", [_vm._v("Nom")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -3301,7 +3326,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Password")]),
+        _c("label", [_vm._v("Mot de passe")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -3333,7 +3358,7 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Confirm Password")]),
+        _c("label", [_vm._v("Confirmer Mot de passe")]),
         _vm._v(" "),
         _c("input", {
           directives: [
@@ -3365,7 +3390,7 @@ var render = function() {
             staticClass: "btn btn__primary",
             attrs: { disabled: _vm.isProcessing }
           },
-          [_vm._v("Register")]
+          [_vm._v("Créer mon compte")]
         )
       ])
     ]
@@ -3434,7 +3459,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "recipe__show" }, [
     _c("div", { staticClass: "recipe__header" }, [
-      _c("h3", [_vm._v(_vm._s(_vm.action) + " Recipe")]),
+      _c("h3", [_vm._v("Ajouter Ma recette")]),
       _vm._v(" "),
       _c("div", [
         _c(
@@ -3444,7 +3469,7 @@ var render = function() {
             attrs: { disabled: _vm.isProcessing },
             on: { click: _vm.save }
           },
-          [_vm._v("Save")]
+          [_vm._v("Enregistrer")]
         ),
         _vm._v(" "),
         _c(
@@ -3458,7 +3483,7 @@ var render = function() {
               }
             }
           },
-          [_vm._v("Cancel")]
+          [_vm._v("Annuler")]
         )
       ])
     ]),
@@ -3492,7 +3517,7 @@ var render = function() {
       _c("div", { staticClass: "recipe__details" }, [
         _c("div", { staticClass: "recipe__details_inner" }, [
           _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Name")]),
+            _c("label", [_vm._v("Nom de la recette")]),
             _vm._v(" "),
             _c("input", {
               directives: [
@@ -3524,6 +3549,136 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Catégorie de la recette")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.category,
+                  expression: "form.category"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.category },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "category", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Temps de préparation")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.prep,
+                  expression: "form.prep"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.prep },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "prep", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Temps de cuisson")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.cook,
+                  expression: "form.cook"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.cook },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "cook", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Pour : nombre personnes")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.yield,
+                  expression: "form.yield"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.yield },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "yield", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Difficulté")]),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.difficulty,
+                  expression: "form.difficulty"
+                }
+              ],
+              staticClass: "form__control",
+              attrs: { type: "text" },
+              domProps: { value: _vm.form.difficulty },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "difficulty", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
             _c("label", [_vm._v("Description")]),
             _vm._v(" "),
             _c("textarea", {
@@ -3545,13 +3700,7 @@ var render = function() {
                   _vm.$set(_vm.form, "description", $event.target.value)
                 }
               }
-            }),
-            _vm._v(" "),
-            _vm.error.description
-              ? _c("small", { staticClass: "error__control" }, [
-                  _vm._v(_vm._s(_vm.error.description[0]))
-                ])
-              : _vm._e()
+            })
           ])
         ])
       ])
@@ -3559,93 +3708,105 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "recipe__row" }, [
       _c("div", { staticClass: "recipe__ingredients" }, [
-        _c(
-          "div",
-          { staticClass: "recipe__box" },
-          [
-            _c("h3", { staticClass: "recipe__sub_title" }, [
-              _vm._v("Ingrédients")
-            ]),
-            _vm._v(" "),
-            _vm._l(_vm.form.ingredients, function(ingredient, index) {
-              return _c("div", { staticClass: "recipe__form" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: ingredient.name,
-                      expression: "ingredient.name"
-                    }
-                  ],
-                  staticClass: "form__control",
-                  class: [
-                    _vm.error["ingredients." + index + ".name"]
-                      ? "error__bg"
-                      : ""
-                  ],
-                  attrs: { type: "text" },
-                  domProps: { value: ingredient.name },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+        _c("div", { staticClass: "recipe__box" }, [
+          _c(
+            "div",
+            { staticClass: "row" },
+            [
+              _c("h3", { staticClass: "recipe__sub_title" }, [
+                _vm._v("Ingrédients")
+              ]),
+              _vm._v(" "),
+              _vm._l(_vm.form.ingredients, function(ingredient, index) {
+                return _c("div", { staticClass: "recipe__form" }, [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: ingredient.name,
+                        expression: "ingredient.name"
                       }
-                      _vm.$set(ingredient, "name", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: ingredient.qty,
-                      expression: "ingredient.qty"
-                    }
-                  ],
-                  staticClass: "form__control form__qty",
-                  class: [
-                    _vm.error["ingredients." + index + ".qty"]
-                      ? "error__bg"
-                      : ""
-                  ],
-                  attrs: { type: "text" },
-                  domProps: { value: ingredient.qty },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(ingredient, "qty", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn__danger",
+                    ],
+                    staticClass: "form__control",
+                    class: [
+                      _vm.error["ingredients." + index + ".name"]
+                        ? "error__bg"
+                        : ""
+                    ],
+                    attrs: { type: "text", placeholder: "Ingrédient" },
+                    domProps: { value: ingredient.name },
                     on: {
-                      click: function($event) {
-                        return _vm.remove("ingredients", index)
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(ingredient, "name", $event.target.value)
                       }
                     }
-                  },
-                  [_vm._v("×")]
-                )
+                  }),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: ingredient.qty,
+                        expression: "ingredient.qty"
+                      }
+                    ],
+                    staticClass: "form__control form__qty",
+                    class: [
+                      _vm.error["ingredients." + index + ".qty"]
+                        ? "error__bg"
+                        : ""
+                    ],
+                    attrs: { type: "text", placeholder: "Unité" },
+                    domProps: { value: ingredient.qty },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(ingredient, "qty", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn__danger",
+                      on: {
+                        click: function($event) {
+                          return _vm.remove("ingredients", index)
+                        }
+                      }
+                    },
+                    [_vm._v("×")]
+                  ),
+                  _vm._v(" "),
+                  _c("br")
+                ])
+              }),
+              _vm._v(" "),
+              _c("small", { staticClass: "form__control2" }, [
+                _vm._v("Ex :Carottes,Beurre,Viande-hachée ")
+              ]),
+              _vm._v(" "),
+              _c("small", { staticClass: "form__qty2" }, [
+                _vm._v("Ex :Gr,Kg,CàC ")
               ])
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn", on: { click: _vm.addIngredient } },
-              [_vm._v("Add Ingredient")]
-            )
-          ],
-          2
-        )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            { staticClass: "btn", on: { click: _vm.addIngredient } },
+            [_vm._v("Ajouter ingrédient")]
+          )
+        ])
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "recipe__directions" }, [
@@ -3701,7 +3862,7 @@ var render = function() {
             _c(
               "button",
               { staticClass: "btn", on: { click: _vm.addDirection } },
-              [_vm._v("Add Direction")]
+              [_vm._v("Ajouter étape")]
             )
           ],
           2

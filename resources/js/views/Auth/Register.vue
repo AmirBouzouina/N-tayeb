@@ -1,8 +1,8 @@
 <template>
     <form class="form" @submit.prevent="register">
-        <h1 class="form__title">Create an Account</h1>
+        <h1 class="form__title">Crér un compte</h1>
         <div class="form__group">
-            <label>Name</label>
+            <label>Nom</label>
             <input type="text" class="form__control" v-model="form.name">
             <small class="error__control" v-if="error.name">{{error.name[0]}}</small>
         </div>
@@ -12,16 +12,16 @@
             <small class="error__control" v-if="error.email">{{error.email[0]}}</small>
         </div>
         <div class="form__group">
-            <label>Password</label>
+            <label>Mot de passe</label>
             <input type="password" class="form__control" v-model="form.password">
             <small class="error__control" v-if="error.password">{{error.password[0]}}</small>
         </div>
         <div class="form__group">
-            <label>Confirm Password</label>
+            <label>Confirmer Mot de passe</label>
             <input type="password" class="form__control" v-model="form.password_confirmation">
         </div>
         <div class="form__group">
-            <button :disabled="isProcessing" class="btn btn__primary">Register</button>
+            <button :disabled="isProcessing" class="btn btn__primary">Créer mon compte</button>
         </div>
     </form>
 </template>

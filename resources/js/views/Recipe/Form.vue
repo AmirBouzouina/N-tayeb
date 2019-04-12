@@ -1,10 +1,10 @@
 <template>
 	<div class="recipe__show">
 		<div class="recipe__header">
-			<h3>{{action}} Recipe</h3>
+			<h3>Ajouter Ma recette</h3>
 			<div>
-				<button class="btn btn__primary" @click="save" :disabled="isProcessing">Save</button>
-				<button class="btn" @click="$router.back()" :disabled="isProcessing">Cancel</button>
+				<button class="btn btn__primary" @click="save" :disabled="isProcessing">Enregistrer</button>
+				<button class="btn" @click="$router.back()" :disabled="isProcessing">Annuler</button>
 			</div>
 		</div>
 		<div class="recipe__row">
@@ -17,14 +17,33 @@
 			<div class="recipe__details">
 				<div class="recipe__details_inner">
 					<div class="form__group">
-					    <label>Name</label>
+					    <label>Nom de la recette</label>
 					    <input type="text" class="form__control" v-model="form.name">
 					    <small class="error__control" v-if="error.name">{{error.name[0]}}</small>
+					</div>
+						<div class="form__group">
+					    <label>Catégorie de la recette</label>
+					    <input type="text" class="form__control" v-model="form.category">
+					</div>
+							<div class="form__group">
+					    <label>Temps de préparation</label>
+					    <input type="text" class="form__control" v-model="form.prep">
+					</div>
+							<div class="form__group">
+					    <label>Temps de cuisson</label>
+					    <input type="text" class="form__control" v-model="form.cook">
+					</div>
+							<div class="form__group">
+					    <label>Pour : nombre personnes</label>
+					    <input type="text" class="form__control" v-model="form.yield">
+					</div>
+					<div class="form__group">
+					    <label>Difficulté</label>
+					    <input type="text" class="form__control" v-model="form.difficulty">
 					</div>
 					<div class="form__group">
 					    <label>Description</label>
 					    <textarea class="form__control form__description" v-model="form.description"></textarea>
-					    <small class="error__control" v-if="error.description">{{error.description[0]}}</small>
 					</div>
 				</div>
 			</div>
@@ -32,15 +51,21 @@
 		<div class="recipe__row">
 			<div class="recipe__ingredients">
 				<div class="recipe__box">
+					<div class="row">
 					<h3 class="recipe__sub_title">Ingrédients</h3>
 					<div v-for="(ingredient, index) in form.ingredients" class="recipe__form">
-						<input type="text" class="form__control" v-model="ingredient.name"
+						<input type="text" placeholder="Ingrédient" class="form__control" v-model="ingredient.name"
 							:class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
-						<input type="text" class="form__control form__qty" v-model="ingredient.qty"
+						<input type="text" placeholder="Unité" class="form__control form__qty" v-model="ingredient.qty"
 							:class="[error[`ingredients.${index}.qty`] ? 'error__bg' : '']">
-						<button @click="remove('ingredients', index)" class="btn btn__danger">&times;</button>
+
+						<button @click="remove('ingredients', index)" class="btn btn__danger">&times;</button> <br>
 					</div>
-					<button @click="addIngredient" class="btn">Add Ingredient</button>
+					<small  class="form__control2">Ex :Carottes,Beurre,Viande-hachée </small>	
+					<small class="form__qty2">Ex :Gr,Kg,CàC </small>							
+
+					</div>
+					<button @click="addIngredient" class="btn">Ajouter ingrédient</button>
 				</div>
 			</div>
 			<div class="recipe__directions">
@@ -52,7 +77,7 @@
 							></textarea>
 						<button @click="remove('directions', index)" class="btn btn__danger">&times;</button>
 					</div>
-					<button @click="addDirection" class="btn">Add Direction</button>
+					<button @click="addDirection" class="btn">Ajouter étape</button>
 				</div>
 			</div>
 		</div>

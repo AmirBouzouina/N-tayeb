@@ -20,6 +20,11 @@ class CreateRecipesTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->string('image');
+            $table->string('category');
+            $table->integer('prep');
+            $table->integer('cook');
+            $table->string('difficulty');
+            $table->integer('yield');
 
             $table->timestamps();
         });

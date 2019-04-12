@@ -6,7 +6,7 @@
 			</div>
 			<ul class="navbar__list">
 				<li class="navbar__item"  v-if="guest">
-					<router-link to="/login">Se conneter</router-link>
+					<router-link to="/login">Se connecter</router-link>
 				</li>
 				<li class="navbar__item"  v-if="guest">
 					<router-link to="/register">Créer un compte</router-link>
@@ -75,7 +75,7 @@
 				        if(res.data.done) {
 				            // remove token
 				            Auth.remove()
-				            Flash.setSuccess('You have successfully logged out.')
+				            Flash.setSuccess('Vous êtes maintenant déconnecté !')
 				            this.$router.push('/login')
 				        }
 				    })

@@ -45,7 +45,7 @@ class AuthController extends Controller
         }
         return response()
             ->json([
-                'email' => ['Provided email and password does not match!']
+                'email' => ['E-mail / Mot de passe incorrect!']
             ], 422);
     }
     public function logout(Request $request)

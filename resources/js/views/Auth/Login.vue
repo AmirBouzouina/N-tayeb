@@ -1,18 +1,18 @@
 <template>
     <form class="form" @submit.prevent="login">
-        <h1 class="form__title">Welcome back!</h1>
+        <h1 class="form__title">Se connecter</h1>
         <div class="form__group">
             <label>Email</label>
             <input type="text" class="form__control" v-model="form.email">
             <small class="error__control" v-if="error.email">{{error.email[0]}}</small>
         </div>
         <div class="form__group">
-            <label>Password</label>
+            <label>Mot de passe</label>
             <input type="password" class="form__control" v-model="form.password">
             <small class="error__control" v-if="error.password">{{error.password[0]}}</small>
         </div>
         <div class="form__group">
-            <button :disabled="isProcessing" class="btn btn__primary">Login</button>
+            <button :disabled="isProcessing" class="btn btn__primary">Connecter</button>
         </div>
     </form>
 </template>
@@ -40,7 +40,7 @@
                         if(res.data.authenticated) {
                             // set token
                             Auth.set(res.data.api_token, res.data.user_id)
-                            Flash.setSuccess('You have successfully logged in.')
+                            Flash.setSuccess('Vous êtes maintenant connecté ! .')
                             this.$router.push('/')
                         }
                         this.isProcessing = false

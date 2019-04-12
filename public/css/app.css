@@ -82,7 +82,7 @@ img {
 }
 
 .form__qty {
-  width: 45%;
+  width: 20%;
   margin: 0px 10px;
 }
 
@@ -92,6 +92,16 @@ img {
 
 .form__description {
   height: 152px;
+}
+
+.form__control2 {
+  width: 60%;
+}
+
+.form__qty2 {
+  width: 33%;
+  float: right;
+  white-space: nowrap;
 }
 
 .btn {

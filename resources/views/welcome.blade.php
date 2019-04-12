@@ -11,5 +11,5 @@
     <body>
         <div id="root"></div>
     </body>
-    <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+    <script type="text/javascript" src="{{ mix('js/app.js') }}" defer="defer" ></script>
 </html>
