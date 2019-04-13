@@ -65,6 +65,17 @@ img {
   margin-bottom: 5px;
 }
 
+.form__group2 {
+  margin-top: 15px;
+  width: 25%;
+  float: left;
+}
+
+.form__group2 label {
+  display: block;
+  margin-bottom: 5px;
+}
+
 .form__control {
   font-size: 14px;
   width: 100%;
@@ -218,6 +229,12 @@ img {
   margin-top: 25px;
 }
 
+.recipe__row2 {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 25px;
+}
+
 .recipe__box {
   box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
   background: #fff;
@@ -234,6 +251,11 @@ img {
 
 .recipe__details {
   width: 60%;
+}
+
+.recipe__details2 {
+  width: 100%;
+  display: grid;
 }
 
 .recipe__details_inner {

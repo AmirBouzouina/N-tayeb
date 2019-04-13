@@ -14,6 +14,7 @@
 					<small class="error__control" v-if="error.image">{{error.image[0]}}</small>
 				</div>
 			</div>
+
 			<div class="recipe__details">
 				<div class="recipe__details_inner">
 					<div class="form__group">
@@ -25,32 +26,19 @@
 					    <label>Catégorie de la recette</label>
 					    <select class="form__control" v-model="form.category">
 							<option disabled value="">Choisissez</option>
-							<option>A</option>
-							<option>B</option>
-							<option>C</option>
+							<option >Dessert</option>
+							<option >Entrées</option>
+							<option >Salades‎</option>
+							<option >Plats</option>
+							<option >Viande</option>
+							<option >Poissons‎‎</option>
+							<option >Soupes‎</option>
+							<option >Pâtes &amp; Riz</option>
+							<option >Pains</option>
+							<option >‎Sauces</option>
 						</select>
 					</div>
-							<div class="form__group">
-					    <label>Temps de préparation</label>
-					    <input type="text" class="form__control" v-model="form.prep" placeholder="En minutes">
-					</div>
-							<div class="form__group">
-					    <label>Temps de cuisson</label>
-					    <input type="text" class="form__control" v-model="form.cook" placeholder="En minutes" >
-					</div>
-							<div class="form__group">
-					    <label>Pour : nombre personnes</label>
-					    <input type="text" class="form__control" v-model="form.yield" placeholder="Nombre de portions">
-					</div>
-					<div class="form__group">
-					    <label>Difficulté</label>
-					    <select  class="form__control" v-model="form.difficulty">
-						<option disabled value="">Choisissez</option>
-						<option>Facile</option>
-						<option>Moyenne</option>
-						<option>Difficile</option>
-						</select>
-					</div>
+
 					<div class="form__group">
 					    <label>Description</label>
 					    <textarea class="form__control form__description" v-model="form.description"></textarea>
@@ -58,6 +46,36 @@
 				</div>
 			</div>
 		</div>
+
+		<div class="recipe__details2">
+			<div class="recipe__row2">
+
+			<div class="recipe__details_inner">
+				<div class="form__group2">
+					<label>Temps de préparation</label>
+					<input type="text" class="form__control" v-model="form.prep" placeholder="En minutes">
+				</div>
+				<div class="form__group2">
+					<label>Temps de cuisson</label>
+					<input type="text" class="form__control" v-model="form.cook" placeholder="En minutes" >
+				</div>
+				<div class="form__group2">
+					<label>Pour : nombre personnes</label>
+					<input type="text" class="form__control" v-model="form.yield" placeholder="Nombre de portions">
+				</div>
+				<div class="form__group2">
+					<label>Difficulté</label>
+					<select  class="form__control" v-model="form.difficulty">
+						<option disabled value="">Choisissez</option>
+						<option>Facile</option>
+						<option>Moyenne</option>
+						<option>Difficile</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		</div>
+
 		<div class="recipe__row">
 			<div class="recipe__ingredients">
 				<div class="recipe__box">

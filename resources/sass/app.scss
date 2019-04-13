@@ -58,6 +58,15 @@ img {
 	    }
 	    margin-top: 15px;
 	}
+    &__group2 {
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        margin-top: 15px;
+        width:25%;
+        float:left;
+    }
 	&__control {
 	    font-size: 14px;
 	    width: 100%;
@@ -202,6 +211,11 @@ img {
         flex-wrap: wrap;
         margin-top: 25px;
     }
+    &__row2 {
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 25px;
+    }
     &__box {
         box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
         background: #fff;
@@ -216,6 +230,11 @@ img {
     &__details {
         width: 60%;
     }
+    &__details2 {
+        width: 100%;
+        display:grid;
+    }
+
     &__details_inner {
         margin-left: 25px;
         box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;

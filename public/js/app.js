@@ -2225,6 +2225,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -3603,16 +3621,61 @@ var render = function() {
                   _vm._v("Choisissez")
                 ]),
                 _vm._v(" "),
-                _c("option", [_vm._v("A")]),
+                _c("option", [_vm._v("Dessert")]),
                 _vm._v(" "),
-                _c("option", [_vm._v("B")]),
+                _c("option", [_vm._v("Entrées")]),
                 _vm._v(" "),
-                _c("option", [_vm._v("C")])
+                _c("option", [_vm._v("Salades‎")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Plats")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Viande")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Poissons‎‎")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Soupes‎")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Pâtes & Riz")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Pains")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("‎Sauces")])
               ]
             )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Description")]),
+            _vm._v(" "),
+            _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.form.description,
+                  expression: "form.description"
+                }
+              ],
+              staticClass: "form__control form__description",
+              domProps: { value: _vm.form.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.form, "description", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "recipe__details2" }, [
+      _c("div", { staticClass: "recipe__row2" }, [
+        _c("div", { staticClass: "recipe__details_inner" }, [
+          _c("div", { staticClass: "form__group2" }, [
             _c("label", [_vm._v("Temps de préparation")]),
             _vm._v(" "),
             _c("input", {
@@ -3638,7 +3701,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
+          _c("div", { staticClass: "form__group2" }, [
             _c("label", [_vm._v("Temps de cuisson")]),
             _vm._v(" "),
             _c("input", {
@@ -3664,7 +3727,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
+          _c("div", { staticClass: "form__group2" }, [
             _c("label", [_vm._v("Pour : nombre personnes")]),
             _vm._v(" "),
             _c("input", {
@@ -3690,7 +3753,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
+          _c("div", { staticClass: "form__group2" }, [
             _c("label", [_vm._v("Difficulté")]),
             _vm._v(" "),
             _c(
@@ -3735,31 +3798,6 @@ var render = function() {
                 _c("option", [_vm._v("Difficile")])
               ]
             )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Description")]),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.description,
-                  expression: "form.description"
-                }
-              ],
-              staticClass: "form__control form__description",
-              domProps: { value: _vm.form.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "description", $event.target.value)
-                }
-              }
-            })
           ])
         ])
       ])
