@@ -10,6 +10,13 @@
 				<div class="recipe__details_inner">
 					<small>Recette ajoutée par: {{recipe.user.name}}</small>
 					<h1 class="recipe__title">{{recipe.name}}</h1>
+					<p class="recipe__description">{{recipe.category}}</p>
+					<p class="recipe__description">{{recipe.prep}}</p>
+					<p class="recipe__description">{{recipe.cook}}</p>
+					<p class="recipe__description">{{recipe.yield}}</p>
+					<p class="recipe__description">{{recipe.difficulty}}</p>
+
+
 					<p class="recipe__description">{{recipe.description}}</p>
 			
 				</div>

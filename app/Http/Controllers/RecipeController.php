@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function index()
     {
     	$recipes = Recipe::orderBy('created_at', 'desc')
-    		->get(['id', 'name', 'image']);
+    		->get(['id', 'name', 'image', 'cook','prep','category','yield','difficulty']);
     	return response()
     		->json([
     			'recipes' => $recipes
@@ -60,7 +60,7 @@ class RecipeController extends Controller
     	}
     	$filename = $this->getFileName($request->image);
     	$request->image->move(base_path('public/images'), $filename);
-    	$recipe = new Recipe($request->only('name', 'description'));
+    	$recipe = new Recipe($request->only('name', 'description','category','prep','cook','difficulty','yield'));
     	$recipe->image = $filename;
     	$request->user()->recipes()
     		->save($recipe);

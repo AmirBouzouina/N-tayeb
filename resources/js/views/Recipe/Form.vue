@@ -18,28 +18,38 @@
 				<div class="recipe__details_inner">
 					<div class="form__group">
 					    <label>Nom de la recette</label>
-					    <input type="text" class="form__control" v-model="form.name">
+					    <input type="text" class="form__control" v-model="form.name" placeholder="Nom de la recette">
 					    <small class="error__control" v-if="error.name">{{error.name[0]}}</small>
 					</div>
 						<div class="form__group">
 					    <label>Catégorie de la recette</label>
-					    <input type="text" class="form__control" v-model="form.category">
+					    <select class="form__control" v-model="form.category">
+							<option disabled value="">Choisissez</option>
+							<option>A</option>
+							<option>B</option>
+							<option>C</option>
+						</select>
 					</div>
 							<div class="form__group">
 					    <label>Temps de préparation</label>
-					    <input type="text" class="form__control" v-model="form.prep">
+					    <input type="text" class="form__control" v-model="form.prep" placeholder="En minutes">
 					</div>
 							<div class="form__group">
 					    <label>Temps de cuisson</label>
-					    <input type="text" class="form__control" v-model="form.cook">
+					    <input type="text" class="form__control" v-model="form.cook" placeholder="En minutes" >
 					</div>
 							<div class="form__group">
 					    <label>Pour : nombre personnes</label>
-					    <input type="text" class="form__control" v-model="form.yield">
+					    <input type="text" class="form__control" v-model="form.yield" placeholder="Nombre de portions">
 					</div>
 					<div class="form__group">
 					    <label>Difficulté</label>
-					    <input type="text" class="form__control" v-model="form.difficulty">
+					    <select  class="form__control" v-model="form.difficulty">
+						<option disabled value="">Choisissez</option>
+						<option>Facile</option>
+						<option>Moyenne</option>
+						<option>Difficile</option>
+						</select>
 					</div>
 					<div class="form__group">
 					    <label>Description</label>

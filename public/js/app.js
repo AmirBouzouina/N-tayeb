@@ -2215,6 +2215,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2342,6 +2352,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3529,7 +3546,7 @@ var render = function() {
                 }
               ],
               staticClass: "form__control",
-              attrs: { type: "text" },
+              attrs: { type: "text", placeholder: "Nom de la recette" },
               domProps: { value: _vm.form.name },
               on: {
                 input: function($event) {
@@ -3551,27 +3568,48 @@ var render = function() {
           _c("div", { staticClass: "form__group" }, [
             _c("label", [_vm._v("Catégorie de la recette")]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.category,
-                  expression: "form.category"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.form.category },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.category,
+                    expression: "form.category"
                   }
-                  _vm.$set(_vm.form, "category", $event.target.value)
+                ],
+                staticClass: "form__control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "category",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
                 }
-              }
-            })
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "" } }, [
+                  _vm._v("Choisissez")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("A")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("B")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("C")])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form__group" }, [
@@ -3587,7 +3625,7 @@ var render = function() {
                 }
               ],
               staticClass: "form__control",
-              attrs: { type: "text" },
+              attrs: { type: "text", placeholder: "En minutes" },
               domProps: { value: _vm.form.prep },
               on: {
                 input: function($event) {
@@ -3613,7 +3651,7 @@ var render = function() {
                 }
               ],
               staticClass: "form__control",
-              attrs: { type: "text" },
+              attrs: { type: "text", placeholder: "En minutes" },
               domProps: { value: _vm.form.cook },
               on: {
                 input: function($event) {
@@ -3639,7 +3677,7 @@ var render = function() {
                 }
               ],
               staticClass: "form__control",
-              attrs: { type: "text" },
+              attrs: { type: "text", placeholder: "Nombre de portions" },
               domProps: { value: _vm.form.yield },
               on: {
                 input: function($event) {
@@ -3655,27 +3693,48 @@ var render = function() {
           _c("div", { staticClass: "form__group" }, [
             _c("label", [_vm._v("Difficulté")]),
             _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.difficulty,
-                  expression: "form.difficulty"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text" },
-              domProps: { value: _vm.form.difficulty },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.difficulty,
+                    expression: "form.difficulty"
                   }
-                  _vm.$set(_vm.form, "difficulty", $event.target.value)
+                ],
+                staticClass: "form__control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "difficulty",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
                 }
-              }
-            })
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "" } }, [
+                  _vm._v("Choisissez")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Facile")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Moyenne")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Difficile")])
+              ]
+            )
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "form__group" }, [
@@ -3964,6 +4023,26 @@ var render = function() {
           _vm._v(" "),
           _c("h1", { staticClass: "recipe__title" }, [
             _vm._v(_vm._s(_vm.recipe.name))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "recipe__description" }, [
+            _vm._v(_vm._s(_vm.recipe.category))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "recipe__description" }, [
+            _vm._v(_vm._s(_vm.recipe.prep))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "recipe__description" }, [
+            _vm._v(_vm._s(_vm.recipe.cook))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "recipe__description" }, [
+            _vm._v(_vm._s(_vm.recipe.yield))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "recipe__description" }, [
+            _vm._v(_vm._s(_vm.recipe.difficulty))
           ]),
           _vm._v(" "),
           _c("p", { staticClass: "recipe__description" }, [
