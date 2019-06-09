@@ -15,7 +15,7 @@ class RecipeController extends Controller
     }
     public function index()
     {
-    	$recipes = Recipe::orderBy('created_at', 'desc')
+    	$recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
     		->get(['id', 'name', 'image', 'cook','prep','category','yield','difficulty','valida']);
     	return response()
     		->json([

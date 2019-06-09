@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'test') }}</title>
+    <title>{{ config('app.name', 'Ntayeb') }}</title>
 
     <!-- Scripts -->
 
@@ -81,4 +81,6 @@
         </main>
     </div>
 </body>
+        <script type="text/javascript" src="{{ mix('js/app.js') }}" defer="defer" ></script>
+
 </html>

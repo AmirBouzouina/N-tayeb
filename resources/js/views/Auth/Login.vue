@@ -1,5 +1,6 @@
+
 <template>
-    <form class="form" @submit.prevent="login">
+    <form class="form box" @submit.prevent="login">
         <h1 class="form__title">Se connecter</h1>
         <div class="form__group">
             <label>Email</label>
@@ -12,10 +13,14 @@
             <small class="error__control" v-if="error.password">{{error.password[0]}}</small>
         </div>
         <div class="form__group">
-            <button :disabled="isProcessing" class="btn btn__primary">Connecter</button>
+            <input type="submit" name="" value="Connecter">
+
         </div>
     </form>
 </template>
+
+
+
 <script type="text/javascript">
     import Flash from '../../helpers/flash'
     import Auth from '../../store/auth'

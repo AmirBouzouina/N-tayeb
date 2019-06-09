@@ -20,4 +20,7 @@
         </div>
     </div>
 </div>
+
+        <script type="text/javascript" src="{{ mix('js/app.js') }}" defer="defer" ></script>
+
 @endsection

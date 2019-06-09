@@ -2089,6 +2089,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2170,6 +2175,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2193,7 +2205,7 @@ __webpack_require__.r(__webpack_exports__);
       this.error = {};
       Object(_helpers_api__WEBPACK_IMPORTED_MODULE_1__["post"])('api/register', this.form).then(function (res) {
         if (res.data.registered) {
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('Congratulations! You have now successfully registered.');
+          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('Félicitations! Vous avez crée votre compte.');
 
           _this.$router.push('/login');
         }
@@ -3240,7 +3252,7 @@ var render = function() {
   return _c(
     "form",
     {
-      staticClass: "form",
+      staticClass: "form box",
       on: {
         submit: function($event) {
           $event.preventDefault()
@@ -3315,20 +3327,20 @@ var render = function() {
           : _vm._e()
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "form__group" }, [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn__primary",
-            attrs: { disabled: _vm.isProcessing }
-          },
-          [_vm._v("Connecter")]
-        )
-      ])
+      _vm._m(0)
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form__group" }, [
+      _c("input", { attrs: { type: "submit", name: "", value: "Connecter" } })
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -3353,7 +3365,7 @@ var render = function() {
   return _c(
     "form",
     {
-      staticClass: "form",
+      staticClass: "form box",
       on: {
         submit: function($event) {
           $event.preventDefault()
@@ -19748,15 +19760,14 @@ __webpack_require__.r(__webpack_exports__);
 /*!*********************************************!*\
   !*** ./resources/js/views/Recipe/Index.vue ***!
   \*********************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=5b3d7910& */ "./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910&");
 /* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -19786,7 +19797,7 @@ component.options.__file = "resources/js/views/Recipe/Index.vue"
 /*!**********************************************************************!*\
   !*** ./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js& ***!
   \**********************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

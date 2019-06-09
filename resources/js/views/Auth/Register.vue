@@ -1,5 +1,7 @@
+
 <template>
-    <form class="form" @submit.prevent="register">
+
+    <form class="form box" @submit.prevent="register">
         <h1 class="form__title">Crér un compte</h1>
         <div class="form__group">
             <label>Nom</label>
@@ -25,6 +27,11 @@
         </div>
     </form>
 </template>
+
+
+
+
+
 <script type="text/javascript">
     import Flash from '../../helpers/flash'
     import { post } from '../../helpers/api'
@@ -48,10 +55,10 @@
                 post('api/register', this.form)
                     .then((res) => {
                         if(res.data.registered) {
-                            Flash.setSuccess('Congratulations! You have now successfully registered.')
+                            Flash.setSuccess('Félicitations! Vous avez crée votre compte.')
                             this.$router.push('/login')
                         }
-                        this.isProcessing = false
+                            this.isProcessing = false
                     })
                     .catch((err) => {
                         if(err.response.status === 422) {
