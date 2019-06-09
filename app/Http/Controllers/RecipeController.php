@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function index()
     {
     	$recipes = Recipe::orderBy('created_at', 'desc')
-    		->get(['id', 'name', 'image', 'cook','prep','category','yield','difficulty']);
+    		->get(['id', 'name', 'image', 'cook','prep','category','yield','difficulty','valida']);
     	return response()
     		->json([
     			'recipes' => $recipes
@@ -34,18 +34,19 @@ class RecipeController extends Controller
     {
     	$this->validate($request, [
     		'name' => 'required|max:255',
-    		'description' => 'required|max:3000',
+      		'description' => 'required|max:3000',
             'image' => 'required|image',
             'category' => 'required|max:255',
             'prep' => 'required|max:255',
             'cook' => 'required|max:255',
             'difficulty' => 'required|max:255',
-            'yield' => 'required|max:255', 
+            'yield' => 'required|max:255',
     		'ingredients' => 'required|array|min:1',
     		'ingredients.*.name' => 'required|max:255',
     		'ingredients.*.qty' => 'required|max:255',
     		'directions' => 'required|array|min:1',
-    		'directions.*.description' => 'required|max:3000'
+    		'directions.*.description' => 'required|max:3000',
+          'valida'=> 'required |max:1',
     	]);
     	$ingredients = [];
         foreach($request->ingredients as $ingredient) {
@@ -60,7 +61,7 @@ class RecipeController extends Controller
     	}
     	$filename = $this->getFileName($request->image);
     	$request->image->move(base_path('public/images'), $filename);
-    	$recipe = new Recipe($request->only('name', 'description','category','prep','cook','difficulty','yield'));
+    	$recipe = new Recipe($request->only('name', 'description','category','prep','cook','difficulty','yield','valida'));
     	$recipe->image = $filename;
     	$request->user()->recipes()
     		->save($recipe);
@@ -109,13 +110,14 @@ class RecipeController extends Controller
         // dd($request->all());
         $this->validate($request, [
             'name' => 'required|max:255',
+            'valida'=>'required|max:1',
             'description' => 'required|max:3000',
             'image' => 'image',
             'category' => 'required|max:255',
             'prep' => 'required|max:255',
             'cook' => 'required|max:255',
             'difficulty' => 'required|max:255',
-            'yield' => 'required|max:255', 
+            'yield' => 'required|max:255',
             'ingredients' => 'required|array|min:1',
             'ingredients.*.id' => 'integer|exists:recipe_ingredients',
             'ingredients.*.name' => 'required|max:255',

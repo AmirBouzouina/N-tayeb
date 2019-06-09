@@ -8,19 +8,29 @@
 		</div>
 	</div>
 </template>
+
+
+
 <script type="text/javascript">
 	import { get } from '../../helpers/api'
 	export default {
 		data() {
 			return {
 				recipes: []
-			}
+
+			};
+
 		},
 		created() {
-			get('/api/recipes')
+			get('/api/recipes?valida=1')
 				.then((res) => {
-					this.recipes = res.data.recipes
-				})
+					this.recipes = res.data.recipes;
+					} );
+
+
+
 		}
-	}
+	};
+
+
 </script>

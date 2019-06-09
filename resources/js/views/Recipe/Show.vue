@@ -10,15 +10,15 @@
 				<div class="recipe__details_inner">
 					<small>Recette ajoutée par: {{recipe.user.name}}</small>
 					<h1 class="recipe__title">{{recipe.name}}</h1>
-					<p class="recipe__description">{{recipe.category}}</p>
-					<p class="recipe__description">{{recipe.prep}}</p>
-					<p class="recipe__description">{{recipe.cook}}</p>
-					<p class="recipe__description">{{recipe.yield}}</p>
-					<p class="recipe__description">{{recipe.difficulty}}</p>
+					<p class="recipe__description"><strong>Catégorie :</strong>{{recipe.category}}</p>
+					<p class="recipe__description"><strong>Temps de préparation :</strong>{{recipe.prep}}</p>
+					<p class="recipe__description"><strong>Temps de cuisson:</strong>{{recipe.cook}}</p>
+					<p class="recipe__description"><strong>Portions:</strong> Pour {{recipe.yield}} Personnes</p>
+					<p class="recipe__description"><strong>Difficulté :</strong>{{recipe.difficulty}}</p>
 
 
-					<p class="recipe__description">{{recipe.description}}</p>
-			
+					<p class="recipe__description"><strong>Description :</strong>{{recipe.description}}</p>
+
 				</div>
 			</div>
 		</div>

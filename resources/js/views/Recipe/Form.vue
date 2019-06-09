@@ -82,15 +82,15 @@
 					<div class="row">
 					<h3 class="recipe__sub_title">Ingrédients</h3>
 					<div v-for="(ingredient, index) in form.ingredients" class="recipe__form">
-						<input type="text" placeholder="Ingrédient" class="form__control" v-model="ingredient.name"
+						<input type="text" placeholder="Ingrédient" class="form__control form__control2" v-model="ingredient.name"
 							:class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
-						<input type="text" placeholder="Unité" class="form__control form__qty" v-model="ingredient.qty"
+						<input type="text" placeholder="Quantité" class="form__control form__qty form__qty2" v-model="ingredient.qty"
 							:class="[error[`ingredients.${index}.qty`] ? 'error__bg' : '']">
 
 						<button @click="remove('ingredients', index)" class="btn btn__danger">&times;</button> <br>
 					</div>
-					<small  class="form__control2">Ex :Carottes,Beurre,Viande-hachée </small>	
-					<small class="form__qty2">Ex :Gr,Kg,CàC </small>							
+					<small  class="form__control2">Ex :Carottes,Beurre,Viande-hachée </small>
+					<small class="form__qty2">Ex :Gr,Kg,CàC </small>
 
 					</div>
 					<button @click="addIngredient" class="btn">Ajouter ingrédient</button>
