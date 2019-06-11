@@ -1,6 +1,7 @@
 <template>
-	<div class="container">
-		<div class="navbar">
+    <div class="container">
+
+    <div class="navbar">
 			<div class="navbar__brand">
 				<router-link to="/">Ntayeb</router-link>
 			</div>
@@ -19,7 +20,9 @@
 				</li>
 			</ul>
 		</div>
-		<div class="flash flash__error" v-if="flash.error">
+
+
+    <div class="flash flash__error" v-if="flash.error">
 			{{flash.error}}
 		</div>
 		<div class="flash flash__success" v-if="flash.success">

@@ -1,54 +1,95 @@
 <template>
-	<div class="recipe__show">
-		<div class="recipe__row">
-			<div class="recipe__image">
-				<div class="recipe__box">
-					<img :src="`/images/${recipe.image}`" v-if="recipe.image">
-				</div>
-			</div>
-			<div class="recipe__details">
-				<div class="recipe__details_inner">
-					<small>Recette ajoutée par: {{recipe.user.name}}</small>
-					<h1 class="recipe__title">{{recipe.name}}</h1>
-					<p class="recipe__description"><strong>Catégorie :</strong>{{recipe.category}}</p>
-					<p class="recipe__description"><strong>Temps de préparation :</strong>{{recipe.prep}}</p>
-					<p class="recipe__description"><strong>Temps de cuisson:</strong>{{recipe.cook}}</p>
-					<p class="recipe__description"><strong>Portions:</strong> Pour {{recipe.yield}} Personnes</p>
-					<p class="recipe__description"><strong>Difficulté :</strong>{{recipe.difficulty}}</p>
+	<div class="recipe__show wow bounceInUp">
+        <h1 class="recipe__title">{{recipe.name}}</h1>
+        <div class="recipe__row">
+                <div class="col-4 ">
+                    <div class="recipe-info">
+                        <h3 class="inf">Infos</h3>
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-6">Temps de préparation </div>
+                            <div class="col-4"><time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.prep}}</time>
+                                Minutes</div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-6">Temps de cuisson</div>
+
+                            <div class="col-4"><time datetime="<?php echo $ct; ?>" itemprop="prepTime" >{{recipe.cook}}</time>
+                                Minutes</div>
+                        </div>
+                        <!-- Difficulty -->
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fa fa-area-chart" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-6">Difficulté </div>
+                            <div class="col-4">
+                                {{recipe.difficulty}}
+                            </div>
 
 
-					<p class="recipe__description"><strong>Description :</strong>{{recipe.description}}</p>
+                        </div>
+                        <!-- Serves -->
 
-				</div>
-			</div>
-		</div>
-		<div class="recipe__row">
-			<div class="recipe__ingredients">
-				<div class="recipe__box">
-					<h3 class="recipe__sub_title">Ingrédients</h3>
-					<ul>
-						<li v-for="ingredient in recipe.ingredients">
-							<span>{{ingredient.name}}</span>
-							<span>{{ingredient.qty}}</span>
-						</li>
-					</ul>
-				</div>
-			</div>
-			<div class="recipe__directions">
-				<div class="recipe__directions_inner">
-					<h3 class="recipe__sub_title">Étapes</h3>
-					<ul>
-						<li v-for="(direction, i) in recipe.directions">
-							<p>
-								<strong>Step {{i + 1}}: </strong>
-								{{direction.description}}
-							</p>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
+
+                        <div class="row">
+                            <div class="col-2 text-center">
+                                <i class="fa fa-users" aria-hidden="true"></i>
+                            </div>
+                            <div class="col-6">Portions</div>
+                            <div class="col-4">{{recipe.yield}} Personnes</div>
+                        </div>
+                    </div>
+
+                </div>
+            <div class="col-8">
+                <h3 class="infv">Image</h3>
+
+                <div class="recipe__box wow swing">
+
+                    <img :src="`/images/${recipe.image}`" v-if="recipe.image">
+                </div>
+            </div>
+
+                </div>
+
+
+        <div class="recipe__row  wow slideInUp">
+
+                    <div class="col-4 recipe-ingredients recipe__box">
+                                <h3 class="recipe__sub_title">Ingrédients</h3>
+                                <dl class="ingredients-list">
+                                    <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
+                                        <span>{{ingredient.name}}</span>
+                                        <span class="qty">{{ingredient.qty}}</span>
+                                    </dd>
+                                </dl>
+                    </div>
+
+                    <!-- Directions -->
+                    <div class="col-8 recipe-directions">
+
+
+
+                            <div class="recipe__directions_inner">
+                                <h3 class="recipe__sub_title">Étapes</h3>
+                                <ol>
+                                    <li v-for="(direction, i) in recipe.directions">
+                                        <p>
+                                            {{direction.description}}
+                                        </p>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 </template>
 <script type="text/javascript">
 	import Auth from '../../store/auth'
@@ -86,3 +127,6 @@
 		}
 	}
 </script>
+
+<!--<script charset="utf-8" src="/js/bootstrap.min.js"></script>-->
+<!--<script charset="utf-8" src="/js/wow.min.js"></script>-->
