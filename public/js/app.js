@@ -2092,8 +2092,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -3264,8 +3262,6 @@ var render = function() {
       _c("h1", { staticClass: "form__title" }, [_vm._v("Se connecter")]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Email")]),
-        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -3276,7 +3272,7 @@ var render = function() {
             }
           ],
           staticClass: "form__control",
-          attrs: { type: "text" },
+          attrs: { type: "text", placeholder: "votre addresse e-mail" },
           domProps: { value: _vm.form.email },
           on: {
             input: function($event) {
@@ -3296,8 +3292,6 @@ var render = function() {
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "form__group" }, [
-        _c("label", [_vm._v("Mot de passe")]),
-        _vm._v(" "),
         _c("input", {
           directives: [
             {
@@ -3308,7 +3302,7 @@ var render = function() {
             }
           ],
           staticClass: "form__control",
-          attrs: { type: "password" },
+          attrs: { type: "password", placeholder: "votre mot de passe" },
           domProps: { value: _vm.form.password },
           on: {
             input: function($event) {
