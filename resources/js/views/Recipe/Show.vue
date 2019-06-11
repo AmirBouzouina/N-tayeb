@@ -1,5 +1,5 @@
 <template>
-	<div class="recipe__show">
+	<div class="recipe__show wow bounceInUp">
         <h1 class="recipe__title">{{recipe.name}}</h1>
         <div class="recipe__row">
                 <div class="col-4 ">
@@ -51,7 +51,7 @@
             <div class="col-8">
                 <h3 class="infv">Image</h3>
 
-                <div class="recipe__box">
+                <div class="recipe__box wow swing">
 
                     <img :src="`/images/${recipe.image}`" v-if="recipe.image">
                 </div>
@@ -60,7 +60,7 @@
                 </div>
 
 
-        <div class="recipe__row">
+        <div class="recipe__row  wow slideInUp">
 
                     <div class="col-4 recipe-ingredients recipe__box">
                                 <h3 class="recipe__sub_title">Ingrédients</h3>
