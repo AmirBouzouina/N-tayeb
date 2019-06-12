@@ -78,7 +78,7 @@
 
 
                             <div class="recipe__directions_inner">
-                                <h3 class="recipe__sub_title">Étapes</h3>
+                                <h3 class="recipe__sub_title">Étapes :</h3>
                                 <ol>
                                     <li v-for="(direction, i) in recipe.directions">
                                         <p>
