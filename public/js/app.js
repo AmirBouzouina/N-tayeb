@@ -2576,6 +2576,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4167,7 +4192,36 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "recipe__row" }, [
-      _c("div", { staticClass: "col-4 " }, [
+      _c("div", { staticClass: "col-4 recipe-ingredients recipe__box" }, [
+        _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Ingrédients")]),
+        _vm._v(" "),
+        _c(
+          "dl",
+          { staticClass: "ingredients-list" },
+          _vm._l(_vm.recipe.ingredients, function(ingredient) {
+            return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
+              _c("span", [_vm._v(_vm._s(ingredient.name))]),
+              _vm._v(" "),
+              _c("span", { staticClass: "qty" }, [
+                _vm._v(_vm._s(ingredient.qty))
+              ])
+            ])
+          }),
+          0
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-8" }, [
+        _c("div", { staticClass: "recipe__box wow swing" }, [
+          _vm.recipe.image
+            ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
+            : _vm._e()
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 " }, [
         _c("div", { staticClass: "recipe-info" }, [
           _c("h3", { staticClass: "inf" }, [_vm._v("Infos")]),
           _vm._v(" "),
@@ -4189,7 +4243,7 @@ var render = function() {
                 },
                 [_vm._v(_vm._s(_vm.recipe.prep))]
               ),
-              _vm._v("\n                                Minutes")
+              _vm._v("\n                            Minutes")
             ])
           ]),
           _vm._v(" "),
@@ -4209,7 +4263,7 @@ var render = function() {
                 },
                 [_vm._v(_vm._s(_vm.recipe.cook))]
               ),
-              _vm._v("\n                                Minutes")
+              _vm._v("\n                            Minutes")
             ])
           ]),
           _vm._v(" "),
@@ -4220,9 +4274,9 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "col-4" }, [
               _vm._v(
-                "\n                                " +
+                "\n                            " +
                   _vm._s(_vm.recipe.difficulty) +
-                  "\n                            "
+                  "\n                        "
               )
             ])
           ]),
@@ -4235,42 +4289,37 @@ var render = function() {
             _c("div", { staticClass: "col-4" }, [
               _vm._v(_vm._s(_vm.recipe.yield) + " Personnes")
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _vm._v("Recette ajoutée par :")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _vm._v(
+                _vm._s(_vm.recipe.user.name) + "\n                        "
+              )
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _vm._v(_vm._s(_vm.recipe.category) + "\n                        ")
+            ])
           ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-8" }, [
-        _c("h3", { staticClass: "infv" }, [_vm._v("Image")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "recipe__box wow swing" }, [
-          _vm.recipe.image
-            ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
-            : _vm._e()
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
-      _c("div", { staticClass: "col-4 recipe-ingredients recipe__box" }, [
-        _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Ingrédients")]),
-        _vm._v(" "),
-        _c(
-          "dl",
-          { staticClass: "ingredients-list" },
-          _vm._l(_vm.recipe.ingredients, function(ingredient) {
-            return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-              _c("span", [_vm._v(_vm._s(ingredient.name))]),
-              _vm._v(" "),
-              _c("span", { staticClass: "qty" }, [
-                _vm._v(_vm._s(ingredient.qty))
-              ])
-            ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-8 recipe-directions" }, [
+    _c("div", { staticClass: "col-12 recipe-directions" }, [
+      _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
         _c("div", { staticClass: "recipe__directions_inner" }, [
           _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Étapes :")]),
           _vm._v(" "),
@@ -4280,9 +4329,9 @@ var render = function() {
               return _c("li", [
                 _c("p", [
                   _vm._v(
-                    "\n                                            " +
+                    "\n                                " +
                       _vm._s(direction.description) +
-                      "\n                                        "
+                      "\n                            "
                   )
                 ])
               ])
@@ -4326,6 +4375,22 @@ var staticRenderFns = [
         staticClass: "fa fa-area-chart",
         attrs: { "aria-hidden": "true" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 text-center" }, [
+      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 text-center" }, [
+      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {
