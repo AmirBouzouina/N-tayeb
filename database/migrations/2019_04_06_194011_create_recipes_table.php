@@ -26,6 +26,7 @@ class CreateRecipesTable extends Migration
             $table->string('difficulty');
             $table->integer('yield');
             $table->integer('valida');
+            $table->string('cuisine');
 
 
             $table->timestamps();

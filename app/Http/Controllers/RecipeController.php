@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function index()
     {
     	$recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
-    		->get(['id', 'name', 'image', 'cook','prep','category','yield','difficulty','valida']);
+    		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
     	return response()
     		->json([
     			'recipes' => $recipes
@@ -37,6 +37,7 @@ class RecipeController extends Controller
       		'description' => 'required|max:3000',
             'image' => 'required|image',
             'category' => 'required|max:255',
+            'cuisine' => 'required|max:255',
             'prep' => 'required|max:255',
             'cook' => 'required|max:255',
             'difficulty' => 'required|max:255',
@@ -61,7 +62,7 @@ class RecipeController extends Controller
     	}
     	$filename = $this->getFileName($request->image);
     	$request->image->move(base_path('public/images'), $filename);
-    	$recipe = new Recipe($request->only('name', 'description','category','prep','cook','difficulty','yield','valida'));
+    	$recipe = new Recipe($request->only('name', 'description','category','cuisine','prep','cook','difficulty','yield','valida'));
     	$recipe->image = $filename;
     	$request->user()->recipes()
     		->save($recipe);
@@ -114,6 +115,7 @@ class RecipeController extends Controller
             'description' => 'required|max:3000',
             'image' => 'image',
             'category' => 'required|max:255',
+            'cuisine' => 'required|max:255',
             'prep' => 'required|max:255',
             'cook' => 'required|max:255',
             'difficulty' => 'required|max:255',

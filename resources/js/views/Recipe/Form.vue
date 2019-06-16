@@ -25,7 +25,7 @@
 						<div class="form__group">
 					    <label>Catégorie de la recette</label>
 					    <select class="form__control" v-model="form.category">
-							<option disabled value="">Choisissez</option>
+							<option disabled value="">Choisissez une catégorie</option>
 							<option >Dessert</option>
 							<option >Entrées</option>
 							<option >Salades‎</option>
@@ -38,6 +38,22 @@
 							<option >‎Sauces</option>
 						</select>
 					</div>
+                    <div class="form__group">
+                        <label>Cuisine :</label>
+                        <select class="form__control" v-model="form.cuisine">
+                            <option disabled value="">Choisissez une cuisine</option>
+                            <option >Algérienne</option>
+                            <option >Algéroise</option>
+                            <option >Marocaine</option>
+                            <option >Tunisienne</option>
+                            <option >Italienne</option>
+                            <option >Indienne</option>
+                            <option >Française</option>
+                            <option >Grecque</option>
+                            <option >Vegétariene</option>
+                            <option >Syrienne</option>
+                        </select>
+                    </div>
 
 					<div class="form__group">
 					    <label>Description</label>

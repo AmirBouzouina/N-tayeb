@@ -2353,6 +2353,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2483,6 +2499,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3761,7 +3785,7 @@ var render = function() {
               },
               [
                 _c("option", { attrs: { disabled: "", value: "" } }, [
-                  _vm._v("Choisissez")
+                  _vm._v("Choisissez une catégorie")
                 ]),
                 _vm._v(" "),
                 _c("option", [_vm._v("Dessert")]),
@@ -3783,6 +3807,67 @@ var render = function() {
                 _c("option", [_vm._v("Pains")]),
                 _vm._v(" "),
                 _c("option", [_vm._v("‎Sauces")])
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form__group" }, [
+            _c("label", [_vm._v("Cuisine :")]),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.cuisine,
+                    expression: "form.cuisine"
+                  }
+                ],
+                staticClass: "form__control",
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.$set(
+                      _vm.form,
+                      "cuisine",
+                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
+                    )
+                  }
+                }
+              },
+              [
+                _c("option", { attrs: { disabled: "", value: "" } }, [
+                  _vm._v("Choisissez une cuisine")
+                ]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Algérienne")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Algéroise")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Marocaine")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Tunisienne")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Italienne")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Indienne")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Française")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Grecque")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Vegétariene")]),
+                _vm._v(" "),
+                _c("option", [_vm._v("Syrienne")])
               ]
             )
           ]),
@@ -4192,32 +4277,41 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "recipe__row" }, [
-      _c("div", { staticClass: "col-4 recipe-ingredients recipe__box" }, [
-        _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Ingrédients")]),
-        _vm._v(" "),
-        _c(
-          "dl",
-          { staticClass: "ingredients-list" },
-          _vm._l(_vm.recipe.ingredients, function(ingredient) {
-            return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-              _c("span", [_vm._v(_vm._s(ingredient.name))]),
-              _vm._v(" "),
-              _c("span", { staticClass: "qty" }, [
-                _vm._v(_vm._s(ingredient.qty))
-              ])
-            ])
-          }),
-          0
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-8" }, [
+      _c("div", { staticClass: "col-md-8 col-sm-12 " }, [
         _c("div", { staticClass: "recipe__box wow swing" }, [
           _vm.recipe.image
             ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
             : _vm._e()
         ])
-      ])
+      ]),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass:
+            "col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box"
+        },
+        [
+          _c("h3", { staticClass: "recipe__sub_title" }, [
+            _vm._v("Ingrédients")
+          ]),
+          _vm._v(" "),
+          _c(
+            "dl",
+            { staticClass: "ingredients-list" },
+            _vm._l(_vm.recipe.ingredients, function(ingredient) {
+              return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
+                _c("span", [_vm._v(_vm._s(ingredient.name))]),
+                _vm._v(" "),
+                _c("span", { staticClass: "qty" }, [
+                  _vm._v(_vm._s(ingredient.qty))
+                ])
+              ])
+            }),
+            0
+          )
+        ]
+      )
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "row" }, [
@@ -4313,6 +4407,16 @@ var render = function() {
             _c("div", { staticClass: "col-4" }, [
               _vm._v(_vm._s(_vm.recipe.category) + "\n                        ")
             ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _vm._v(_vm._s(_vm.recipe.cuisine) + "\n                        ")
+            ])
           ])
         ])
       ])
@@ -4375,6 +4479,14 @@ var staticRenderFns = [
         staticClass: "fa fa-area-chart",
         attrs: { "aria-hidden": "true" }
       })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-2 text-center" }, [
+      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {

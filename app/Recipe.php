@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Recipe extends Model
 {
     protected $fillable = [
-        'name', 'description', 'image' ,'category', 'prep','cook','difficulty','yield','valida'
+        'name', 'description', 'image' ,'category','cuisine', 'prep','cook','difficulty','yield','valida'
 
 
     ];
@@ -19,7 +19,7 @@ class Recipe extends Model
 
     public function ingredients()
     {
-    	return $this->hasMany(RecipeIngredient::class);
+            return $this->hasMany(RecipeIngredient::class);
     }
 
     public function directions()
@@ -35,6 +35,7 @@ class Recipe extends Model
             'image' => '',
             'description' => '',
             'category' => '',
+             'cuisine' => '',
             'prep' => '',
             'cook' => '',
             'difficulty' => '',

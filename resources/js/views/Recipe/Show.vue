@@ -3,8 +3,14 @@
         <h1 class="recipe__title">{{recipe.name}}</h1>
         <div class="recipe__row">
 
+            <div class="col-md-8 col-sm-12 ">
 
-            <div class="col-4 recipe-ingredients recipe__box">
+                <div class="recipe__box wow swing">
+
+                    <img :src="`/images/${recipe.image}`" v-if="recipe.image">
+                </div>
+            </div>
+            <div class="col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box">
                 <h3 class="recipe__sub_title">Ingrédients</h3>
                 <dl class="ingredients-list">
                     <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
@@ -13,13 +19,7 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-8">
 
-                <div class="recipe__box wow swing">
-
-                    <img :src="`/images/${recipe.image}`" v-if="recipe.image">
-                </div>
-            </div>
 
                 </div>
         <div class="row">
@@ -81,6 +81,14 @@
                         </div>
                         <div class="col-6">Catégorie:</div>
                         <div class="col-4">{{recipe.category}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 text-center">
+                            <i class="fa fa-users" aria-hidden="true"></i>
+                        </div>
+                        <div class="col-6">Cuisine:</div>
+                        <div class="col-4">{{recipe.cuisine}}
                         </div>
                     </div>
                 </div>
