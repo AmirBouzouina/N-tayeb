@@ -2613,18 +2613,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4276,7 +4264,26 @@ var render = function() {
       _vm._v(_vm._s(_vm.recipe.name))
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "recipe__row" }, [
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-4" }, [
+        _c("small", [_vm._v("Recette ajoutée par :")]),
+        _vm._v(_vm._s(_vm.recipe.user.name) + "\n            ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _vm._v(_vm._s(_vm.recipe.category))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-4" }, [
+        _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-md-8 col-sm-12 " }, [
         _c("div", { staticClass: "recipe__box wow swing" }, [
           _vm.recipe.image
@@ -4383,40 +4390,6 @@ var render = function() {
             _c("div", { staticClass: "col-4" }, [
               _vm._v(_vm._s(_vm.recipe.yield) + " Personnes")
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(4),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _vm._v("Recette ajoutée par :")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._v(
-                _vm._s(_vm.recipe.user.name) + "\n                        "
-              )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(5),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._v(_vm._s(_vm.recipe.category) + "\n                        ")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(6),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._v(_vm._s(_vm.recipe.cuisine) + "\n                        ")
-            ])
           ])
         ])
       ])
@@ -4479,30 +4452,6 @@ var staticRenderFns = [
         staticClass: "fa fa-area-chart",
         attrs: { "aria-hidden": "true" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
-      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
-      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
-      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
     ])
   },
   function() {

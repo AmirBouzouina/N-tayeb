@@ -1,7 +1,17 @@
 <template>
 	<div class="recipe__show wow bounceInUp" >
         <h1 class="recipe__title">{{recipe.name}}</h1>
-        <div class="recipe__row">
+        <div class="row">
+                       <div class="col-4"><small>Recette ajoutée par :</small>{{recipe.user.name}}
+            </div>
+
+
+            <div class="col-6">Catégorie:</div>
+            <div class="col-4">{{recipe.category}}</div>
+            <div class="col-6">Cuisine:</div>
+            <div class="col-4">{{recipe.cuisine}} </div>
+        </div>
+        <div class="row">
 
             <div class="col-md-8 col-sm-12 ">
 
@@ -67,30 +77,8 @@
                         <div class="col-4">{{recipe.yield}} Personnes</div>
                     </div>
 
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Recette ajoutée par :</div>
-                        <div class="col-4">{{recipe.user.name}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Catégorie:</div>
-                        <div class="col-4">{{recipe.category}}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Cuisine:</div>
-                        <div class="col-4">{{recipe.cuisine}}
-                        </div>
-                    </div>
+
+             
                 </div>
 
 
