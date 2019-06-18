@@ -305,6 +305,7 @@ img {
   background: #fff;
   padding: 15px;
   text-transform: capitalize;
+  width: 100%;
 }
 
 .recipe__form {
@@ -315,6 +316,10 @@ img {
 
 .recipe__sub_title {
   text-align: center;
+}
+
+.icon {
+  font-size: 2vw !important;
 }
 
 .image__upload {

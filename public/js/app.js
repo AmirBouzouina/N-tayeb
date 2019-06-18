@@ -2613,6 +2613,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -4327,13 +4328,11 @@ var render = function() {
           _c("h3", { staticClass: "inf" }, [_vm._v("Infos")]),
           _vm._v(" "),
           _c("div", { staticClass: "row" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [
-              _vm._v("Temps de préparation ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
+            _c("div", { staticClass: "col-4 text-center" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("p", [_vm._v("    Temps de préparation ")]),
+              _vm._v(" "),
               _c(
                 "time",
                 {
@@ -4344,77 +4343,78 @@ var render = function() {
                 },
                 [_vm._v(_vm._s(_vm.recipe.prep))]
               ),
-              _vm._v("\n                            Minutes")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(1),
+              _vm._v("\n                        Minutes\n                    ")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Temps de cuisson")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
+            _c("div", { staticClass: "col-4 text-center" }, [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("p", [_vm._v("Temps de cuisson ")]),
+              _vm._v(" "),
               _c(
                 "time",
                 {
                   attrs: {
-                    datetime: "<?php echo $ct; ?>",
+                    datetime: "<?php echo $pt; ?>",
                     itemprop: "prepTime"
                   }
                 },
                 [_vm._v(_vm._s(_vm.recipe.cook))]
               ),
-              _vm._v("\n                            Minutes")
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(2),
+              _vm._v("\n                        Minutes\n                    ")
+            ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Difficulté ")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._v(
-                "\n                            " +
-                  _vm._s(_vm.recipe.difficulty) +
-                  "\n                        "
+            _c("div", { staticClass: "col-4 text-center" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("p", [_vm._v("Difficulté")]),
+              _vm._v(" "),
+              _c(
+                "time",
+                {
+                  attrs: {
+                    datetime: "<?php echo $pt; ?>",
+                    itemprop: "prepTime"
+                  }
+                },
+                [_vm._v(_vm._s(_vm.recipe.difficulty))]
               )
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _vm._m(3),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Portions")]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _vm._v(_vm._s(_vm.recipe.yield) + " Personnes")
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "col-12 recipe-directions" }, [
-      _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
-        _c("div", { staticClass: "recipe__directions_inner" }, [
-          _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Étapes :")]),
+    _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-12 recipe-directions" }, [
+        _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
+          _c("div", { staticClass: "col-6" }, [_vm._v("Portions")]),
           _vm._v(" "),
-          _c(
-            "ol",
-            _vm._l(_vm.recipe.directions, function(direction, i) {
-              return _c("li", [
-                _c("p", [
-                  _vm._v(
-                    "\n                                " +
-                      _vm._s(direction.description) +
-                      "\n                            "
-                  )
+          _c("div", { staticClass: "col-4" }, [
+            _vm._v(_vm._s(_vm.recipe.yield) + " Personnes")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "recipe__directions_inner" }, [
+            _c("h3", { staticClass: "recipe__sub_title" }, [
+              _vm._v("Étapes :")
+            ]),
+            _vm._v(" "),
+            _c(
+              "ol",
+              _vm._l(_vm.recipe.directions, function(direction, i) {
+                return _c("li", [
+                  _c("p", [
+                    _vm._v(
+                      "\n                                " +
+                        _vm._s(direction.description) +
+                        "\n                            "
+                    )
+                  ])
                 ])
-              ])
-            }),
-            0
-          )
+              }),
+              0
+            )
+          ])
         ])
       ])
     ])
@@ -4425,9 +4425,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
+    return _c("p", [
       _c("i", {
-        staticClass: "fa fa-clock-o",
+        staticClass: "fa fa-clock-o icon",
         attrs: { "aria-hidden": "true" }
       })
     ])
@@ -4436,9 +4436,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
+    return _c("p", [
       _c("i", {
-        staticClass: "fa fa-clock-o",
+        staticClass: "fa fa-clock-o icon",
         attrs: { "aria-hidden": "true" }
       })
     ])
@@ -4447,19 +4447,11 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
+    return _c("p", [
       _c("i", {
-        staticClass: "fa fa-area-chart",
+        staticClass: "fa fa-bullseye icon",
         attrs: { "aria-hidden": "true" }
       })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-2 text-center" }, [
-      _c("i", { staticClass: "fa fa-users", attrs: { "aria-hidden": "true" } })
     ])
   }
 ]

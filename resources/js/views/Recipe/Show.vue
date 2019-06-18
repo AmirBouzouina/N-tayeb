@@ -34,48 +34,45 @@
                 </div>
         <div class="row">
             <div class="col-12 ">
+
                 <div class="recipe-info">
                     <h3 class="inf">Infos</h3>
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Temps de préparation </div>
-                        <div class="col-4"><time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.prep}}</time>
-                            Minutes</div>
-                    </div>
 
                     <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-clock-o" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Temps de cuisson</div>
 
-                        <div class="col-4"><time datetime="<?php echo $ct; ?>" itemprop="prepTime" >{{recipe.cook}}</time>
-                            Minutes</div>
+                    <div class="col-4 text-center">
+                        <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
+                        <p>    Temps de préparation </p>
+
+                        <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.prep}}</time>
+                        Minutes
                     </div>
-                    <!-- Difficulty -->
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-area-chart" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Difficulté </div>
-                        <div class="col-4">
-                            {{recipe.difficulty}}
-                        </div>
+
+                    <div class="col-4 text-center">
+                        <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
+                        <p>Temps de cuisson </p>
+
+                        <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.cook}}</time>
+                        Minutes
+                    </div>
+
+                    <div class="col-4 text-center">
+                        <p> <i class="fa fa-bullseye icon" aria-hidden="true"></i> </p>
+                        <p>Difficulté</p>
+
+                        <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.difficulty}}</time>
+
+                    </div>
+
 
 
                     </div>
-                    <!-- Serves -->
 
 
-                    <div class="row">
-                        <div class="col-2 text-center">
-                            <i class="fa fa-users" aria-hidden="true"></i>
-                        </div>
-                        <div class="col-6">Portions</div>
-                        <div class="col-4">{{recipe.yield}} Personnes</div>
-                    </div>
+
+
+
+
 
 
              
@@ -86,11 +83,14 @@
 
 
             </div>
+        <div class="row">
+
             <div class="col-12 recipe-directions">
 
         <div class="recipe__row  wow slideInUp">
 
-
+            <div class="col-6">Portions</div>
+            <div class="col-4">{{recipe.yield}} Personnes</div>
 
 
                 <div class="recipe__directions_inner">
@@ -104,6 +104,7 @@
                     </ol>
                 </div>
             </div>
+        </div>
         </div>
             </div>
 
