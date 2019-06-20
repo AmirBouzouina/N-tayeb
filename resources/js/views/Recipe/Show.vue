@@ -38,7 +38,7 @@
                 <div class="recipe-info">
                     <h3 class="inf">Infos</h3>
 
-                    <div class="row">
+                    <div class="row container-fluid">
 
                     <div class="col-4 text-center">
                         <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
@@ -75,7 +75,7 @@
 
 
 
-             
+
                 </div>
 
 
