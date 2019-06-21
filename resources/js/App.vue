@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container px-0">
 
     <div class="navbar">
 			<div class="navbar__brand">

@@ -1,7 +1,7 @@
 <template>
 	<div class="recipe__show wow bounceInUp" >
         <h1 class="recipe__title">{{recipe.name}}</h1>
-        <div class="row">
+        <div class="row ">
                        <div class="col-4"><small>Recette ajoutée par :</small>{{recipe.user.name}}
             </div>
 
@@ -11,11 +11,11 @@
             <div class="col-6">Cuisine:</div>
             <div class="col-4">{{recipe.cuisine}} </div>
         </div>
-        <div class="row">
+        <div class="row mr-0">
 
-            <div class="col-md-8 col-sm-12 ">
+            <div class="col-md-8 col-sm-12 col-xs-12 recipe__box">
 
-                <div class="recipe__box wow swing">
+                <div class="wow swing">
 
                     <img :src="`/images/${recipe.image}`" v-if="recipe.image">
                 </div>
@@ -29,18 +29,19 @@
                     </dd>
                 </dl>
             </div>
+            </div>
 
 
-                </div>
+
         <div class="row">
             <div class="col-12 ">
 
                 <div class="recipe-info">
                     <h3 class="inf">Infos</h3>
 
-                    <div class="row container-fluid">
+                    <div class="container-fluid  row mx-0">
 
-                    <div class="col-4 text-center">
+                    <div class="col-md-4 col-sm-12 text-center">
                         <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
                         <p>    Temps de préparation </p>
 
@@ -48,7 +49,7 @@
                         Minutes
                     </div>
 
-                    <div class="col-4 text-center">
+                    <div class="col-md-4 col-sm-12 text-center">
                         <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
                         <p>Temps de cuisson </p>
 
@@ -56,7 +57,7 @@
                         Minutes
                     </div>
 
-                    <div class="col-4 text-center">
+                    <div class="col-md-4 col-sm-12 text-center">
                         <p> <i class="fa fa-bullseye icon" aria-hidden="true"></i> </p>
                         <p>Difficulté</p>
 

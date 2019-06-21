@@ -2614,6 +2614,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -3139,7 +3140,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container" },
+    { staticClass: "container px-0" },
     [
       _c("div", { staticClass: "navbar" }, [
         _c(
@@ -4265,7 +4266,7 @@ var render = function() {
       _vm._v(_vm._s(_vm.recipe.name))
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
+    _c("div", { staticClass: "row " }, [
       _c("div", { staticClass: "col-4" }, [
         _c("small", [_vm._v("Recette ajoutée par :")]),
         _vm._v(_vm._s(_vm.recipe.user.name) + "\n            ")
@@ -4284,9 +4285,9 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-md-8 col-sm-12 " }, [
-        _c("div", { staticClass: "recipe__box wow swing" }, [
+    _c("div", { staticClass: "row mr-0" }, [
+      _c("div", { staticClass: "col-md-8 col-sm-12 col-xs-12 recipe__box" }, [
+        _c("div", { staticClass: "wow swing" }, [
           _vm.recipe.image
             ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
             : _vm._e()
@@ -4327,8 +4328,8 @@ var render = function() {
         _c("div", { staticClass: "recipe-info" }, [
           _c("h3", { staticClass: "inf" }, [_vm._v("Infos")]),
           _vm._v(" "),
-          _c("div", { staticClass: "row" }, [
-            _c("div", { staticClass: "col-4 text-center" }, [
+          _c("div", { staticClass: "container-fluid  row mx-0" }, [
+            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
               _vm._m(0),
               _vm._v(" "),
               _c("p", [_vm._v("    Temps de préparation ")]),
@@ -4346,7 +4347,7 @@ var render = function() {
               _vm._v("\n                        Minutes\n                    ")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-4 text-center" }, [
+            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
               _vm._m(1),
               _vm._v(" "),
               _c("p", [_vm._v("Temps de cuisson ")]),
@@ -4364,7 +4365,7 @@ var render = function() {
               _vm._v("\n                        Minutes\n                    ")
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-4 text-center" }, [
+            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
               _vm._m(2),
               _vm._v(" "),
               _c("p", [_vm._v("Difficulté")]),
