@@ -8,6 +8,8 @@ body {
     font-family: helvetica;
     background: rgb(235, 238, 243);;
     color: #616161;
+    background-image: url("../img/bg.png");
+    background-size:contain;
 }
 
 a {
@@ -283,8 +285,21 @@ img {
         margin-bottom: 10px;
     }
     &__sub_title {
-        text-align:center;
+        text-align:left;
+        float:left;
     }
+    &__yielding {
+        text-align:right;
+        float: right;
+        color: #E91E63;
+        font-weight: bold;
+    }
+
+
+}
+
+.Entrées {
+    color:red;
 
 }
 

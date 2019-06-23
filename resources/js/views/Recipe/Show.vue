@@ -11,18 +11,18 @@
             <div class="col-6">Cuisine:</div>
             <div class="col-4">{{recipe.cuisine}} </div>
         </div>
-        <div class="row mr-0">
+        <div class="row mr-0 ml-0">
 
             <div class="col-md-8 col-sm-12 col-xs-12 recipe__box">
 
-                <div class="wow swing">
+                <div class="wow">
 
                     <img :src="`/images/${recipe.image}`" v-if="recipe.image">
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box">
-                <h3 class="recipe__sub_title">Ingrédients</h3>
-                <dl class="ingredients-list">
+                <h3 class="recipe__sub_title">Ingrédients</h3><span class="recipe__yielding"> Pour: {{recipe.yield}} Personnes</span>
+                <dl class="ingredients-list mt-9">
                     <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
                         <span>{{ingredient.name}}</span>
                         <span class="qty">{{ingredient.qty}}</span>
@@ -90,12 +90,10 @@
 
         <div class="recipe__row  wow slideInUp">
 
-            <div class="col-6">Portions</div>
-            <div class="col-4">{{recipe.yield}} Personnes</div>
 
+            <h3 class="recipe__sub_title ">Étapes :</h3>
 
                 <div class="recipe__directions_inner">
-                    <h3 class="recipe__sub_title">Étapes :</h3>
                     <ol>
                         <li v-for="(direction, i) in recipe.directions">
                             <p>

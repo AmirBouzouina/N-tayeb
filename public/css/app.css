@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 * {
   box-sizing: border-box;
 }
@@ -8,6 +10,8 @@ body {
   font-family: helvetica;
   background: #ebeef3;
   color: #616161;
+  background-image: url(/images/bg.png?84f5c1ad1dbf6c01b00c5a8f459a0980);
+  background-size: contain;
 }
 
 a {
@@ -315,7 +319,19 @@ img {
 }
 
 .recipe__sub_title {
-  text-align: center;
+  text-align: left;
+  float: left;
+}
+
+.recipe__yielding {
+  text-align: right;
+  float: right;
+  color: #E91E63;
+  font-weight: bold;
+}
+
+.Entrées {
+  color: red;
 }
 
 .icon {

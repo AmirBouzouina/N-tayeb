@@ -2613,8 +2613,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 
 
@@ -4285,9 +4283,9 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "row mr-0" }, [
+    _c("div", { staticClass: "row mr-0 ml-0" }, [
       _c("div", { staticClass: "col-md-8 col-sm-12 col-xs-12 recipe__box" }, [
-        _c("div", { staticClass: "wow swing" }, [
+        _c("div", { staticClass: "wow" }, [
           _vm.recipe.image
             ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
             : _vm._e()
@@ -4304,10 +4302,13 @@ var render = function() {
           _c("h3", { staticClass: "recipe__sub_title" }, [
             _vm._v("Ingrédients")
           ]),
+          _c("span", { staticClass: "recipe__yielding" }, [
+            _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
+          ]),
           _vm._v(" "),
           _c(
             "dl",
-            { staticClass: "ingredients-list" },
+            { staticClass: "ingredients-list mt-9" },
             _vm._l(_vm.recipe.ingredients, function(ingredient) {
               return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
                 _c("span", [_vm._v(_vm._s(ingredient.name))]),
@@ -4389,17 +4390,9 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 recipe-directions" }, [
         _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
-          _c("div", { staticClass: "col-6" }, [_vm._v("Portions")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-4" }, [
-            _vm._v(_vm._s(_vm.recipe.yield) + " Personnes")
-          ]),
+          _c("h3", { staticClass: "recipe__sub_title " }, [_vm._v("Étapes :")]),
           _vm._v(" "),
           _c("div", { staticClass: "recipe__directions_inner" }, [
-            _c("h3", { staticClass: "recipe__sub_title" }, [
-              _vm._v("Étapes :")
-            ]),
-            _vm._v(" "),
             _c(
               "ol",
               _vm._l(_vm.recipe.directions, function(direction, i) {
