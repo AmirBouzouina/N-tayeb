@@ -2594,25 +2594,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4296,10 +4277,11 @@ var render = function() {
         "div",
         {
           staticClass:
-            "col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box"
+            "col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box",
+          attrs: { id: "ings" }
         },
         [
-          _c("h3", { staticClass: "recipe__sub_title" }, [
+          _c("h3", { staticClass: "recipe__sub_title {recipe.category}" }, [
             _vm._v("Ingrédients")
           ]),
           _c("span", { staticClass: "recipe__yielding" }, [
