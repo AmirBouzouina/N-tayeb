@@ -2369,6 +2369,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -2433,7 +2434,8 @@ __webpack_require__.r(__webpack_exports__);
     addIngredient: function addIngredient() {
       this.form.ingredients.push({
         name: '',
-        qty: ''
+        qty: '',
+        unit: ''
       });
     },
     remove: function remove(type, index) {
@@ -4060,6 +4062,33 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: ingredient.unit,
+                        expression: "ingredient.unit"
+                      }
+                    ],
+                    staticClass: "form__control form__qty form__qty2",
+                    class: [
+                      _vm.error["ingredients." + index + ".unit"]
+                        ? "error__bg"
+                        : ""
+                    ],
+                    attrs: { type: "text", placeholder: "Unité" },
+                    domProps: { value: ingredient.unit },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(ingredient, "unit", $event.target.value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
                   _c(
                     "button",
                     {
@@ -4289,7 +4318,7 @@ var render = function() {
                 _c("span", [_vm._v(_vm._s(ingredient.name))]),
                 _vm._v(" "),
                 _c("span", { staticClass: "qty" }, [
-                  _vm._v(_vm._s(ingredient.qty))
+                  _vm._v(_vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit))
                 ])
               ])
             }),

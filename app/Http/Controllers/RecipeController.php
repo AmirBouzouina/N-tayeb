@@ -46,6 +46,7 @@ class RecipeController extends Controller
     		'ingredients' => 'required|array|min:1',
     		'ingredients.*.name' => 'required|max:255',
     		'ingredients.*.qty' => 'required|max:255',
+            'ingredients.*.unit' => 'required|max:255',
     		'directions' => 'required|array|min:1',
     		'directions.*.description' => 'required|max:3000',
           'valida'=> 'required |max:1',
@@ -97,7 +98,7 @@ class RecipeController extends Controller
     {
         $form = $request->user()->recipes()
             ->with(['ingredients' => function($query) {
-                $query->get(['id', 'name', 'qty']);
+                $query->get(['id', 'name', 'qty','unit']);
             }, 'directions' => function($query) {
                 $query->get(['id', 'description']);
             }])
@@ -127,6 +128,7 @@ class RecipeController extends Controller
             'ingredients.*.id' => 'integer|exists:recipe_ingredients',
             'ingredients.*.name' => 'required|max:255',
             'ingredients.*.qty' => 'required|max:255',
+            'ingredients.*.unit' => 'required|max:255',
             'directions' => 'required|array|min:1',
             'directions.*.id' => 'integer|exists:recipe_directions',
             'directions.*.description' => 'required|max:3000'

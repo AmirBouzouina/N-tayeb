@@ -20,7 +20,7 @@
                     <dl class="ingredients-list mt-9">
                     <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
                         <span>{{ingredient.name}}</span>
-                        <span class="qty">{{ingredient.qty}}</span>
+                        <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span>
                     </dd>
                 </dl>
             </div>
