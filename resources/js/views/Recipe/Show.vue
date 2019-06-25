@@ -1,6 +1,6 @@
 <template>
 	<div class="recipe__show wow bounceInUp" >
-        <h1 class="recipe__title">{{recipe.name}}</h1>
+        <h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1>
         <div class="row ">
                        <div class="col-4"><small>Recette ajoutée par :</small>{{recipe.user.name}}
             </div>
@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box" id="ings">
-                <h3 class="recipe__sub_title {recipe.category}" >Ingrédients</h3><span class="recipe__yielding"> Pour: {{recipe.yield}} Personnes</span>
+                <h3  :class="['recipe__sub_title', recipe.slug]" >Ingrédients</h3><span :class="['recipe__yielding', recipe.slug]" > Pour: {{recipe.yield}} Personnes</span>
                     <dl class="ingredients-list mt-9">
                     <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
                         <span>{{ingredient.name}}</span>
@@ -29,12 +29,12 @@
             <div class="col-12 ">
 
                 <div class="recipe-info">
-                    <h3 class="inf">Infos</h3>
+                    <h3 :class="['inf', recipe.slug]">Infos</h3>
 
                     <div class="container-fluid  row mx-0">
 
                     <div class="col-md-4 col-sm-12 text-center">
-                        <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
+                        <p> <i :class="['fa','fa-clock-o icon', recipe.slug]"  aria-hidden="true"></i> </p>
                         <p>    Temps de préparation </p>
 
                         <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.prep}}</time>
@@ -42,18 +42,18 @@
                     </div>
 
                     <div class="col-md-4 col-sm-12 text-center">
-                        <p> <i class="fa fa-clock-o icon" aria-hidden="true"></i> </p>
+                        <p> <i  :class="['fa','fa-clock-o icon', recipe.slug]" aria-hidden="true"></i> </p>
                         <p>Temps de cuisson </p>
 
-                        <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.cook}}</time>
+                        <time  itemprop="prepTime" >{{recipe.cook}}</time>
                         Minutes
                     </div>
 
                     <div class="col-md-4 col-sm-12 text-center">
-                        <p> <i class="fa fa-bullseye icon" aria-hidden="true"></i> </p>
+                        <p> <i :class="['fa','fa-bullseye icon', recipe.slug]" aria-hidden="true"></i> </p>
                         <p>Difficulté</p>
 
-                        <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.difficulty}}</time>
+                        <time itemprop="prepTime" >{{recipe.difficulty}}</time>
 
                     </div>
 
@@ -69,7 +69,7 @@
             <div class="col-12 recipe-directions">
         <div class="recipe__row  wow slideInUp">
             <h3 class="recipe__sub_title ">Étapes :</h3>
-                <div class="recipe__directions_inner">
+                <div  :class="['recipe__directions_inner', recipe.slug]" >
                     <ol>
                         <li v-for="(direction, i) in recipe.directions">
                             <p>
@@ -85,14 +85,7 @@
                    <!-- Directions -->
                 </div>
 </template>
-<script type="text/javascript">
-    var vm =   new Vue({
-        el: '#ings',
-        data:{
-            color: {{recipe.category}}
-    }
-    });
-    </script>
+
 <script type="text/javascript">
 	import Auth from '../../store/auth'
 	import Flash from '../../helpers/flash'
@@ -130,7 +123,6 @@
 	}
 
 </script>
-
 
 <!--<script charset="utf-8" src="/js/bootstrap.min.js"></script>-->
 <!--<script charset="utf-8" src="/js/wow.min.js"></script>-->

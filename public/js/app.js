@@ -2587,13 +2587,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4241,7 +4234,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
-    _c("h1", { staticClass: "recipe__title" }, [
+    _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
       _vm._v(_vm._s(_vm.recipe.name))
     ]),
     _vm._v(" "),
@@ -4281,10 +4274,10 @@ var render = function() {
           attrs: { id: "ings" }
         },
         [
-          _c("h3", { staticClass: "recipe__sub_title {recipe.category}" }, [
+          _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
             _vm._v("Ingrédients")
           ]),
-          _c("span", { staticClass: "recipe__yielding" }, [
+          _c("span", { class: ["recipe__yielding", _vm.recipe.slug] }, [
             _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
           ]),
           _vm._v(" "),
@@ -4309,11 +4302,16 @@ var render = function() {
     _c("div", { staticClass: "row" }, [
       _c("div", { staticClass: "col-12 " }, [
         _c("div", { staticClass: "recipe-info" }, [
-          _c("h3", { staticClass: "inf" }, [_vm._v("Infos")]),
+          _c("h3", { class: ["inf", _vm.recipe.slug] }, [_vm._v("Infos")]),
           _vm._v(" "),
           _c("div", { staticClass: "container-fluid  row mx-0" }, [
             _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _vm._m(0),
+              _c("p", [
+                _c("i", {
+                  class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v("    Temps de préparation ")]),
               _vm._v(" "),
@@ -4331,38 +4329,34 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _vm._m(1),
+              _c("p", [
+                _c("i", {
+                  class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v("Temps de cuisson ")]),
               _vm._v(" "),
-              _c(
-                "time",
-                {
-                  attrs: {
-                    datetime: "<?php echo $pt; ?>",
-                    itemprop: "prepTime"
-                  }
-                },
-                [_vm._v(_vm._s(_vm.recipe.cook))]
-              ),
+              _c("time", { attrs: { itemprop: "prepTime" } }, [
+                _vm._v(_vm._s(_vm.recipe.cook))
+              ]),
               _vm._v("\n                        Minutes\n                    ")
             ]),
             _vm._v(" "),
             _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _vm._m(2),
+              _c("p", [
+                _c("i", {
+                  class: ["fa", "fa-bullseye icon", _vm.recipe.slug],
+                  attrs: { "aria-hidden": "true" }
+                })
+              ]),
               _vm._v(" "),
               _c("p", [_vm._v("Difficulté")]),
               _vm._v(" "),
-              _c(
-                "time",
-                {
-                  attrs: {
-                    datetime: "<?php echo $pt; ?>",
-                    itemprop: "prepTime"
-                  }
-                },
-                [_vm._v(_vm._s(_vm.recipe.difficulty))]
-              )
+              _c("time", { attrs: { itemprop: "prepTime" } }, [
+                _vm._v(_vm._s(_vm.recipe.difficulty))
+              ])
             ])
           ])
         ])
@@ -4374,7 +4368,7 @@ var render = function() {
         _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
           _c("h3", { staticClass: "recipe__sub_title " }, [_vm._v("Étapes :")]),
           _vm._v(" "),
-          _c("div", { staticClass: "recipe__directions_inner" }, [
+          _c("div", { class: ["recipe__directions_inner", _vm.recipe.slug] }, [
             _c(
               "ol",
               _vm._l(_vm.recipe.directions, function(direction, i) {
@@ -4396,41 +4390,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("i", {
-        staticClass: "fa fa-clock-o icon",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("i", {
-        staticClass: "fa fa-clock-o icon",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", [
-      _c("i", {
-        staticClass: "fa fa-bullseye icon",
-        attrs: { "aria-hidden": "true" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

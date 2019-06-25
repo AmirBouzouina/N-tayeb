@@ -8,8 +8,6 @@ class Recipe extends Model
 {
     protected $fillable = [
         'name', 'description', 'image' ,'category','cuisine', 'prep','cook','difficulty','yield','valida'
-
-
     ];
 
     public function user()
@@ -48,5 +46,10 @@ class Recipe extends Model
                 RecipeDirection::form()
             ]
         ];
+    }
+
+    public function slug()
+    {
+        return str_slug($this->category, '-');
     }
 }

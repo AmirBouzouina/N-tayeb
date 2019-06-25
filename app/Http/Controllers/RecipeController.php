@@ -17,9 +17,10 @@ class RecipeController extends Controller
     {
     	$recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
     		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
+        $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
     	return response()
     		->json([
-    			'recipes' => $recipes
+    			'recipes' => $r
     		]);
     }
     public function create()
@@ -85,9 +86,11 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::with(['user', 'ingredients', 'directions'])
             ->findOrFail($id);
+        $r = $recipe->toArray();
+        $r['slug'] = $recipe->slug();
         return response()
             ->json([
-                'recipe' => $recipe
+                'recipe' => $r
             ]);
     }
     public function edit($id, Request $request)
