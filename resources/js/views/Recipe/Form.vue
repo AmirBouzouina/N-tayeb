@@ -102,7 +102,8 @@
 							:class="[error[`ingredients.${index}.name`] ? 'error__bg' : '']">
 						<input type="text" placeholder="Quantité" class="form__control form__qty form__qty2" v-model="ingredient.qty"
 							:class="[error[`ingredients.${index}.qty`] ? 'error__bg' : '']">
-
+						<input type="text" placeholder="Unité" class="form__control form__qty form__qty2" v-model="ingredient.unit"
+							   :class="[error[`ingredients.${index}.unit`] ? 'error__bg' : '']">
 						<button @click="remove('ingredients', index)" class="btn btn__danger">&times;</button> <br>
 					</div>
 					<small  class="form__control2">Ex :Carottes,Beurre,Viande-hachée </small>
@@ -188,7 +189,8 @@
 			addIngredient() {
 				this.form.ingredients.push({
 					name: '',
-					qty: ''
+					qty: '',
+					unit:''
 				})
 			},
 			remove(type, index) {

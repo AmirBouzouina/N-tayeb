@@ -17,9 +17,10 @@ class RecipeController extends Controller
     {
     	$recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
     		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
+        $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
     	return response()
     		->json([
-    			'recipes' => $recipes
+    			'recipes' => $r
     		]);
     }
     public function create()
@@ -45,6 +46,7 @@ class RecipeController extends Controller
     		'ingredients' => 'required|array|min:1',
     		'ingredients.*.name' => 'required|max:255',
     		'ingredients.*.qty' => 'required|max:255',
+            'ingredients.*.unit' => 'required|max:255',
     		'directions' => 'required|array|min:1',
     		'directions.*.description' => 'required|max:3000',
           'valida'=> 'required |max:1',
@@ -85,16 +87,18 @@ class RecipeController extends Controller
     {
         $recipe = Recipe::with(['user', 'ingredients', 'directions'])
             ->findOrFail($id);
+        $r = $recipe->toArray();
+        $r['slug'] = $recipe->slug();
         return response()
             ->json([
-                'recipe' => $recipe
+                'recipe' => $r
             ]);
     }
     public function edit($id, Request $request)
     {
         $form = $request->user()->recipes()
             ->with(['ingredients' => function($query) {
-                $query->get(['id', 'name', 'qty']);
+                $query->get(['id', 'name', 'qty','unit']);
             }, 'directions' => function($query) {
                 $query->get(['id', 'description']);
             }])
@@ -124,6 +128,7 @@ class RecipeController extends Controller
             'ingredients.*.id' => 'integer|exists:recipe_ingredients',
             'ingredients.*.name' => 'required|max:255',
             'ingredients.*.qty' => 'required|max:255',
+            'ingredients.*.unit' => 'required|max:255',
             'directions' => 'required|array|min:1',
             'directions.*.id' => 'integer|exists:recipe_directions',
             'directions.*.description' => 'required|max:3000'

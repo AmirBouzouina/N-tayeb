@@ -11,7 +11,8 @@ body {
     background-image: url("../img/bg.png");
     background-size:contain;
 }
-
+$entree : blue;
+$viande: #8e44ad;
 a {
     text-decoration: none;
     color: #616161;
@@ -291,7 +292,6 @@ img {
     &__yielding {
         text-align:right;
         float: right;
-        color: #E91E63;
         font-weight: bold;
     }
 
@@ -441,9 +441,7 @@ img {
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15);
     box-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
-.recipe-info i {
-    color: #a44c9f;
-}
+
 .recipe-ingredients {
     float:left;
 }
@@ -501,7 +499,7 @@ img {
     *padding: .4em;
     margin: .5em 0 .5em 2.5em;
     background: #f9f9f9;
-    color: #222;
+    color: #222 !important;
     text-decoration: none;
     transition: all .3s ease-out;
     -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15);
@@ -525,6 +523,7 @@ img {
     text-align: center;
     font-weight: bold;
     color: #f9f9f9;
+
 }
 .recipe-directions li:after{
     position: absolute;
@@ -537,8 +536,22 @@ img {
 }
 .recipe-directions li:hover:after{
     left: -.5em;
-    border-left-color: red;
 }
 
 .infv {
     visibility: hidden;}
+
+.dessert {
+   color:red
+}
+.entrees {
+  color : $entree;
+}
+
+.entrees li:before {
+    background : $entree;
+}
+
+.entrees li:after {
+    border-left-color:$entree;
+}
