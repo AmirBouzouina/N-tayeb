@@ -13,6 +13,7 @@ body {
 }
 $entree : blue;
 $viande: #8e44ad;
+$dessert : Pink;
 a {
     text-decoration: none;
     color: #616161;
@@ -541,9 +542,7 @@ img {
 .infv {
     visibility: hidden;}
 
-.dessert {
-   color:red
-}
+
 .entrees {
   color : $entree;
 }
@@ -554,4 +553,15 @@ img {
 
 .entrees li:after {
     border-left-color:$entree;
+}
+.dessert {
+    color:$dessert;
+}
+
+.dessert li:before {
+    background : $dessert;
+}
+
+.dessert li:after {
+    border-left-color:$dessert;
 }

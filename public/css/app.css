@@ -568,10 +568,6 @@ img {
   visibility: hidden;
 }
 
-.dessert {
-  color: red;
-}
-
 .entrees {
   color: blue;
 }
@@ -582,5 +578,17 @@ img {
 
 .entrees li:after {
   border-left-color: blue;
+}
+
+.dessert {
+  color: Pink;
+}
+
+.dessert li:before {
+  background: Pink;
+}
+
+.dessert li:after {
+  border-left-color: Pink;
 }
 
