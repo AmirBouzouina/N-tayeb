@@ -584,3 +584,15 @@ img {
   border-left-color: blue;
 }
 
+.viande {
+  color: #8e44ad;
+}
+
+.viande li:before {
+  background: #8e44ad;
+}
+
+.viande li:after {
+  border-left-color: #8e44ad;
+}
+

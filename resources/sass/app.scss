@@ -547,11 +547,19 @@ img {
 .entrees {
   color : $entree;
 }
-
 .entrees li:before {
     background : $entree;
 }
-
 .entrees li:after {
     border-left-color:$entree;
+}
+
+.viande {
+    color : $viande;
+}
+.viande li:before {
+    background : $viande;
+}
+.viande li:after {
+    border-left-color:$viande;
 }
