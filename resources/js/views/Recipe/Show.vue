@@ -2,7 +2,7 @@
 	<div class="recipe__show wow bounceInUp" >
         <h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1>
         <div class="row ">
-                       <div class="col-4"><small>Recette ajoutée par :</small>{{recipe.user.name}}
+                       <div class="col-4"><small>Recette ajoutée par : {{recipe.user.name}} </small>
             </div>
             <div class="col-6">Catégorie:</div>
             <div class="col-4">{{recipe.category}}</div>
