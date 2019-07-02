@@ -568,10 +568,6 @@ img {
   visibility: hidden;
 }
 
-.dessert {
-  color: red;
-}
-
 .entrees {
   color: blue;
 }
@@ -584,6 +580,7 @@ img {
   border-left-color: blue;
 }
 
+<<<<<<< HEAD
 .viande {
   color: #8e44ad;
 }
@@ -594,5 +591,17 @@ img {
 
 .viande li:after {
   border-left-color: #8e44ad;
+=======
+.dessert {
+  color: Pink;
+}
+
+.dessert li:before {
+  background: Pink;
+}
+
+.dessert li:after {
+  border-left-color: Pink;
+>>>>>>> g3arteha
 }
 
