@@ -28,6 +28,10 @@
 		<div class="flash flash__success" v-if="flash.success">
 			{{flash.success}}
 		</div>
+
+
+
+
 		<router-view></router-view>
 	</div>
 </template>

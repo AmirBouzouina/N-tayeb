@@ -46,7 +46,7 @@ class RecipeController extends Controller
     		'ingredients' => 'required|array|min:1',
     		'ingredients.*.name' => 'required|max:255',
     		'ingredients.*.qty' => 'required|max:255',
-            'ingredients.*.unit' => 'required|max:255',
+            'ingredients.*.unit' => 'max:255',
     		'directions' => 'required|array|min:1',
     		'directions.*.description' => 'required|max:3000',
           'valida'=> 'required |max:1',

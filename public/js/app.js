@@ -1896,6 +1896,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -2471,6 +2475,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -2501,6 +2521,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
 //
 //
 //
@@ -4209,38 +4232,69 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "recipe__list" },
-    _vm._l(_vm.recipes, function(recipe) {
-      return _c(
+  return _c("div", { staticClass: "row container-fluid" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "col-12 col-md-8 col-lg-9  bloca mt-3" }, [
+      _c(
         "div",
-        { key: recipe.id, staticClass: "recipe__item" },
-        [
-          _c(
-            "router-link",
+        { staticClass: "row" },
+        _vm._l(_vm.recipes, function(recipe) {
+          return _c(
+            "div",
             {
-              staticClass: "recipe__inner",
-              attrs: { to: "/recipes/" + recipe.id }
+              key: recipe.id,
+              staticClass: "recipe__item col-md-4 col-sm-12 hvr-float"
             },
             [
-              recipe.image
-                ? _c("img", { attrs: { src: "/images/" + recipe.image } })
-                : _vm._e(),
-              _vm._v(" "),
-              _c("p", { staticClass: "recipe__name" }, [
-                _vm._v(_vm._s(recipe.name))
-              ])
-            ]
+              _c(
+                "router-link",
+                {
+                  staticClass: "recipe__inner",
+                  attrs: { to: "/recipes/" + recipe.id }
+                },
+                [
+                  recipe.image
+                    ? _c("img", {
+                        attrs: {
+                          src: "/images/" + recipe.image,
+                          width: "300px;",
+                          height: "250px;"
+                        }
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: "recipe__name",
+                      class: ["recipe__subi_title", recipe.slug + "_titre"]
+                    },
+                    [_vm._v(_vm._s(recipe.name))]
+                  )
+                ]
+              )
+            ],
+            1
           )
-        ],
-        1
+        }),
+        0
       )
-    }),
-    0
-  )
+    ])
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "col-sm-6 col-md-4 col-lg-3 bloca mt-3 pr-1" },
+      [_c("div", { staticStyle: { height: "100%", background: "#bdc3c7" } })]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -4262,157 +4316,177 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
-    _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
-      _vm._v(_vm._s(_vm.recipe.name))
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row " }, [
-      _c("div", { staticClass: "col-4" }, [
-        _c("small", [
-          _vm._v("Recette ajoutée par : " + _vm._s(_vm.recipe.user.name) + " ")
-        ])
+  return _c("div", {}, [
+    _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
+      _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
+        _vm._v(_vm._s(_vm.recipe.name))
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4" }, [
-        _vm._v(_vm._s(_vm.recipe.category))
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4" }, [
-        _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row mr-0 ml-0" }, [
-      _c("div", { staticClass: "col-md-8 col-sm-12 col-xs-12 recipe__box" }, [
-        _c("div", { staticClass: "wow" }, [
-          _vm.recipe.image
-            ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
-            : _vm._e()
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        {
-          staticClass:
-            "col-md-4 col-sm-12 col-xs-12 recipe-ingredients recipe__box",
-          attrs: { id: "ings" }
-        },
-        [
-          _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
-            _vm._v("Ingrédients")
-          ]),
-          _c("span", { class: ["recipe__yielding", _vm.recipe.slug] }, [
-            _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
-          ]),
-          _vm._v(" "),
-          _c(
-            "dl",
-            { staticClass: "ingredients-list mt-9" },
-            _vm._l(_vm.recipe.ingredients, function(ingredient) {
-              return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-                _c("span", [_vm._v(_vm._s(ingredient.name))]),
-                _vm._v(" "),
-                _c("span", { staticClass: "qty" }, [
-                  _vm._v(_vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit))
-                ])
-              ])
-            }),
-            0
-          )
-        ]
-      )
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 " }, [
-        _c("div", { staticClass: "recipe-info" }, [
-          _c("h3", { class: ["inf", _vm.recipe.slug] }, [_vm._v("Infos")]),
-          _vm._v(" "),
-          _c("div", { staticClass: "container-fluid  row mx-0" }, [
-            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _c("p", [
-                _c("i", {
-                  class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("    Temps de préparation ")]),
-              _vm._v(" "),
-              _c(
-                "time",
-                {
-                  attrs: {
-                    datetime: "<?php echo $pt; ?>",
-                    itemprop: "prepTime"
-                  }
-                },
-                [_vm._v(_vm._s(_vm.recipe.prep))]
-              ),
-              _vm._v("\n                        Minutes\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _c("p", [
-                _c("i", {
-                  class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Temps de cuisson ")]),
-              _vm._v(" "),
-              _c("time", { attrs: { itemprop: "prepTime" } }, [
-                _vm._v(_vm._s(_vm.recipe.cook))
-              ]),
-              _vm._v("\n                        Minutes\n                    ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-              _c("p", [
-                _c("i", {
-                  class: ["fa", "fa-bullseye icon", _vm.recipe.slug],
-                  attrs: { "aria-hidden": "true" }
-                })
-              ]),
-              _vm._v(" "),
-              _c("p", [_vm._v("Difficulté")]),
-              _vm._v(" "),
-              _c("time", { attrs: { itemprop: "prepTime" } }, [
-                _vm._v(_vm._s(_vm.recipe.difficulty))
-              ])
-            ])
+      _c("div", { staticClass: "row " }, [
+        _c("div", { staticClass: "col-4" }, [
+          _c("small", [
+            _vm._v(
+              "Recette ajoutée par : " + _vm._s(_vm.recipe.user.name) + " "
+            )
           ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _vm._v(_vm._s(_vm.recipe.category))
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4" }, [
+          _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
         ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-12 recipe-directions" }, [
-        _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
-          _c("h3", { staticClass: "recipe__sub_title " }, [_vm._v("Étapes :")]),
-          _vm._v(" "),
-          _c("div", { class: ["recipe__directions_inner", _vm.recipe.slug] }, [
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row mr-0 ml-0" }, [
+        _c("div", { staticClass: "col-md-6 col-sm-12 col-xs-12 recipe__box" }, [
+          _c("div", { staticClass: "wow" }, [
+            _vm.recipe.image
+              ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
+              : _vm._e()
+          ])
+        ]),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass:
+              "col-md-6 col-sm-12 col-xs-12 recipe-ingredients recipe__box",
+            attrs: { id: "ings" }
+          },
+          [
+            _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
+              _vm._v("Ingrédients")
+            ]),
+            _c("span", { class: ["recipe__yielding", _vm.recipe.slug] }, [
+              _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
+            ]),
+            _vm._v(" "),
             _c(
-              "ol",
-              _vm._l(_vm.recipe.directions, function(direction, i) {
-                return _c("li", [
-                  _c("p", [
+              "dl",
+              { staticClass: "ingredients-list mt-9" },
+              _vm._l(_vm.recipe.ingredients, function(ingredient) {
+                return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
+                  _c("span", [_vm._v(_vm._s(ingredient.name))]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "qty" }, [
                     _vm._v(
-                      "\n                                " +
-                        _vm._s(direction.description) +
-                        "\n                            "
+                      _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
                     )
                   ])
                 ])
               }),
               0
+            )
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 " }, [
+          _c("div", { staticClass: "recipe-info" }, [
+            _c("div", { staticClass: "container-fluid  row mx-0" }, [
+              _c("h3", { class: ["inf", "col-12", _vm.recipe.slug] }, [
+                _vm._v("Infos")
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                _c("p", [
+                  _c("i", {
+                    class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
+                    attrs: { "aria-hidden": "true" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("    Temps de préparation ")]),
+                _vm._v(" "),
+                _c(
+                  "time",
+                  {
+                    attrs: {
+                      datetime: "<?php echo $pt; ?>",
+                      itemprop: "prepTime"
+                    }
+                  },
+                  [_vm._v(_vm._s(_vm.recipe.prep))]
+                ),
+                _vm._v(
+                  "\n                        Minutes\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                _c("p", [
+                  _c("i", {
+                    class: ["fa", "fa-clock-o icon", _vm.recipe.slug],
+                    attrs: { "aria-hidden": "true" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Temps de cuisson ")]),
+                _vm._v(" "),
+                _c("time", { attrs: { itemprop: "prepTime" } }, [
+                  _vm._v(_vm._s(_vm.recipe.cook))
+                ]),
+                _vm._v(
+                  "\n                        Minutes\n                    "
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                _c("p", [
+                  _c("i", {
+                    class: ["fa", "fa-bullseye icon", _vm.recipe.slug],
+                    attrs: { "aria-hidden": "true" }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("p", [_vm._v("Difficulté")]),
+                _vm._v(" "),
+                _c("time", { attrs: { itemprop: "prepTime" } }, [
+                  _vm._v(_vm._s(_vm.recipe.difficulty))
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "row" }, [
+        _c("div", { staticClass: "col-12 recipe-directions" }, [
+          _c("div", { staticClass: "recipe__row  wow slideInUp" }, [
+            _c(
+              "div",
+              { class: ["recipe__directions_inner", _vm.recipe.slug] },
+              [
+                _c(
+                  "h3",
+                  { class: ["recipe__title", "col-12", _vm.recipe.slug] },
+                  [_vm._v("Étapes :")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ol",
+                  _vm._l(_vm.recipe.directions, function(direction, i) {
+                    return _c("li", [
+                      _c("p", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(direction.description) +
+                            "\n                            "
+                        )
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ]
             )
           ])
         ])

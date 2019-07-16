@@ -1,12 +1,28 @@
 <template>
-	<div class="recipe__list">
-		<div class="recipe__item" v-for="recipe in recipes" v-bind:key="recipe.id">
+	<div class="row container-fluid">
+		<div class="col-sm-6 col-md-4 col-lg-3 bloca mt-3 pr-1">
+			<div style="height: 100%;;background:#bdc3c7;">
+			</div>
+		</div>
+		<div class="col-12 col-md-8 col-lg-9  bloca mt-3">
+
+
+
+
+	<div class="row">
+		<div class="recipe__item col-md-4 col-sm-12 hvr-float"  v-for="recipe in recipes" v-bind:key="recipe.id">
 			<router-link class="recipe__inner" :to="`/recipes/${recipe.id}`">
-				<img :src="`/images/${recipe.image}`" v-if="recipe.image">
-				<p class="recipe__name">{{recipe.name}}</p>
+				<img :src="`/images/${recipe.image}`" v-if="recipe.image" width="300px;" height="250px;">
+				<p class="recipe__name" :class="['recipe__subi_title', recipe.slug+'_titre']">{{recipe.name}}</p>
 			</router-link>
 		</div>
 	</div>
+
+		</div>
+		</div>
+
+	</div>
+
 </template>
 
 

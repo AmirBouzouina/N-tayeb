@@ -1,0 +1,58 @@
+$entree : blue;
+$viande: #8e44ad;
+$dessert : Pink;
+$salade : #2ecc71;
+
+
+
+.entrees {
+    color : $entree;
+}
+.entrees_titre {
+    background-color : $entree;
+}
+.entrees li:before {
+    background : $entree;
+}
+.entrees li:after {
+    border-left-color:$entree;
+}
+
+.viande {
+    color : $viande;
+}
+.viande_titre {
+    background-color : $viande;
+}
+.viande li:before {
+    background : $viande;
+}
+.viande li:after {
+    border-left-color:$viande;
+}
+.dessert {
+    color:$dessert;
+}
+.dessert_titre {
+    background-color:$dessert;
+}
+
+.dessert li:before {
+    background : $dessert;
+}
+
+.dessert li:after {
+    border-left-color:$dessert;
+}
+.salades {
+    color:$salade;
+}
+.salades_titre {
+ background-color:$salade;
+}
+.salades li:before {
+    background : $salade;
+}
+.salades li:after {
+    border-left-color:$salade;
+}

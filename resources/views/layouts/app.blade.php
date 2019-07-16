@@ -11,6 +11,7 @@
 
     <!-- Scripts -->
 
+    <link href="https://cdn.bootcss.com/hover.css/2.3.1/css/hover-min.css" rel="stylesheet" type="text/css">
 
 
     <script src="{{ asset('js/app.js') }}" defer></script>
