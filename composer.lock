@@ -3830,16 +3830,16 @@
         },
         {
             "name": "tcg/voyager",
-            "version": "v1.2.3",
+            "version": "v1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/the-control-group/voyager.git",
-                "reference": "00f4191cd6d636ff24c746a1d2a9e98e29e19064"
+                "reference": "b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/00f4191cd6d636ff24c746a1d2a9e98e29e19064",
-                "reference": "00f4191cd6d636ff24c746a1d2a9e98e29e19064",
+                "url": "https://api.github.com/repos/the-control-group/voyager/zipball/b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9",
+                "reference": "b0981fd7a5bb52e0f4f8d0627e8ff048b21651c9",
                 "shasum": ""
             },
             "require": {
@@ -3891,7 +3891,7 @@
                 "laravel",
                 "panel"
             ],
-            "time": "2019-04-05T12:24:48+00:00"
+            "time": "2019-06-06T11:16:17+00:00"
         },
         {
             "name": "tijsverkoyen/css-to-inline-styles",

@@ -1,16 +1,23 @@
 <template>
     <div class="">
 	<div class="recipe__show wow bounceInUp" >
-        <h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1>
         <div class="row ">
-                       <div class="col-4"><small>Recette ajoutée par : {{recipe.user.name}} </small>
-            </div>
-            <div class="col-6">Catégorie:</div>
-            <div class="col-4">{{recipe.category}}</div>
-            <div class="col-6">Cuisine:</div>
-            <div class="col-4">{{recipe.cuisine}} </div>
+
+
         </div>
-        <div class="row mr-0 ml-0">
+        <div class="row mr-0 ml-0 recipe__box">
+            <div class="col-12">
+                <h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1>
+                <div class="row">
+                <div class="col-12"><small>Recette ajoutée par : {{recipe.user.name}} </small>
+                </div>
+                <div class="col-6">Catégorie:</div>
+                <div :class="['col-4', recipe.slug]">{{recipe.category}}</div>
+                <div class="col-6">Cuisine:</div>
+                <div class="col-4">{{recipe.cuisine}} </div>
+                </div>
+
+            </div>
             <div class="col-md-6 col-sm-12 col-xs-12 recipe__box">
                 <div class="wow">
                    <img :src="`/images/${recipe.image}`" v-if="recipe.image">

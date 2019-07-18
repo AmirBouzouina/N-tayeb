@@ -33,19 +33,19 @@
 }
 
 .dessert {
-  color: Pink;
+  color: #ea8685;
 }
 
 .dessert_titre {
-  background-color: Pink;
+  background-color: #ea8685;
 }
 
 .dessert li:before {
-  background: Pink;
+  background: #ea8685;
 }
 
 .dessert li:after {
-  border-left-color: Pink;
+  border-left-color: #ea8685;
 }
 
 .salades {
@@ -637,9 +637,10 @@ img {
 
 .recipe-directions li {
   font-family: Helvetica;
+  font-size: 13px;
   position: relative;
   display: block;
-  padding: 0.4em 0.4em 0.4em 0.8em;
+  padding: 0.4em 0.4em 0.4em 0.4em;
   *padding: 0.4em;
   margin: 0.5em 0 0.5em 2.5em;
   background: #f9f9f9;
@@ -680,6 +681,10 @@ img {
 
 .recipe-directions li:hover:after {
   left: -0.5em;
+}
+
+.recipe-directions li p {
+  margin-bottom: 0;
 }
 
 .infv {

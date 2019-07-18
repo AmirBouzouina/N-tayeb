@@ -2612,6 +2612,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -4318,33 +4325,37 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", {}, [
     _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
-      _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
-        _vm._v(_vm._s(_vm.recipe.name))
-      ]),
+      _c("div", { staticClass: "row " }),
       _vm._v(" "),
-      _c("div", { staticClass: "row " }, [
-        _c("div", { staticClass: "col-4" }, [
-          _c("small", [
-            _vm._v(
-              "Recette ajoutée par : " + _vm._s(_vm.recipe.user.name) + " "
-            )
+      _c("div", { staticClass: "row mr-0 ml-0 recipe__box" }, [
+        _c("div", { staticClass: "col-12" }, [
+          _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
+            _vm._v(_vm._s(_vm.recipe.name))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("small", [
+                _vm._v(
+                  "Recette ajoutée par : " + _vm._s(_vm.recipe.user.name) + " "
+                )
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
+            _vm._v(" "),
+            _c("div", { class: ["col-4", _vm.recipe.slug] }, [
+              _vm._v(_vm._s(_vm.recipe.category))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
+            ])
           ])
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _vm._v(_vm._s(_vm.recipe.category))
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4" }, [
-          _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mr-0 ml-0" }, [
         _c("div", { staticClass: "col-md-6 col-sm-12 col-xs-12 recipe__box" }, [
           _c("div", { staticClass: "wow" }, [
             _vm.recipe.image
