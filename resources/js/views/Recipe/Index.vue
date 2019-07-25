@@ -1,5 +1,5 @@
 <template>
-	<div class="row container-fluid">
+	<div class="row container-fluid" style="width: 70vw;margin: auto;">
 		<div class="col-sm-6 col-md-4 col-lg-3 bloca mt-3 pr-1">
 			<div style="height: 100%;;background:#bdc3c7;">
 			</div>
@@ -9,10 +9,10 @@
 
 
 
-	<div class="row">
+	<div class="row" >
 		<div class="recipe__item col-md-4 col-sm-12 hvr-float"  v-for="recipe in recipes" v-bind:key="recipe.id">
 			<router-link class="recipe__inner" :to="`/recipes/${recipe.id}`">
-				<img :src="`/images/${recipe.image}`" v-if="recipe.image" width="300px;" height="250px;">
+				<img :src="`/images/${recipe.image}`" v-if="recipe.image" width="200px;" height="200px;">
 				<p class="recipe__name" :class="['recipe__subi_title', recipe.slug+'_titre']">{{recipe.name}}</p>
 			</router-link>
 		</div>

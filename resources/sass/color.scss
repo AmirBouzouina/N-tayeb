@@ -1,8 +1,8 @@
 $entree : blue;
 $viande: #8e44ad;
 $dessert : #ea8685;
-$salade : #2ecc71;
-
+$salade : #4cd137;
+$soupe: #e1b12c;
 
 
 .entrees {
@@ -17,6 +17,19 @@ $salade : #2ecc71;
 .entrees li:after {
     border-left-color:$entree;
 }
+.soupes {
+    color : $soupe;
+}
+.soupes_titre {
+    background-color : $soupe;
+}
+.soupes li:before {
+    background : $soupe;
+}
+.soupes li:after {
+    border-left-color:$soupe;
+}
+
 
 .viande {
     color : $viande;

@@ -1900,6 +1900,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 
@@ -3149,68 +3151,84 @@ var render = function() {
       _c("div", { staticClass: "navbar" }, [
         _c(
           "div",
-          { staticClass: "navbar__brand" },
-          [_c("router-link", { attrs: { to: "/" } }, [_vm._v("Ntayeb")])],
-          1
-        ),
-        _vm._v(" "),
-        _c("ul", { staticClass: "navbar__list" }, [
-          _vm.guest
-            ? _c(
-                "li",
-                { staticClass: "navbar__item" },
-                [
-                  _c("router-link", { attrs: { to: "/login" } }, [
-                    _vm._v("Se connecter")
+          {
+            staticClass: "row",
+            staticStyle: { width: "70vw", margin: "auto" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "navbar__brand col-6" },
+              [
+                _c("router-link", { attrs: { to: "/" } }, [
+                  _c("img", {
+                    staticClass: "logo",
+                    attrs: { src: __webpack_require__(/*! ../img/logo.png */ "./resources/img/logo.png") }
+                  })
+                ])
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c("ul", { staticClass: "navbar__list col-6" }, [
+              _vm.guest
+                ? _c(
+                    "li",
+                    { staticClass: "navbar__item" },
+                    [
+                      _c("router-link", { attrs: { to: "/login" } }, [
+                        _vm._v("Se connecter")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.guest
+                ? _c(
+                    "li",
+                    { staticClass: "navbar__item" },
+                    [
+                      _c("router-link", { attrs: { to: "/register" } }, [
+                        _vm._v("Créer un compte")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.auth
+                ? _c(
+                    "li",
+                    { staticClass: "navbar__item" },
+                    [
+                      _c("router-link", { attrs: { to: "/recipes/create" } }, [
+                        _vm._v("Ajouter ma recette")
+                      ])
+                    ],
+                    1
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.auth
+                ? _c("li", { staticClass: "navbar__item" }, [
+                    _c(
+                      "a",
+                      {
+                        on: {
+                          click: function($event) {
+                            $event.stopPropagation()
+                            return _vm.logout($event)
+                          }
+                        }
+                      },
+                      [_vm._v("Se déconnecter")]
+                    )
                   ])
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.guest
-            ? _c(
-                "li",
-                { staticClass: "navbar__item" },
-                [
-                  _c("router-link", { attrs: { to: "/register" } }, [
-                    _vm._v("Créer un compte")
-                  ])
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.auth
-            ? _c(
-                "li",
-                { staticClass: "navbar__item" },
-                [
-                  _c("router-link", { attrs: { to: "/recipes/create" } }, [
-                    _vm._v("Ajouter ma recette")
-                  ])
-                ],
-                1
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.auth
-            ? _c("li", { staticClass: "navbar__item" }, [
-                _c(
-                  "a",
-                  {
-                    on: {
-                      click: function($event) {
-                        $event.stopPropagation()
-                        return _vm.logout($event)
-                      }
-                    }
-                  },
-                  [_vm._v("Se déconnecter")]
-                )
-              ])
-            : _vm._e()
-        ])
+                : _vm._e()
+            ])
+          ]
+        )
       ]),
       _vm._v(" "),
       _vm.flash.error
@@ -4239,56 +4257,63 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "row container-fluid" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", { staticClass: "col-12 col-md-8 col-lg-9  bloca mt-3" }, [
-      _c(
-        "div",
-        { staticClass: "row" },
-        _vm._l(_vm.recipes, function(recipe) {
-          return _c(
-            "div",
-            {
-              key: recipe.id,
-              staticClass: "recipe__item col-md-4 col-sm-12 hvr-float"
-            },
-            [
-              _c(
-                "router-link",
-                {
-                  staticClass: "recipe__inner",
-                  attrs: { to: "/recipes/" + recipe.id }
-                },
-                [
-                  recipe.image
-                    ? _c("img", {
-                        attrs: {
-                          src: "/images/" + recipe.image,
-                          width: "300px;",
-                          height: "250px;"
-                        }
-                      })
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: "recipe__name",
-                      class: ["recipe__subi_title", recipe.slug + "_titre"]
-                    },
-                    [_vm._v(_vm._s(recipe.name))]
-                  )
-                ]
-              )
-            ],
-            1
-          )
-        }),
-        0
-      )
-    ])
-  ])
+  return _c(
+    "div",
+    {
+      staticClass: "row container-fluid",
+      staticStyle: { width: "70vw", margin: "auto" }
+    },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-12 col-md-8 col-lg-9  bloca mt-3" }, [
+        _c(
+          "div",
+          { staticClass: "row" },
+          _vm._l(_vm.recipes, function(recipe) {
+            return _c(
+              "div",
+              {
+                key: recipe.id,
+                staticClass: "recipe__item col-md-4 col-sm-12 hvr-float"
+              },
+              [
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "recipe__inner",
+                    attrs: { to: "/recipes/" + recipe.id }
+                  },
+                  [
+                    recipe.image
+                      ? _c("img", {
+                          attrs: {
+                            src: "/images/" + recipe.image,
+                            width: "200px;",
+                            height: "200px;"
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "p",
+                      {
+                        staticClass: "recipe__name",
+                        class: ["recipe__subi_title", recipe.slug + "_titre"]
+                      },
+                      [_vm._v(_vm._s(recipe.name))]
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ])
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
@@ -4342,17 +4367,19 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Catégorie:")]),
-            _vm._v(" "),
-            _c("div", { class: ["col-4", _vm.recipe.slug] }, [
-              _vm._v(_vm._s(_vm.recipe.category))
+            _c("div", { class: ["col-6", _vm.recipe.slug] }, [
+              _vm._v("Catégorie: " + _vm._s(_vm.recipe.category))
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-6" }, [_vm._v("Cuisine:")]),
-            _vm._v(" "),
             _c("div", { staticClass: "col-4" }, [
-              _vm._v(_vm._s(_vm.recipe.cuisine) + " ")
-            ])
+              _vm._v(" " + _vm._s(_vm.recipe.description))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-6" }, [
+              _vm._v("Cuisine:" + _vm._s(_vm.recipe.cuisine))
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" })
           ])
         ]),
         _vm._v(" "),
@@ -4629,7 +4656,7 @@ function normalizeComponent (
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /*!
-  * vue-router v3.0.6
+  * vue-router v3.0.7
   * (c) 2019 Evan You
   * @license MIT
   */
@@ -6017,10 +6044,8 @@ function createMatcher (
         }
       }
 
-      if (record) {
-        location.path = fillParams(record.path, location.params, ("named route \"" + name + "\""));
-        return _createRoute(record, location, redirectedFrom)
-      }
+      location.path = fillParams(record.path, location.params, ("named route \"" + name + "\""));
+      return _createRoute(record, location, redirectedFrom)
     } else if (location.path) {
       location.params = {};
       for (var i = 0; i < pathList.length; i++) {
@@ -6175,7 +6200,12 @@ var positionStore = Object.create(null);
 function setupScroll () {
   // Fix for #1585 for Firefox
   // Fix for #2195 Add optional third attribute to workaround a bug in safari https://bugs.webkit.org/show_bug.cgi?id=182678
-  window.history.replaceState({ key: getStateKey() }, '', window.location.href.replace(window.location.origin, ''));
+  // Fix for #2774 Support for apps loaded from Windows file shares not mapped to network drives: replaced location.origin with
+  // window.location.protocol + '//' + window.location.host
+  // location.host contains the port and location.hostname doesn't
+  var protocolAndPath = window.location.protocol + '//' + window.location.host;
+  var absolutePath = window.location.href.replace(protocolAndPath, '');
+  window.history.replaceState({ key: getStateKey() }, '', absolutePath);
   window.addEventListener('popstate', function (e) {
     saveScrollPosition();
     if (e.state && e.state.key) {
@@ -6747,7 +6777,6 @@ function bindEnterGuard (
 ) {
   return function routeEnterGuard (to, from, next) {
     return guard(to, from, function (cb) {
-      next(cb);
       if (typeof cb === 'function') {
         cbs.push(function () {
           // #750
@@ -6758,6 +6787,7 @@ function bindEnterGuard (
           poll(cb, match.instances, key, isValid);
         });
       }
+      next(cb);
     })
   }
 }
@@ -7292,7 +7322,7 @@ function createHref (base, fullPath, mode) {
 }
 
 VueRouter.install = install;
-VueRouter.version = '3.0.6';
+VueRouter.version = '3.0.7';
 
 if (inBrowser && window.Vue) {
   window.Vue.use(VueRouter);
@@ -19296,6 +19326,17 @@ try {
 
 module.exports = g;
 
+
+/***/ }),
+
+/***/ "./resources/img/logo.png":
+/*!********************************!*\
+  !*** ./resources/img/logo.png ***!
+  \********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "/images/logo.png?42ad7d7d57fc5416132efbf874889bf2";
 
 /***/ }),
 

@@ -16,6 +16,22 @@
   border-left-color: blue;
 }
 
+.soupes {
+  color: #e1b12c;
+}
+
+.soupes_titre {
+  background-color: #e1b12c;
+}
+
+.soupes li:before {
+  background: #e1b12c;
+}
+
+.soupes li:after {
+  border-left-color: #e1b12c;
+}
+
 .viande {
   color: #8e44ad;
 }
@@ -49,19 +65,19 @@
 }
 
 .salades {
-  color: #2ecc71;
+  color: #4cd137;
 }
 
 .salades_titre {
-  background-color: #2ecc71;
+  background-color: #4cd137;
 }
 
 .salades li:before {
-  background: #2ecc71;
+  background: #4cd137;
 }
 
 .salades li:after {
-  border-left-color: #2ecc71;
+  border-left-color: #4cd137;
 }
 
 /* Float */
@@ -108,7 +124,7 @@ body {
   background: #ebeef3;
   color: #616161;
   background-image: url(/images/bg.png?84f5c1ad1dbf6c01b00c5a8f459a0980);
-  background-size: contain;
+  background-size: cover;
 }
 
 a {
@@ -136,6 +152,10 @@ img {
   align-items: center;
 }
 
+.navbar__brand {
+  width: 10vw;
+}
+
 .navbar__brand a {
   color: #E91E63;
   font-weight: bold;
@@ -149,6 +169,7 @@ img {
 .navbar__item {
   display: inline;
   margin-left: 25px;
+  float: right;
 }
 
 .bloca {
@@ -698,6 +719,10 @@ img {
     width: 70vw;
     margin: 0 auto;
     padding: 15px;
+  }
+
+  .logo {
+    width: 10vw;
   }
 }
 

@@ -2,10 +2,11 @@
     <div class="container px-0">
 
     <div class="navbar">
-			<div class="navbar__brand">
-				<router-link to="/">Ntayeb</router-link>
+		<div class="row" style="width:70vw;margin:auto;">
+			<div class="navbar__brand col-6">
+				<router-link to="/"><img class="logo" src="../img/logo.png"/></router-link>
 			</div>
-			<ul class="navbar__list">
+			<ul class="navbar__list col-6">
 				<li class="navbar__item"  v-if="guest">
 					<router-link to="/login">Se connecter</router-link>
 				</li>
@@ -19,6 +20,7 @@
 					<a @click.stop="logout">Se déconnecter</a>
 				</li>
 			</ul>
+		</div>
 		</div>
 
 
