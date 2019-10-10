@@ -2503,7 +2503,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])('/api/recipes?valida=1').then(function (res) {
+    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])('/api/recipes').then(function (res) {
       _this.recipes = res.data.recipes;
     });
   }

@@ -38,7 +38,7 @@
 
 		},
 		created() {
-			get('/api/recipes?valida=1')
+			get('/api/recipes')
 				.then((res) => {
 					this.recipes = res.data.recipes;
 					} );
