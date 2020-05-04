@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Login from '../views/Auth/Login.vue'
 import Register from '../views/Auth/Register.vue'
 import RecipeIndex from '../views/Recipe/Index.vue'
-import RecipeShow from '../views/Recipe/Show.vue'
+import RecipeShow from '../views/Recipe/Show2.vue'
 import RecipeForm from '../views/Recipe/Form.vue'
 import NotFound from '../views/NotFound.vue'
 

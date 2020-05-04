@@ -10,12 +10,17 @@
                 <h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1>
                 <div class="row">
                 <div class="col-12"><small>Recette ajoutée par : {{recipe.user.name}} </small>
+                  <div class="col-6">Cuisine:{{recipe.cuisine}}</div>
+
                 </div>
                 <div :class="['col-6', recipe.slug]" >Catégorie: {{recipe.category}}</div>
                 <div class="col-4" > {{recipe.description}}</div>
-                <div class="col-6">Cuisine:{{recipe.cuisine}}</div>
                 <div class="col-4">  </div>
                 </div>
+
+
+                <div class="col-4">
+                  </div>
 
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 recipe__box">

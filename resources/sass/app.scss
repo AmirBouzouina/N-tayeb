@@ -267,6 +267,8 @@ img {
     }
     &__directions {
         width: 60%;
+        padding-right: 0px!important;
+
         ul {
             padding: 0;
         }
@@ -321,7 +323,7 @@ text-align:right;
     color:red;
 }
 .icon {
-    font-size: 2vw !important;
+    font-size: 1vw !important;
 }
 .image {
     &__upload {
@@ -494,17 +496,17 @@ padding-top: 3vw!important;
     box-shadow: 0 1px 0 rgba(0,0,0,.15);
     text-transform: capitalize;
 }
-.recipe-directions ol {
+.recipe__directions ol {
     counter-reset: li;
     list-style: none;
     padding: 0;
     margin-bottom: 4em;
     text-shadow: 0 1px 0 rgba(255,255,255,.5);
 }
-.recipe-directions ol ol {
+.recipe__directions ol ol {
     margin: 0 0 0 2em;
 }
-.recipe-directions li {
+.recipe__directions li {
     font-family:Helvetica;
     font-size:13px;
 position: relative;
@@ -520,10 +522,10 @@ position: relative;
     -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15);
     box-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
-.recipe-directions li:hover{
+.recipe__directions li:hover{
     background: #f1f1f1;
 }
-.recipe-directions li:before{
+.recipe__directions li:before{
     content: counter(li);
     counter-increment: li;
     position: absolute;
@@ -538,7 +540,7 @@ position: relative;
     color: #f9f9f9;
 
 }
-.recipe-directions li:after{
+.recipe__directions li:after{
     position: absolute;
     content: '';
     border: .5em solid transparent;
@@ -547,10 +549,10 @@ position: relative;
     margin-top: -.5em;
     transition: all .3s ease-out;
 }
-.recipe-directions li:hover:after{
+.recipe__directions li:hover:after{
     left: -.5em;
 }
-.recipe-directions li p {
+.recipe__directions li p {
 margin-bottom:0;
 }
 .infv {
@@ -561,7 +563,7 @@ margin-bottom:0;
 
     .recipe {
         &__show {
-            width: 70vw;
+            width: 55vw;
             margin: 0 auto;
             padding: 15px;
         }
