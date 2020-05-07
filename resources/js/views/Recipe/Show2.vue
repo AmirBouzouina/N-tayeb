@@ -1,7 +1,7 @@
 <template>
     <div class="">
 	<div class="recipe__show wow bounceInUp" >
-      
+
 
 
 
@@ -15,7 +15,7 @@
                     <div class="col-md-4 col-sm-12 text-center">
                         <p> <i :class="['fa','fa-clock-o icon', recipe.slug]"  aria-hidden="true"></i> Préparation : <time datetime="<?php echo $pt; ?>" itemprop="prepTime" >{{recipe.prep}}</time>Minutes </p>
 
-                       
+
                     </div>
                     <div class="col-md-4 col-sm-12 text-center">
                         <p> <i  :class="['fa','fa-clock-o icon', recipe.slug]" aria-hidden="true"></i> Cuisson :<time  itemprop="prepTime" >{{recipe.cook}}</time> Minutes</p>
@@ -35,11 +35,11 @@
             </div>
         <div class="row mr-0 ml-0 recipe__box">
             <div class="col-12">
-                
-              
+
+
 
                 <div class="row">
-              
+
                 <div :class="['col-8', recipe.slug]" >
                                        <img :src="`/images/${recipe.image}`" v-if="recipe.image">
 
@@ -52,7 +52,7 @@
 
                 <a href="https://www.facebook.com/sharer/sharer.php?u=ntayeb.net&display=popup"> share this </a>
             </div>
-         
+
                 </div>
 
 
@@ -62,7 +62,7 @@
                 <div class="wow">
                 </div>
             </div>
-           
+
             </div>
             <br/>
 
@@ -101,7 +101,7 @@
         </div>
                 </div>
         <div class="row">
-  
+
         </div>
             </div>
                    <!-- Directions -->

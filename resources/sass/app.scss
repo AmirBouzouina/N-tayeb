@@ -15,7 +15,7 @@ body {
     font-family: helvetica;
     background: rgb(235, 238, 243);;
     color: #616161;
-    background-image: url("../img/bg.png");
+    // background-image: url("../img/bg.png");
     background-size:cover;
 }
 
@@ -112,11 +112,11 @@ img {
 
     &__control2 {
 	    width: 60%;
-	   
+
 	}
     &__qty2 {
-    
-   
+
+
     width: 33%;
     float: right;
     white-space: nowrap;

@@ -23,6 +23,18 @@ class RecipeController extends Controller
     			'recipes' => $r
     		]);
     }
+
+
+    public function related()
+    {
+      $recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
+        ->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
+        $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
+      return response()
+        ->json([
+          'recipes' => $r
+        ]);
+    }
     public function create()
     {
         $form = Recipe::form();
