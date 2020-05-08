@@ -24,6 +24,9 @@
         "vue-template-compiler": "^2.6.11"
     },
     "dependencies": {
-        "vue-router": "^3.1.5"
+        "babel-polyfill": "^6.26.0",
+        "es6-promise": "^4.2.8",
+        "vue-router": "^3.1.5",
+        "whatwg-fetch": "^3.0.0"
     }
 }
