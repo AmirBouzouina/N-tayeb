@@ -11,32 +11,7 @@ const mix = require('laravel-mix');
 |
 */
 
-
-
-
-
- const CompressionPlugin = require('compression-webpack-plugin');
-
- 
-
-   plugins: [
-     new LiveReloadPlugin(),
-     new webpack.ProvidePlugin({
-       jQuery: 'jquery',
-     }),
-     new CompressionPlugin({
-       asset: "[path].gz[query]",
-       algorithm: "gzip",
-       test: /\.js$|\.css$|\.html$|\.svg$/,
-       threshold: 10240,
-       minRatio: 0.8
-     })
-   ],
- });
-
- mix.js('resources/assets/js/app.js', 'public/assets/js')
-   .sass('resources/assets/sass/app.scss', 'public/assets/styles')
-   .copyDirectory('resources/assets/img', 'public/assets/img')
-   .copyDirectory('resources/assets/fonts', 'public/assets/fonts')
+mix.js('resources/js/app.js', 'public/js')
+ .sass('resources/sass/app.scss', 'public/css')
 
  .version();
