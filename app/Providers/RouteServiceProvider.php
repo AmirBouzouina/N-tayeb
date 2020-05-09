@@ -70,21 +70,22 @@ class RouteServiceProvider extends ServiceProvider
              ->namespace($this->namespace)
              ->group(base_path('routes/api.php'));
     }
-}
 
-protected function mapWebRoutes()
-{
-    Route::middleware('web')
-        ->middleware('cache.headers:private;max_age=3600') // added this line
-        ->namespace($this->namespace)
-        ->group(base_path('routes/web.php'));
-}
+    protected function mapWebRoutes()
+    {
+        Route::middleware('web')
+            ->middleware('cache.headers:private;max_age=3600') // added this line
+            ->namespace($this->namespace)
+            ->group(base_path('routes/web.php'));
+    }
 
-protected function mapApiRoutes()
-{
-    Route::prefix('api')
-        ->middleware('api')
-        ->middleware('cache.headers:private;max_age=3600') // added this line
-        ->namespace($this->namespace)
-        ->group(base_path('routes/api.php'));
+    protected function mapApiRoutes()
+    {
+        Route::prefix('api')
+            ->middleware('api')
+            ->middleware('cache.headers:private;max_age=3600') // added this line
+            ->namespace($this->namespace)
+            ->group(base_path('routes/api.php'));
+    }
+
 }
