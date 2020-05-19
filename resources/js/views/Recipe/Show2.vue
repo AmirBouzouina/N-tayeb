@@ -80,8 +80,8 @@
 <h3  :class="['recipe__sub_title', recipe.slug]" >Ingrédients</h3><span :class="['recipe__yielding', recipe.slug]" > Pour: {{recipe.yield}} Personnes</span>
                     <dl class="ingredients-list mt-9">
                     <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
-                        <span>{{ingredient.name}}</span>
-                        <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span>
+                        <h3 class="ingredient-item"><span>{{ingredient.name}}</span>
+                        <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span> </h3>
                     </dd>
                 </dl>                    </div>
                           <div class=" recipe__directions col-8">

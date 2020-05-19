@@ -472,7 +472,13 @@ padding-top: 3vw!important;
     margin: 0;
     overflow: hidden;
 }
+.ingredient-item {
+font-size: 0.9vw;
+
+}
 .ingredients-list dt {
+  display: flex;
+
     width: 15%;
     float: left;
     margin: 0 0 8px;
@@ -485,14 +491,13 @@ padding-top: 3vw!important;
     box-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
 .ingredients-list dd {
-    width: 100%;
-    float: left;
-    margin: 0 0 8px;
-    font-size: 13px;
-    line-height: 20px;
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,.15);
-    -moz-box-shadow: 0 1px 0 rgba(0,0,0,.15);
-    box-shadow: 0 1px 0 rgba(0,0,0,.15);
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+  padding: 10px;
+  box-shadow: 0 0 14px 0 rgba(0,0,0,0.1);
+  font-weight: 700;
+  margin-bottom: 10px;
 }
 .recipe__directions ol {
     counter-reset: li;
