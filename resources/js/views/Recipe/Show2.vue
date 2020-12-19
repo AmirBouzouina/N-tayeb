@@ -7,7 +7,7 @@
 
         <div class="row">
             <div class="col-12 ">
-                <div class="col-12"><h1  :class="['recipe__title', recipe.slug]">{{recipe.name}}</h1> </div>
+                <div class="col-12"> dsdsd <h1  :class="['recipe__title', recipe.slug]">  {{recipe.name}}</h1> </div>
 
                 <div class="recipe-info">
 

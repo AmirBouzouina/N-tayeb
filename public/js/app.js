@@ -5603,8 +5603,9 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "col-12 " }, [
           _c("div", { staticClass: "col-12" }, [
+            _vm._v(" dsdsd "),
             _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
-              _vm._v(_vm._s(_vm.recipe.name))
+              _vm._v("  " + _vm._s(_vm.recipe.name))
             ])
           ]),
           _vm._v(" "),
