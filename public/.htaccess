@@ -14,7 +14,7 @@
     </IfModule>
     
     RewriteEngine On
-
+	RewriteCond %{HTTPS} off
     <FilesMatch ^\.>
         Order allow,deny
         Deny from all

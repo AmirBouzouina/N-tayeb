@@ -77,18 +77,20 @@
                     <div class="row mr-0 ml-0 wow slideInUp">
             <div class="col-4 recipe__box recipe__row">
 
-<h3  :class="['recipe__sub_title', recipe.slug]" >Ingrédients</h3><span :class="['recipe__yielding', recipe.slug]" > Pour: {{recipe.yield}} Personnes</span>
-                    <dl class="ingredients-list mt-9">
-                    <dd itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
-                        <h3 class="ingredient-item"><span>{{ingredient.name}}</span>
-                        <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span> </h3>
+<h3  :class="['recipe__sub_title', recipe.slug]" >Ingrédients</h3>
+<br/>
+<p :class="['recipe__yielding', recipe.slug]" > Pour: {{recipe.yield}} Personnes</p>
+                    <dl class="ingredients-list mt-9 col-12">
+                    <dd  itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
+                        <p class="ingredient-item"><span>{{ingredient.name}}</span>
+                        <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span> </p>
                     </dd>
                 </dl>                    </div>
                           <div class=" recipe__directions col-8">
         <div class="recipe__row   ">
                 <div  :class="['recipe__directions_inner', recipe.slug]" >
                     <h3 :class="['recipe__title', 'col-12',recipe.slug]" >Étapes :</h3>
-
+<div class="col-12">
                     <ol>
                         <li v-for="(direction, i) in recipe.directions">
                             <p>
@@ -96,6 +98,7 @@
                             </p>
                         </li>
                     </ol>
+                    </div>
                 </div>
             </div>
         </div>

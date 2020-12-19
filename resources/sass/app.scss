@@ -1,6 +1,15 @@
-@import "color";
-@import "effects";
-@import "mobile";
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+
+@import 'color';
+
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 
 
@@ -14,7 +23,7 @@ body {
     font-size: 14px;
     font-family: helvetica;
     background: rgb(235, 238, 243);;
-    color: #616161;
+    color: #494444;
     // background-image: url("../img/bg.png");
     background-size:cover;
 }
@@ -219,7 +228,6 @@ img {
     &__row {
         display: flex;
         flex-wrap: wrap;
-        margin-top: 25px;
     }
     &__row2 {
         display: flex;
@@ -228,7 +236,6 @@ img {
     }
     &__box {
         box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
-        background: #ffffff;
         padding: 15px;
     }
     &__title {
@@ -281,7 +288,6 @@ img {
     }
     &__directions_inner {
         box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
-        background: #fff;
         padding: 15px;
         width:100%;
     }
@@ -297,6 +303,7 @@ text-align:left;
         font-weight: 500;
         line-height: 5px;
         padding-top: 15px;
+        padding:15px;
     }
     &__subi_title {
         text-align:left;
@@ -355,7 +362,6 @@ text-align:right;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background: white;
     text-align: center;
     border : 1px solid #FF7B74;
 }
@@ -461,9 +467,10 @@ font-size: 2em;
 }
 .qty {
     float:right;
+    text-align: right;
 }
 .ingredients-list  {
-padding-top: 3vw!important;
+padding-top: 1vw!important;
     font-family:Helvetica;
 }
 .ingredients-list dl {
@@ -473,12 +480,19 @@ padding-top: 3vw!important;
     overflow: hidden;
 }
 .ingredient-item {
-font-size: 0.9vw;
+display: flex;
+justify-content: stretch;
+margin-bottom:0;
+
+}
+
+.ingredient-item span {
+    flex: 1 1 0%;
+
 
 }
 .ingredients-list dt {
   display: flex;
-
     width: 15%;
     float: left;
     margin: 0 0 8px;
@@ -491,13 +505,14 @@ font-size: 0.9vw;
     box-shadow: 0 1px 0 rgba(0,0,0,.15);
 }
 .ingredients-list dd {
-  display: flex;
-  justify-content: stretch;
+
   align-items: center;
   padding: 10px;
   box-shadow: 0 0 14px 0 rgba(0,0,0,0.1);
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 10px;
+  background-color: white;
+  flex: 0 1 50%;
 }
 .recipe__directions ol {
     counter-reset: li;
@@ -574,4 +589,10 @@ margin-bottom:0;
     .logo {
         width:10vw;
     }
+}
+
+@media only screen 
+and (max-width : 768px) 
+ {
+@import 'mobile' ;
 }

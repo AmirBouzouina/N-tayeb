@@ -2682,6 +2682,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2719,22 +2722,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-
-/***/ }),
-
-/***/ "./node_modules/es6-promise/auto.js":
-/*!******************************************!*\
-  !*** ./node_modules/es6-promise/auto.js ***!
-  \******************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// This file can be required in Browserify and Node.js for automatic polyfill
-// To use it:  require('es6-promise/auto');
-
-module.exports = __webpack_require__(/*! ./ */ "./node_modules/es6-promise/dist/es6-promise.js").polyfill();
-
 
 /***/ }),
 
@@ -5738,19 +5725,26 @@ var render = function() {
           _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
             _vm._v("Ingrédients")
           ]),
-          _c("span", { class: ["recipe__yielding", _vm.recipe.slug] }, [
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("p", { class: ["recipe__yielding", _vm.recipe.slug] }, [
             _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
           ]),
           _vm._v(" "),
           _c(
             "dl",
-            { staticClass: "ingredients-list mt-9" },
+            { staticClass: "ingredients-list mt-9 col-12" },
             _vm._l(_vm.recipe.ingredients, function(ingredient) {
               return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-                _c("span", [_vm._v(_vm._s(ingredient.name))]),
-                _vm._v(" "),
-                _c("span", { staticClass: "qty" }, [
-                  _vm._v(_vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit))
+                _c("p", { staticClass: "ingredient-item" }, [
+                  _c("span", [_vm._v(_vm._s(ingredient.name))]),
+                  _vm._v(" "),
+                  _c("span", { staticClass: "qty" }, [
+                    _vm._v(
+                      _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
+                    )
+                  ])
                 ])
               ])
             }),
@@ -5770,21 +5764,23 @@ var render = function() {
                   [_vm._v("Étapes :")]
                 ),
                 _vm._v(" "),
-                _c(
-                  "ol",
-                  _vm._l(_vm.recipe.directions, function(direction, i) {
-                    return _c("li", [
-                      _c("p", [
-                        _vm._v(
-                          "\n                                " +
-                            _vm._s(direction.description) +
-                            "\n                            "
-                        )
+                _c("div", { staticClass: "col-12" }, [
+                  _c(
+                    "ol",
+                    _vm._l(_vm.recipe.directions, function(direction, i) {
+                      return _c("li", [
+                        _c("p", [
+                          _vm._v(
+                            "\n                                " +
+                              _vm._s(direction.description) +
+                              "\n                            "
+                          )
+                        ])
                       ])
-                    ])
-                  }),
-                  0
-                )
+                    }),
+                    0
+                  )
+                ])
               ]
             )
           ])
@@ -21500,8 +21496,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var es6_promise_auto__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! es6-promise/auto */ "./node_modules/es6-promise/auto.js");
-/* harmony import */ var es6_promise_auto__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(es6_promise_auto__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! es6-promise */ "./node_modules/es6-promise/dist/es6-promise.js");
+/* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(es6_promise__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var whatwg_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
 

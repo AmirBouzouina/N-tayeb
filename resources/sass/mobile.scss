@@ -1,14 +1,21 @@
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
+@media only screen 
+and (max-width : 768px) 
+ {
+/* For mobile phones: */
 
-  recipe {
-    &__show {
-      width: 80vw;
-      margin-left:auto;
-      margin-right:auto;
-      padding: 15px;
-    }
-  }
+
+body {
+background-color: aqua;
+}
+
+recipe {
+&__show {
+  width: 70vw;
+  margin-left:auto;
+  margin-right:auto;
+  padding: 15px;
+}
+}
 
 
 
