@@ -1,4 +1,5 @@
-x²<template>
+
+	<template>
     <div class="container px-0">
 
     <div class="navbar">
