@@ -1,8 +1,8 @@
 $entree : blue;
-$viande: #8e44ad;
-$dessert : #ea8685;
-$salade : #4cd137;
-$soupe: #e1b12c;
+$viande:rgb(142, 68, 173,0.7);
+$dessert : rgb(234, 134, 133,0.7);
+$salade :rgb(76, 209, 55,0.7);
+$soupe:rgb(225, 177, 44,0.7);
 
 
 .entrees {
@@ -45,6 +45,7 @@ $soupe: #e1b12c;
 }
 .dessert {
     color:$dessert;
+    fill:$dessert;
 }
 .dessert_titre {
     background-color:$dessert;
@@ -69,3 +70,13 @@ $soupe: #e1b12c;
 .salades li:after {
     border-left-color:$salade;
 }
+
+
+
+
+
+
+@font-face {
+    font-family: 'cake';
+    src:       url('cake.ttf')  format('truetype');
+  }

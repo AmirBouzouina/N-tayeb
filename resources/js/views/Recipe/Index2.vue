@@ -1,9 +1,7 @@
 <template>
+
 	<div class="row container-fluid" style="width: 70vw;margin: auto;">
-		<div class="col-sm-6 col-md-4 col-lg-3 bloca mt-3 pr-1">
-			
-		</div>
-		<div class="col-12 col-md-8 col-lg-9  bloca mt-3">
+	
 
 
 
@@ -25,7 +23,9 @@
 
 	</div>
 
+
 </template>
+
 
 
 

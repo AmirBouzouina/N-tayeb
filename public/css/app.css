@@ -17,67 +17,73 @@
 }
 
 .soupes {
-  color: #e1b12c;
+  color: rgba(225, 177, 44, 0.7);
 }
 
 .soupes_titre {
-  background-color: #e1b12c;
+  background-color: rgba(225, 177, 44, 0.7);
 }
 
 .soupes li:before {
-  background: #e1b12c;
+  background: rgba(225, 177, 44, 0.7);
 }
 
 .soupes li:after {
-  border-left-color: #e1b12c;
+  border-left-color: rgba(225, 177, 44, 0.7);
 }
 
 .viande {
-  color: #8e44ad;
+  color: rgba(142, 68, 173, 0.7);
 }
 
 .viande_titre {
-  background-color: #8e44ad;
+  background-color: rgba(142, 68, 173, 0.7);
 }
 
 .viande li:before {
-  background: #8e44ad;
+  background: rgba(142, 68, 173, 0.7);
 }
 
 .viande li:after {
-  border-left-color: #8e44ad;
+  border-left-color: rgba(142, 68, 173, 0.7);
 }
 
 .dessert {
-  color: #ea8685;
+  color: rgba(234, 134, 133, 0.7);
+  fill: rgba(234, 134, 133, 0.7);
 }
 
 .dessert_titre {
-  background-color: #ea8685;
+  background-color: rgba(234, 134, 133, 0.7);
 }
 
 .dessert li:before {
-  background: #ea8685;
+  background: rgba(234, 134, 133, 0.7);
 }
 
 .dessert li:after {
-  border-left-color: #ea8685;
+  border-left-color: rgba(234, 134, 133, 0.7);
 }
 
 .salades {
-  color: #4cd137;
+  color: rgba(76, 209, 55, 0.7);
 }
 
 .salades_titre {
-  background-color: #4cd137;
+  background-color: rgba(76, 209, 55, 0.7);
 }
 
 .salades li:before {
-  background: #4cd137;
+  background: rgba(76, 209, 55, 0.7);
 }
 
 .salades li:after {
-  border-left-color: #4cd137;
+  border-left-color: rgba(76, 209, 55, 0.7);
+}
+
+@font-face {
+  font-family: "cake";
+  src: url(/fonts/cake.ttf?4fceb52fc969d5b06871245fe1716533) format("truetype");
 }
 
 /*!
@@ -11011,7 +11017,7 @@ body {
   margin: 0;
   font-size: 14px;
   font-family: helvetica;
-  background: #ebeef3;
+  background: white;
   color: #494444;
   background-size: cover;
 }
@@ -11062,7 +11068,7 @@ img {
 }
 
 .bloca {
-  background: white;
+  background: transparent;
 }
 
 .form {
@@ -11220,6 +11226,7 @@ img {
 
 .recipe__item {
   margin-bottom: 10px;
+  border-radius: 15%;
 }
 
 .recipe__inner {
@@ -11227,6 +11234,12 @@ img {
   box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
   background: #fff;
   margin: 10px;
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 15px;
 }
 
 .recipe__name {
@@ -11335,9 +11348,16 @@ img {
   float: left;
   color: white;
   font-weight: 500;
-  line-height: 5px;
-  padding-top: 15px;
+  line-height: 25px;
+  padding-top: 10px;
   width: 100%;
+  position: absolute;
+  bottom: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  font-family: cake;
+  font-size: 31px;
+  text-align: center;
 }
 
 .recipe__yielding {

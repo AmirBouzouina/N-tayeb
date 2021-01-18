@@ -15,7 +15,7 @@ class RecipeController extends Controller
     }
     public function index()
     {
-    	$recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
+    	$recipes = Recipe::where('valida' , 1 )->orderBy('created_at', 'desc')
     		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
         $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
     	return response()
@@ -25,9 +25,13 @@ class RecipeController extends Controller
     }
 
 
+
+
+
+
     public function related()
     {
-      $recipes = Recipe::where('valida' , 1)->orderBy('created_at', 'desc')
+      $recipes = Recipe::orderBy('created_at', 'desc')
         ->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
         $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
       return response()

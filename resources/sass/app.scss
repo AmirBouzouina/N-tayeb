@@ -22,7 +22,8 @@ body {
     margin: 0;
     font-size: 14px;
     font-family: helvetica;
-    background: rgb(235, 238, 243);;
+ //   background: rgb(235, 238, 243);;
+ background:white;
     color: #494444;
     // background-image: url("../img/bg.png");
     background-size:cover;
@@ -69,7 +70,7 @@ img {
     }
 }
 .bloca {
-    background:white;
+    background:transparent;
 }
 .form {
 	background: #fff;
@@ -212,12 +213,22 @@ img {
     }
     &__item {
     margin-bottom:10px;
+    border-radius:15%;
+  
+
+
     }
     &__inner {
         display: block;
         box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
         background: #fff;
         margin: 10px;
+        height: 200px;
+        width: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position:relative;
+        border-radius:15px;
     }
     &__name {
         padding: 10px;
@@ -304,15 +315,24 @@ text-align:left;
         line-height: 5px;
         padding-top: 15px;
         padding:15px;
+   
     }
     &__subi_title {
         text-align:left;
         float:left;
         color:white;
         font-weight: 500;
-        line-height: 5px;
-        padding-top: 15px;
+        line-height: 25px;
+        padding-top: 10px;
         width:100%;
+        position: absolute;
+        bottom:0 ; 
+        border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+font-family: cake;
+font-size: 31px;
+text-align: center;
+
     }
     &__yielding {
         font-family:Helvetica;
