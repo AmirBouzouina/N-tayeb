@@ -34,9 +34,12 @@
 
 
 
-
 		<router-view></router-view>
+
+    </div>
 	</div>
+
+	
 </template>
 <script type="text/javascript">
 	import Auth from './store/auth'

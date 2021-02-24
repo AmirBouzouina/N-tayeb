@@ -2,6 +2,7 @@
 
 .entrees {
   color: blue;
+  fill: blue;
 }
 
 .entrees_titre {
@@ -16,8 +17,14 @@
   border-left-color: blue;
 }
 
+.entrees dd {
+  background: blue;
+  color: white;
+}
+
 .soupes {
   color: rgba(225, 177, 44, 0.7);
+  fill: rgba(225, 177, 44, 0.7);
 }
 
 .soupes_titre {
@@ -32,8 +39,14 @@
   border-left-color: rgba(225, 177, 44, 0.7);
 }
 
+.soupes dd {
+  background: rgba(225, 177, 44, 0.7);
+  color: white;
+}
+
 .viande {
   color: rgba(142, 68, 173, 0.7);
+  fill: rgba(142, 68, 173, 0.7);
 }
 
 .viande_titre {
@@ -48,6 +61,11 @@
   border-left-color: rgba(142, 68, 173, 0.7);
 }
 
+.viande dd {
+  background: rgba(142, 68, 173, 0.7);
+  color: white;
+}
+
 .dessert {
   color: rgba(234, 134, 133, 0.7);
   fill: rgba(234, 134, 133, 0.7);
@@ -55,6 +73,11 @@
 
 .dessert_titre {
   background-color: rgba(234, 134, 133, 0.7);
+}
+
+.dessert dd {
+  background: rgba(234, 134, 133, 0.7);
+  color: white;
 }
 
 .dessert li:before {
@@ -67,6 +90,12 @@
 
 .salades {
   color: rgba(76, 209, 55, 0.7);
+  fill: rgba(76, 209, 55, 0.7);
+}
+
+.salades dd {
+  background: rgba(76, 209, 55, 0.7);
+  color: white;
 }
 
 .salades_titre {
@@ -11013,6 +11042,11 @@ a.text-dark:focus {
   box-sizing: border-box;
 }
 
+html {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   margin: 0;
   font-size: 14px;
@@ -11020,6 +11054,7 @@ body {
   background: white;
   color: #494444;
   background-size: cover;
+  padding: 0;
 }
 
 a {
@@ -11033,18 +11068,22 @@ img {
 }
 
 .container {
-  margin-bottom: 50px;
+  position: relative;
   width: 100vw !important;
   max-width: 100vw !important;
+  min-height: 100vh;
+  padding-bottom: 2.5rem;
+  /* Footer height */
 }
 
 .navbar {
-  background: #fff;
+  background: #e87776;
   padding: 15px 25px;
   box-shadow: rgba(0, 0, 0, 0.09) 0 2px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: white;
 }
 
 .navbar__brand {
@@ -11065,6 +11104,11 @@ img {
   display: inline;
   margin-left: 25px;
   float: right;
+  color: white;
+}
+
+.navbar__item a {
+  color: white;
 }
 
 .bloca {
@@ -11248,9 +11292,14 @@ img {
   text-align: center;
 }
 
+.recipe__featim {
+  box-shadow: 14px 9px 30px 0px rgba(153, 147, 153, 0.47);
+}
+
 .recipe__row {
   display: flex;
   flex-wrap: wrap;
+  padding-bottom: 50px;
 }
 
 .recipe__row2 {
@@ -11260,16 +11309,26 @@ img {
 }
 
 .recipe__box {
-  box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
+  background-color: white;
+  box-shadow: 14px 9px 30px 0px rgba(153, 147, 153, 0.47);
   padding: 15px;
 }
 
 .recipe__title {
   text-align: center;
+  font-family: cake;
+  font-size: 4vw;
 }
 
 .recipe__image {
   width: 40%;
+}
+
+.recipe__infos {
+  border-radius: 5px;
+  box-shadow: 2px 10px 5px 0px rgba(153, 147, 153, 0.47);
+  position: relative;
+  background: white;
 }
 
 .recipe__details {
@@ -11308,6 +11367,8 @@ img {
 .recipe__directions {
   width: 60%;
   padding-right: 0px !important;
+  background-color: white;
+  box-shadow: 14px 9px 30px 0px rgba(153, 147, 153, 0.47);
 }
 
 .recipe__directions ul {
@@ -11334,13 +11395,18 @@ img {
 }
 
 .recipe__sub_title {
-  font-family: Helvetica;
+  font-family: cake;
   text-align: left;
   float: left;
   font-weight: 500;
   line-height: 5px;
   padding-top: 15px;
   padding: 15px;
+  font-size: 2vw;
+}
+
+.recipe__inf {
+  font-size: 2vh;
 }
 
 .recipe__subi_title {
@@ -11492,6 +11558,10 @@ img {
   margin-top: 12px;
 }
 
+.haut {
+  padding-bottom: 50px;
+}
+
 .recipe-picture {
   max-width: 100%;
   height: auto;
@@ -11539,6 +11609,11 @@ img {
   flex: 1 1 0%;
 }
 
+.icon {
+  height: 4vh;
+  width: 4vw;
+}
+
 .ingredients-list dt {
   display: flex;
   width: 15%;
@@ -11553,11 +11628,10 @@ img {
 
 .ingredients-list dd {
   align-items: center;
-  padding: 10px;
+  padding: 15px;
   box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.1);
-  font-weight: 500;
+  font-weight: 900;
   margin-bottom: 10px;
-  background-color: white;
   flex: 0 1 50%;
 }
 
@@ -11629,11 +11703,19 @@ img {
   visibility: hidden;
 }
 
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 0;
+  /* Footer height */
+}
+
 @media only screen and (min-width: 768px) {
   /* For desktop: */
 
   .recipe__show {
-    width: 55vw;
+    width: 70vw;
     margin: 0 auto;
     padding: 15px;
   }

@@ -109,6 +109,7 @@ module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/li
 
 var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/utils.js");
 var settle = __webpack_require__(/*! ./../core/settle */ "./node_modules/axios/lib/core/settle.js");
+var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
 var buildURL = __webpack_require__(/*! ./../helpers/buildURL */ "./node_modules/axios/lib/helpers/buildURL.js");
 var buildFullPath = __webpack_require__(/*! ../core/buildFullPath */ "./node_modules/axios/lib/core/buildFullPath.js");
 var parseHeaders = __webpack_require__(/*! ./../helpers/parseHeaders */ "./node_modules/axios/lib/helpers/parseHeaders.js");
@@ -129,7 +130,7 @@ module.exports = function xhrAdapter(config) {
     // HTTP basic authentication
     if (config.auth) {
       var username = config.auth.username || '';
-      var password = config.auth.password || '';
+      var password = config.auth.password ? unescape(encodeURIComponent(config.auth.password)) : '';
       requestHeaders.Authorization = 'Basic ' + btoa(username + ':' + password);
     }
 
@@ -210,8 +211,6 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(/*! ./../helpers/cookies */ "./node_modules/axios/lib/helpers/cookies.js");
-
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(fullPath)) && config.xsrfCookieName ?
         cookies.read(config.xsrfCookieName) :
@@ -277,7 +276,7 @@ module.exports = function xhrAdapter(config) {
       });
     }
 
-    if (requestData === undefined) {
+    if (!requestData) {
       requestData = null;
     }
 
@@ -345,6 +344,9 @@ axios.all = function all(promises) {
   return Promise.all(promises);
 };
 axios.spread = __webpack_require__(/*! ./helpers/spread */ "./node_modules/axios/lib/helpers/spread.js");
+
+// Expose isAxiosError
+axios.isAxiosError = __webpack_require__(/*! ./helpers/isAxiosError */ "./node_modules/axios/lib/helpers/isAxiosError.js");
 
 module.exports = axios;
 
@@ -554,9 +556,10 @@ Axios.prototype.getUri = function getUri(config) {
 utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
-      url: url
+      url: url,
+      data: (config || {}).data
     }));
   };
 });
@@ -564,7 +567,7 @@ utils.forEach(['delete', 'get', 'head', 'options'], function forEachMethodNoData
 utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
   /*eslint func-names:0*/
   Axios.prototype[method] = function(url, data, config) {
-    return this.request(utils.merge(config || {}, {
+    return this.request(mergeConfig(config || {}, {
       method: method,
       url: url,
       data: data
@@ -824,7 +827,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   error.response = response;
   error.isAxiosError = true;
 
-  error.toJSON = function() {
+  error.toJSON = function toJSON() {
     return {
       // Standard
       message: this.message,
@@ -873,59 +876,73 @@ module.exports = function mergeConfig(config1, config2) {
   config2 = config2 || {};
   var config = {};
 
-  var valueFromConfig2Keys = ['url', 'method', 'params', 'data'];
-  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy'];
+  var valueFromConfig2Keys = ['url', 'method', 'data'];
+  var mergeDeepPropertiesKeys = ['headers', 'auth', 'proxy', 'params'];
   var defaultToConfig2Keys = [
-    'baseURL', 'url', 'transformRequest', 'transformResponse', 'paramsSerializer',
-    'timeout', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
-    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress',
-    'maxContentLength', 'validateStatus', 'maxRedirects', 'httpAgent',
-    'httpsAgent', 'cancelToken', 'socketPath'
+    'baseURL', 'transformRequest', 'transformResponse', 'paramsSerializer',
+    'timeout', 'timeoutMessage', 'withCredentials', 'adapter', 'responseType', 'xsrfCookieName',
+    'xsrfHeaderName', 'onUploadProgress', 'onDownloadProgress', 'decompress',
+    'maxContentLength', 'maxBodyLength', 'maxRedirects', 'transport', 'httpAgent',
+    'httpsAgent', 'cancelToken', 'socketPath', 'responseEncoding'
   ];
+  var directMergeKeys = ['validateStatus'];
+
+  function getMergedValue(target, source) {
+    if (utils.isPlainObject(target) && utils.isPlainObject(source)) {
+      return utils.merge(target, source);
+    } else if (utils.isPlainObject(source)) {
+      return utils.merge({}, source);
+    } else if (utils.isArray(source)) {
+      return source.slice();
+    }
+    return source;
+  }
+
+  function mergeDeepProperties(prop) {
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  }
 
   utils.forEach(valueFromConfig2Keys, function valueFromConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
     }
   });
 
-  utils.forEach(mergeDeepPropertiesKeys, function mergeDeepProperties(prop) {
-    if (utils.isObject(config2[prop])) {
-      config[prop] = utils.deepMerge(config1[prop], config2[prop]);
-    } else if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (utils.isObject(config1[prop])) {
-      config[prop] = utils.deepMerge(config1[prop]);
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(mergeDeepPropertiesKeys, mergeDeepProperties);
 
   utils.forEach(defaultToConfig2Keys, function defaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
+    if (!utils.isUndefined(config2[prop])) {
+      config[prop] = getMergedValue(undefined, config2[prop]);
+    } else if (!utils.isUndefined(config1[prop])) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
+    }
+  });
+
+  utils.forEach(directMergeKeys, function merge(prop) {
+    if (prop in config2) {
+      config[prop] = getMergedValue(config1[prop], config2[prop]);
+    } else if (prop in config1) {
+      config[prop] = getMergedValue(undefined, config1[prop]);
     }
   });
 
   var axiosKeys = valueFromConfig2Keys
     .concat(mergeDeepPropertiesKeys)
-    .concat(defaultToConfig2Keys);
+    .concat(defaultToConfig2Keys)
+    .concat(directMergeKeys);
 
   var otherKeys = Object
-    .keys(config2)
+    .keys(config1)
+    .concat(Object.keys(config2))
     .filter(function filterAxiosKeys(key) {
       return axiosKeys.indexOf(key) === -1;
     });
 
-  utils.forEach(otherKeys, function otherKeysDefaultToConfig2(prop) {
-    if (typeof config2[prop] !== 'undefined') {
-      config[prop] = config2[prop];
-    } else if (typeof config1[prop] !== 'undefined') {
-      config[prop] = config1[prop];
-    }
-  });
+  utils.forEach(otherKeys, mergeDeepProperties);
 
   return config;
 };
@@ -954,7 +971,7 @@ var createError = __webpack_require__(/*! ./createError */ "./node_modules/axios
  */
 module.exports = function settle(resolve, reject, response) {
   var validateStatus = response.config.validateStatus;
-  if (!validateStatus || validateStatus(response.status)) {
+  if (!response.status || !validateStatus || validateStatus(response.status)) {
     resolve(response);
   } else {
     reject(createError(
@@ -1086,6 +1103,7 @@ var defaults = {
   xsrfHeaderName: 'X-XSRF-TOKEN',
 
   maxContentLength: -1,
+  maxBodyLength: -1,
 
   validateStatus: function validateStatus(status) {
     return status >= 200 && status < 300;
@@ -1149,7 +1167,6 @@ var utils = __webpack_require__(/*! ./../utils */ "./node_modules/axios/lib/util
 
 function encode(val) {
   return encodeURIComponent(val).
-    replace(/%40/gi, '@').
     replace(/%3A/gi, ':').
     replace(/%24/g, '$').
     replace(/%2C/gi, ',').
@@ -1330,6 +1347,29 @@ module.exports = function isAbsoluteURL(url) {
   // RFC 3986 defines scheme name as a sequence of characters beginning with a letter and followed
   // by any combination of letters, digits, plus, period, or hyphen.
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
+};
+
+
+/***/ }),
+
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
+/*!********************************************************!*\
+  !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
+  \********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+/**
+ * Determines whether the payload is an error thrown by Axios
+ *
+ * @param {*} payload The value to test
+ * @returns {boolean} True if the payload is an error thrown by Axios, otherwise false
+ */
+module.exports = function isAxiosError(payload) {
+  return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
 
@@ -1659,6 +1699,21 @@ function isObject(val) {
 }
 
 /**
+ * Determine if a value is a plain Object
+ *
+ * @param {Object} val The value to test
+ * @return {boolean} True if value is a plain Object, otherwise false
+ */
+function isPlainObject(val) {
+  if (toString.call(val) !== '[object Object]') {
+    return false;
+  }
+
+  var prototype = Object.getPrototypeOf(val);
+  return prototype === null || prototype === Object.prototype;
+}
+
+/**
  * Determine if a value is a Date
  *
  * @param {Object} val The value to test
@@ -1814,34 +1869,12 @@ function forEach(obj, fn) {
 function merge(/* obj1, obj2, obj3, ... */) {
   var result = {};
   function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
+    if (isPlainObject(result[key]) && isPlainObject(val)) {
       result[key] = merge(result[key], val);
-    } else {
-      result[key] = val;
-    }
-  }
-
-  for (var i = 0, l = arguments.length; i < l; i++) {
-    forEach(arguments[i], assignValue);
-  }
-  return result;
-}
-
-/**
- * Function equal to merge with the difference being that no reference
- * to original objects is kept.
- *
- * @see merge
- * @param {Object} obj1 Object to merge
- * @returns {Object} Result of all merge properties
- */
-function deepMerge(/* obj1, obj2, obj3, ... */) {
-  var result = {};
-  function assignValue(val, key) {
-    if (typeof result[key] === 'object' && typeof val === 'object') {
-      result[key] = deepMerge(result[key], val);
-    } else if (typeof val === 'object') {
-      result[key] = deepMerge({}, val);
+    } else if (isPlainObject(val)) {
+      result[key] = merge({}, val);
+    } else if (isArray(val)) {
+      result[key] = val.slice();
     } else {
       result[key] = val;
     }
@@ -1872,6 +1905,19 @@ function extend(a, b, thisArg) {
   return a;
 }
 
+/**
+ * Remove byte order marker. This catches EF BB BF (the UTF-8 BOM)
+ *
+ * @param {string} content with BOM
+ * @return {string} content value without BOM
+ */
+function stripBOM(content) {
+  if (content.charCodeAt(0) === 0xFEFF) {
+    content = content.slice(1);
+  }
+  return content;
+}
+
 module.exports = {
   isArray: isArray,
   isArrayBuffer: isArrayBuffer,
@@ -1881,6 +1927,7 @@ module.exports = {
   isString: isString,
   isNumber: isNumber,
   isObject: isObject,
+  isPlainObject: isPlainObject,
   isUndefined: isUndefined,
   isDate: isDate,
   isFile: isFile,
@@ -1891,9 +1938,9 @@ module.exports = {
   isStandardBrowserEnv: isStandardBrowserEnv,
   forEach: forEach,
   merge: merge,
-  deepMerge: deepMerge,
   extend: extend,
-  trim: trim
+  trim: trim,
+  stripBOM: stripBOM
 };
 
 
@@ -1911,6 +1958,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store/auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./helpers/flash */ "./resources/js/helpers/flash.js");
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
 //
 //
 //
@@ -2111,82 +2161,6 @@ __webpack_require__.r(__webpack_exports__);
       if (files && files.length > 0) {
         this.$emit('input', files[0]);
       }
-    }
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Auth/Login.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Auth/Login.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
-/* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
-/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      form: {
-        email: '',
-        password: ''
-      },
-      error: {},
-      isProcessing: false
-    };
-  },
-  methods: {
-    login: function login() {
-      var _this = this;
-
-      this.isProcessing = true;
-      this.error = {};
-      Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["post"])('api/login', this.form).then(function (res) {
-        if (res.data.authenticated) {
-          // set token
-          _store_auth__WEBPACK_IMPORTED_MODULE_1__["default"].set(res.data.api_token, res.data.user_id);
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('Vous êtes maintenant connecté ! .');
-
-          _this.$router.push('/');
-        }
-
-        _this.isProcessing = false;
-      })["catch"](function (err) {
-        if (err.response.status === 422) {
-          _this.error = err.response.data;
-        }
-
-        _this.isProcessing = false;
-      });
     }
   }
 });
@@ -2702,6 +2676,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2723,18 +2708,59 @@ __webpack_require__.r(__webpack_exports__);
     Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["get"])("/api/recipes/".concat(this.$route.params.id)).then(function (res) {
       _this.recipe = res.data.recipe;
     });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./resources/js/views/Auth/auth.js?vue&type=script&lang=js&":
+/*!************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./resources/js/views/Auth/auth.js?vue&type=script&lang=js& ***!
+  \************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
+/* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
+/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      form: {
+        email: '',
+        password: ''
+      },
+      error: {},
+      isProcessing: false
+    };
   },
   methods: {
-    remove: function remove() {
-      var _this2 = this;
+    login: function login() {
+      var _this = this;
 
-      this.isRemoving = false;
-      Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["del"])("/api/recipes/".concat(this.$route.params.id)).then(function (res) {
-        if (res.data.deleted) {
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_1__["default"].setSuccess('You have successfully deleted recipe!');
+      this.isProcessing = true;
+      this.error = {};
+      Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["post"])('api/login', this.form).then(function (res) {
+        if (res.data.authenticated) {
+          // set token
+          _store_auth__WEBPACK_IMPORTED_MODULE_1__["default"].set(res.data.api_token, res.data.user_id);
+          _helpers_flash__WEBPACK_IMPORTED_MODULE_0__["default"].setSuccess('Vous êtes maintenant connecté ! .');
 
-          _this2.$router.push('/');
+          _this.$router.push('/');
         }
+
+        _this.isProcessing = false;
+      })["catch"](function (err) {
+        if (err.response.status === 422) {
+          _this.error = err.response.data;
+        }
+
+        _this.isProcessing = false;
       });
     }
   }
@@ -4908,11 +4934,7 @@ var staticRenderFns = [
     return _c("div", { staticClass: "not__found" }, [
       _c("h1", [_vm._v("404 Page Not Found!")]),
       _vm._v(" "),
-      _c("p", [
-        _vm._v(
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod\n\ttempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,\n\tquis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo\n\tconsequat. Duis aute irure dolor in reprehenderit in voluptate velit esse\n\tcillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non\n\tproident, sunt in culpa qui officia deserunt mollit anim id est laborum."
-        )
-      ])
+      _c("p", [_vm._v("Vous avez attéri dans une page 404")])
     ])
   }
 ]
@@ -5602,301 +5624,319 @@ var render = function() {
             ])
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "recipe-info" }, [
-            _c("div", { staticClass: "container-fluid  row mx-0" }, [
-              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                _c("p", [
-                  _c(
-                    "svg",
-                    {
-                      class: [_vm.recipe.slug],
-                      attrs: {
-                        viewBox: "0 0 512 512",
-                        width: "2vw",
-                        height: "2vh"
-                      }
-                    },
-                    [
-                      _c(
-                        "g",
-                        { attrs: { id: "Out_line", "data-name": "Out line" } },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("g", [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
-                          }
-                        })
-                      ])
-                    ]
-                  ),
-                  _vm._v(" \n                             Préparation : "),
-                  _c(
-                    "time",
-                    {
-                      attrs: {
-                        datetime: "<?php echo $pt; ?>",
-                        itemprop: "prepTime"
-                      }
-                    },
-                    [_vm._v(_vm._s(_vm.recipe.prep))]
-                  ),
-                  _vm._v("Minutes ")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                _c("p", [
-                  _c(
-                    "svg",
-                    {
-                      class: [_vm.recipe.slug],
-                      attrs: {
-                        viewBox: "0 0 512 512",
-                        width: "2vw",
-                        height: "2vh"
-                      }
-                    },
-                    [
-                      _c(
-                        "g",
-                        { attrs: { id: "Out_line", "data-name": "Out line" } },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
-                            }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("g", [
-                        _c("path", {
-                          attrs: {
-                            d:
-                              "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
-                          }
-                        })
-                      ])
-                    ]
-                  ),
-                  _vm._v(" \n                             Cuisson :"),
-                  _c("time", { attrs: { itemprop: "prepTime" } }, [
-                    _vm._v(_vm._s(_vm.recipe.cook))
-                  ]),
-                  _vm._v(" Minutes")
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                _c("p", [
-                  _c(
-                    "svg",
-                    {
-                      class: [_vm.recipe.slug],
-                      attrs: {
-                        viewBox: "0 0 512 512",
-                        width: "2vw",
-                        height: "2vh"
-                      }
-                    },
-                    [
-                      _c(
-                        "g",
-                        { attrs: { id: "Out_line", "data-name": "Out line" } },
-                        [
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M34.96143,396.68652A32.75766,32.75766,0,0,1,32,383.0293v-9.7417A790.59356,790.59356,0,0,1,70.95117,128H246.134c-7.35144,23.08411-13.71539,46.67163-18.95086,70.26709l15.62011,3.46582C248.30328,176.94434,255.087,152.17249,262.95813,128H280a32.036,32.036,0,0,0,32-32V72a7.99977,7.99977,0,0,0-8-8H264a32.036,32.036,0,0,1,32-32h1.44824a32.06925,32.06925,0,0,1,30.87207,23.58008l11.77246,43.16553c2.792,10.23584,5.415,20.68115,7.79688,31.04589l15.59375-3.583c-2.42969-10.57373-5.106-21.23-7.9541-31.67286L343.75684,51.37012A48.10546,48.10546,0,0,0,297.44824,16H80A48.05436,48.05436,0,0,0,32,64V96a32.05585,32.05585,0,0,0,22.58533,30.58478A806.527,806.527,0,0,0,16,373.2876v9.7417A48.6442,48.6442,0,0,0,20.39893,403.314ZM296,80V96a16,16,0,0,1-32,0V80ZM48,96V64A32.036,32.036,0,0,1,80,32H260.252A47.80823,47.80823,0,0,0,248,64V96a31.80882,31.80882,0,0,0,4.29443,16H64A16.01833,16.01833,0,0,1,48,96Z"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M417.82129,228.49219l-3.64258,15.58008C462.76172,255.43164,480,270.52588,480,280c0,8.145-11.56036,17.59692-32.93567,25.94861-3.73523-11.89856-18.76288-21.73657-44.83484-29.30164l-4.459,15.36621c22.22027,6.44727,33.00268,14.22864,34.12561,19.15247C400.11121,320.8374,353.69568,328,296,328c-57.69812,0-104.11511-7.16321-135.90015-16.83557,1.59888-7.55017,24.41449-20.3783,72.99341-27.07947l-2.18652-15.84961c-24.37354,3.36231-45.0874,8.57715-59.90137,15.08106-14.59808,6.40869-23.3302,14.00195-26.067,22.63317C123.56146,297.59766,112,288.14539,112,280c0-3.37256,2.74854-15.35449,38.1167-27.93945,26.94189-9.58643,64.7207-16.28418,106.377-18.85889l-.9873-15.96973c-43.10791,2.66455-82.44092,9.68018-110.75342,19.7544C104.458,251.32471,96,268.2915,96,280a135.40123,135.40123,0,0,0,9.24268,49.26758l16.18994,41.63183,14.91211-5.79882-16.18994-41.63184a120.26574,120.26574,0,0,1-4.58008-14.41125c10.26,6.85681,24.46173,12.98242,42.4209,18.22033C194.96729,338.06152,243.978,344,296,344s101.03271-5.93848,138.00439-16.72217c17.95917-5.23791,32.161-11.36352,42.4209-18.22033a120.26574,120.26574,0,0,1-4.58008,14.41125l-27.4663,70.62744a71.90524,71.90524,0,0,1-10.65039,18.59815l12.543,9.93261A87.87832,87.87832,0,0,0,459.291,399.895l27.4663-70.62744A135.40123,135.40123,0,0,0,496,280C496,251.08887,447.01855,235.31934,417.82129,228.49219Z"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M354.31482,166.57275a164.02041,164.02041,0,0,0-90.45007,80.39893l-23.02,46.03027,14.31054,7.15625,23.021-46.03222a147.97176,147.97176,0,0,1,75.65851-70.2193,31.70933,31.70933,0,0,0,1.55115,4.56244c-22.067,18.579-41.89734,43.90338-56.27851,72.02942l-23.55029,45.75,14.22558,7.32324,23.56055-45.76953c13.34845-26.106,31.62927-49.54255,51.91767-66.72779a31.889,31.889,0,0,0,2.786,1.88306,31.22786,31.22786,0,0,0,3.30023,1.70624q-4.8036,8.99753-10.018,18.72052-13.08765,24.42846-26.96728,50.64843l-18.14161,34.22022,14.13672,7.49414,18.15284-34.24219q13.80541-26.23682,26.92236-50.56445c4.13519-7.71826,8.1112-15.14014,11.862-22.17664a146.04536,146.04536,0,0,1-17.67743,78.80555l-11.23486,20.60009,14.04687,7.66114,11.23389-20.59815A162.04587,162.04587,0,0,0,402.77118,201.273a31.03527,31.03527,0,0,0,8.11847-8.84137L474.56494,88.23486a31.32289,31.32289,0,0,0-53.45459-32.6665L357.43506,159.76514A31.55046,31.55046,0,0,0,354.31482,166.57275Zm16.77258,1.53516L434.7627,63.91162a15.32313,15.32313,0,1,1,26.1499,15.98047L397.2373,184.08838a15.32313,15.32313,0,1,1-26.1499-15.98047Z"
-                            }
-                          }),
-                          _c("path", {
-                            attrs: {
-                              d:
-                                "M414.2627,417.91455a30.017,30.017,0,0,0-22.88721-7.71191l-7.55493.68689A56.01807,56.01807,0,0,0,336,384H104a56.03137,56.03137,0,0,0-47.84167,26.89038l-7.53235-.68481a29.91695,29.91695,0,1,0-2.69287,59.71093c.895,0,1.79443-.04052,2.69238-.12207l7.5321-.68469A56.36491,56.36491,0,0,0,104,496H336a55.5933,55.5933,0,0,0,39.59375-16.3999,56.29266,56.29266,0,0,0,8.26105-10.48657l7.53094.68481c.90137.08057,1.81787.12158,2.72412.12158a29.91842,29.91842,0,0,0,20.15284-52.00537ZM47.17676,453.85986A13.91812,13.91812,0,1,1,45.874,426.08057q.64746,0,1.30323.05957l48.16406,4.37841a9.52054,9.52054,0,0,1,0,18.9629h.00049ZM74.91791,467.4043,96.79,465.416h.00049A25.52089,25.52089,0,0,0,96.79,414.584L74.87628,412.5918c.27844-.29492.55585-.59058.84393-.87793A39.99923,39.99923,0,1,1,104,480,40.21831,40.21831,0,0,1,74.91791,467.4043Zm289.36188.88183A39.70208,39.70208,0,0,1,336,480H143.13831a55.87567,55.87567,0,0,0,0-80H336a39.99815,39.99815,0,0,1,28.27979,68.28613Zm29.83007-14.36621c-.43115,0-.86718-.01953-1.28515-.05713l-2.48725-.22607a56.35543,56.35543,0,0,0-.024-27.27149l2.50683-.228a13.91993,13.91993,0,1,1,1.28955,27.78271Z"
-                            }
-                          })
-                        ]
-                      )
-                    ]
-                  ),
-                  _vm._v("\n Difficulté : "),
-                  _c("time", { attrs: { itemprop: "prepTime" } }, [
-                    _vm._v(_vm._s(_vm.recipe.difficulty))
-                  ])
-                ])
-              ])
-            ])
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mr-0 ml-0 recipe__box" }, [
+          _c("br"),
+          _vm._v(" "),
+          _c("br")
+        ]),
+        _vm._v(" "),
         _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "row" }, [
-            _c("div", { class: ["col-8", _vm.recipe.slug] }, [
+          _c("div", { staticClass: "row haut" }, [
+            _c("div", { class: ["recipe__featim", "col-6", _vm.recipe.slug] }, [
               _vm.recipe.image
                 ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
                 : _vm._e()
             ]),
             _vm._v(" "),
-            _c("div", { staticClass: "col-4" }, [
-              _c("div", { staticClass: "col-12" }, [
-                _c("small", [
-                  _vm._v(
-                    "Recette ajoutée par : " +
-                      _vm._s(_vm.recipe.user.name) +
-                      " "
-                  )
+            _c("div", { staticClass: "col-6 recipe__infos" }, [
+              _c("div", { staticClass: "recipe-info" }, [
+                _c("div", { staticClass: "container-fluid  row mx-0" }, [
+                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                    _c("p", [
+                      _c(
+                        "svg",
+                        {
+                          class: ["icon", _vm.recipe.slug],
+                          attrs: { viewBox: "0 0 512 512" }
+                        },
+                        [
+                          _c(
+                            "g",
+                            {
+                              attrs: { id: "Out_line", "data-name": "Out line" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
+                        _vm._v("      Préparation : ")
+                      ]),
+                      _c("br"),
+                      _c(
+                        "time",
+                        {
+                          attrs: {
+                            datetime: "<?php echo $pt; ?>",
+                            itemprop: "prepTime"
+                          }
+                        },
+                        [_vm._v(_vm._s(_vm.recipe.prep))]
+                      ),
+                      _vm._v(" Minutes ")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                    _c("p", [
+                      _c(
+                        "svg",
+                        {
+                          class: ["icon", _vm.recipe.slug],
+                          attrs: { viewBox: "0 0 512 512" }
+                        },
+                        [
+                          _c(
+                            "g",
+                            {
+                              attrs: { id: "Out_line", "data-name": "Out line" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
+                                }
+                              })
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("g", [
+                            _c("path", {
+                              attrs: {
+                                d:
+                                  "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
+                        _vm._v("       Cuisson :")
+                      ]),
+                      _c("br"),
+                      _c("time", { attrs: { itemprop: "prepTime" } }, [
+                        _vm._v(_vm._s(_vm.recipe.cook))
+                      ]),
+                      _vm._v(" Minutes")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
+                    _c("p", [
+                      _c(
+                        "svg",
+                        {
+                          class: ["icon", _vm.recipe.slug],
+                          attrs: { viewBox: "0 0 512 512" }
+                        },
+                        [
+                          _c(
+                            "g",
+                            {
+                              attrs: { id: "Out_line", "data-name": "Out line" }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M34.96143,396.68652A32.75766,32.75766,0,0,1,32,383.0293v-9.7417A790.59356,790.59356,0,0,1,70.95117,128H246.134c-7.35144,23.08411-13.71539,46.67163-18.95086,70.26709l15.62011,3.46582C248.30328,176.94434,255.087,152.17249,262.95813,128H280a32.036,32.036,0,0,0,32-32V72a7.99977,7.99977,0,0,0-8-8H264a32.036,32.036,0,0,1,32-32h1.44824a32.06925,32.06925,0,0,1,30.87207,23.58008l11.77246,43.16553c2.792,10.23584,5.415,20.68115,7.79688,31.04589l15.59375-3.583c-2.42969-10.57373-5.106-21.23-7.9541-31.67286L343.75684,51.37012A48.10546,48.10546,0,0,0,297.44824,16H80A48.05436,48.05436,0,0,0,32,64V96a32.05585,32.05585,0,0,0,22.58533,30.58478A806.527,806.527,0,0,0,16,373.2876v9.7417A48.6442,48.6442,0,0,0,20.39893,403.314ZM296,80V96a16,16,0,0,1-32,0V80ZM48,96V64A32.036,32.036,0,0,1,80,32H260.252A47.80823,47.80823,0,0,0,248,64V96a31.80882,31.80882,0,0,0,4.29443,16H64A16.01833,16.01833,0,0,1,48,96Z"
+                                }
+                              }),
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M417.82129,228.49219l-3.64258,15.58008C462.76172,255.43164,480,270.52588,480,280c0,8.145-11.56036,17.59692-32.93567,25.94861-3.73523-11.89856-18.76288-21.73657-44.83484-29.30164l-4.459,15.36621c22.22027,6.44727,33.00268,14.22864,34.12561,19.15247C400.11121,320.8374,353.69568,328,296,328c-57.69812,0-104.11511-7.16321-135.90015-16.83557,1.59888-7.55017,24.41449-20.3783,72.99341-27.07947l-2.18652-15.84961c-24.37354,3.36231-45.0874,8.57715-59.90137,15.08106-14.59808,6.40869-23.3302,14.00195-26.067,22.63317C123.56146,297.59766,112,288.14539,112,280c0-3.37256,2.74854-15.35449,38.1167-27.93945,26.94189-9.58643,64.7207-16.28418,106.377-18.85889l-.9873-15.96973c-43.10791,2.66455-82.44092,9.68018-110.75342,19.7544C104.458,251.32471,96,268.2915,96,280a135.40123,135.40123,0,0,0,9.24268,49.26758l16.18994,41.63183,14.91211-5.79882-16.18994-41.63184a120.26574,120.26574,0,0,1-4.58008-14.41125c10.26,6.85681,24.46173,12.98242,42.4209,18.22033C194.96729,338.06152,243.978,344,296,344s101.03271-5.93848,138.00439-16.72217c17.95917-5.23791,32.161-11.36352,42.4209-18.22033a120.26574,120.26574,0,0,1-4.58008,14.41125l-27.4663,70.62744a71.90524,71.90524,0,0,1-10.65039,18.59815l12.543,9.93261A87.87832,87.87832,0,0,0,459.291,399.895l27.4663-70.62744A135.40123,135.40123,0,0,0,496,280C496,251.08887,447.01855,235.31934,417.82129,228.49219Z"
+                                }
+                              }),
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M354.31482,166.57275a164.02041,164.02041,0,0,0-90.45007,80.39893l-23.02,46.03027,14.31054,7.15625,23.021-46.03222a147.97176,147.97176,0,0,1,75.65851-70.2193,31.70933,31.70933,0,0,0,1.55115,4.56244c-22.067,18.579-41.89734,43.90338-56.27851,72.02942l-23.55029,45.75,14.22558,7.32324,23.56055-45.76953c13.34845-26.106,31.62927-49.54255,51.91767-66.72779a31.889,31.889,0,0,0,2.786,1.88306,31.22786,31.22786,0,0,0,3.30023,1.70624q-4.8036,8.99753-10.018,18.72052-13.08765,24.42846-26.96728,50.64843l-18.14161,34.22022,14.13672,7.49414,18.15284-34.24219q13.80541-26.23682,26.92236-50.56445c4.13519-7.71826,8.1112-15.14014,11.862-22.17664a146.04536,146.04536,0,0,1-17.67743,78.80555l-11.23486,20.60009,14.04687,7.66114,11.23389-20.59815A162.04587,162.04587,0,0,0,402.77118,201.273a31.03527,31.03527,0,0,0,8.11847-8.84137L474.56494,88.23486a31.32289,31.32289,0,0,0-53.45459-32.6665L357.43506,159.76514A31.55046,31.55046,0,0,0,354.31482,166.57275Zm16.77258,1.53516L434.7627,63.91162a15.32313,15.32313,0,1,1,26.1499,15.98047L397.2373,184.08838a15.32313,15.32313,0,1,1-26.1499-15.98047Z"
+                                }
+                              }),
+                              _c("path", {
+                                attrs: {
+                                  d:
+                                    "M414.2627,417.91455a30.017,30.017,0,0,0-22.88721-7.71191l-7.55493.68689A56.01807,56.01807,0,0,0,336,384H104a56.03137,56.03137,0,0,0-47.84167,26.89038l-7.53235-.68481a29.91695,29.91695,0,1,0-2.69287,59.71093c.895,0,1.79443-.04052,2.69238-.12207l7.5321-.68469A56.36491,56.36491,0,0,0,104,496H336a55.5933,55.5933,0,0,0,39.59375-16.3999,56.29266,56.29266,0,0,0,8.26105-10.48657l7.53094.68481c.90137.08057,1.81787.12158,2.72412.12158a29.91842,29.91842,0,0,0,20.15284-52.00537ZM47.17676,453.85986A13.91812,13.91812,0,1,1,45.874,426.08057q.64746,0,1.30323.05957l48.16406,4.37841a9.52054,9.52054,0,0,1,0,18.9629h.00049ZM74.91791,467.4043,96.79,465.416h.00049A25.52089,25.52089,0,0,0,96.79,414.584L74.87628,412.5918c.27844-.29492.55585-.59058.84393-.87793A39.99923,39.99923,0,1,1,104,480,40.21831,40.21831,0,0,1,74.91791,467.4043Zm289.36188.88183A39.70208,39.70208,0,0,1,336,480H143.13831a55.87567,55.87567,0,0,0,0-80H336a39.99815,39.99815,0,0,1,28.27979,68.28613Zm29.83007-14.36621c-.43115,0-.86718-.01953-1.28515-.05713l-2.48725-.22607a56.35543,56.35543,0,0,0-.024-27.27149l2.50683-.228a13.91993,13.91993,0,1,1,1.28955,27.78271Z"
+                                }
+                              })
+                            ]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("br"),
+                      _vm._v(" "),
+                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
+                        _vm._v(" Difficulté : ")
+                      ]),
+                      _vm._v(" "),
+                      _c("br"),
+                      _c("time", { attrs: { itemprop: "prepTime" } }, [
+                        _vm._v(_vm._s(_vm.recipe.difficulty))
+                      ])
+                    ])
+                  ])
                 ])
               ]),
               _vm._v(" "),
-              _c("div", { staticClass: "col-12" }, [
-                _vm._v("Cuisine:" + _vm._s(_vm.recipe.cuisine))
+              _c("p", [
+                _c("span", { class: [_vm.recipe.slug] }, [_vm._v(" Cuisine:")]),
+                _vm._v(" " + _vm._s(_vm.recipe.cuisine))
               ]),
               _vm._v(" "),
-              _c("div", { class: ["col-12", _vm.recipe.slug] }, [
-                _vm._v("Catégorie: " + _vm._s(_vm.recipe.category))
+              _c("p", [
+                _c("span", { class: [_vm.recipe.slug] }, [
+                  _vm._v("Catégorie: ")
+                ]),
+                _vm._v(" " + _vm._s(_vm.recipe.category))
               ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("p"),
+              _c(
+                "h3",
+                { class: ["col-12", "recipe__sub_title", _vm.recipe.slug] },
+                [_vm._v("Description")]
+              ),
+              _vm._v(" "),
+              _c("p"),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("p", [_vm._v(_vm._s(_vm.recipe.description) + " ")]),
               _vm._v(" "),
               _c(
-                "a",
+                "div",
                 {
-                  attrs: {
-                    href:
-                      "https://www.facebook.com/sharer/sharer.php?u=ntayeb.net&display=popup"
-                  }
+                  staticClass: "col-12",
+                  staticStyle: { position: "absolute", bottom: "0", right: "0" }
                 },
-                [_vm._v(" share this ")]
+                [
+                  _c("small", { staticStyle: { float: "right" } }, [
+                    _vm._v(
+                      "Recette ajoutée par : " +
+                        _vm._s(_vm.recipe.user.name) +
+                        " "
+                    )
+                  ])
+                ]
               )
             ])
           ])
         ]),
         _vm._v(" "),
-        _vm._m(0)
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mr-0 ml-0 recipe__box" }, [
-        _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
-          _vm._v("Déscription")
-        ]),
+        _c("br"),
         _vm._v(" "),
         _c("br"),
         _vm._v(" "),
-        _c("p", [_vm._v(_vm._s(_vm.recipe.description) + " ")])
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _vm._v(" "),
-      _c("div", { staticClass: "row mr-0 ml-0 wow slideInUp" }, [
-        _c("div", { staticClass: "col-4 recipe__box recipe__row" }, [
-          _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
-            _vm._v("Ingrédients")
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("p", { class: ["recipe__yielding", _vm.recipe.slug] }, [
-            _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
-          ]),
-          _vm._v(" "),
-          _c(
-            "dl",
-            { staticClass: "ingredients-list mt-9 col-12" },
-            _vm._l(_vm.recipe.ingredients, function(ingredient) {
-              return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-                _c("p", { staticClass: "ingredient-item" }, [
-                  _c("span", [_vm._v(_vm._s(ingredient.name))]),
-                  _vm._v(" "),
-                  _c("span", { staticClass: "qty" }, [
-                    _vm._v(
-                      _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
-                    )
+        _c("div", { staticClass: "row mr-0 ml-0 col-12 wow slideInUp" }, [
+          _c("div", { staticClass: "col-4 recipe__box recipe__row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
+                _vm._v("Ingrédients")
+              ])
+            ]),
+            _vm._v(" "),
+            _c("br"),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-12" }, [
+              _c("p", { class: ["recipe__yielding", _vm.recipe.slug] }, [
+                _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
+              ])
+            ]),
+            _vm._v(" "),
+            _c(
+              "dl",
+              {
+                class: [_vm.recipe.slug, "ingredients-list", "mt-9", "col-12"]
+              },
+              _vm._l(_vm.recipe.ingredients, function(ingredient) {
+                return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
+                  _c("p", { staticClass: "ingredient-item" }, [
+                    _c("span", [_vm._v(_vm._s(ingredient.name))]),
+                    _vm._v(" "),
+                    _c("span", { staticClass: "qty" }, [
+                      _vm._v(
+                        _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
+                      )
+                    ])
                   ])
                 ])
-              ])
-            }),
-            0
-          )
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: " recipe__directions col-8" }, [
-          _c("div", { staticClass: "recipe__row   " }, [
-            _c(
-              "div",
-              { class: ["recipe__directions_inner", _vm.recipe.slug] },
-              [
-                _c(
-                  "h3",
-                  { class: ["recipe__title", "col-12", _vm.recipe.slug] },
-                  [_vm._v("Étapes :")]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "col-12" }, [
-                  _c(
-                    "ol",
-                    _vm._l(_vm.recipe.directions, function(direction, i) {
-                      return _c("li", [
-                        _c("p", [
-                          _vm._v(
-                            "\n                                " +
-                              _vm._s(direction.description) +
-                              "\n                            "
-                          )
-                        ])
-                      ])
-                    }),
-                    0
-                  )
-                ])
-              ]
+              }),
+              0
             )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: " recipe__directions col-8" }, [
+            _c("div", { staticClass: "recipe__row   " }, [
+              _c(
+                "div",
+                { class: ["recipe__directions_inner", _vm.recipe.slug] },
+                [
+                  _c(
+                    "h3",
+                    { class: ["recipe__sub_title", "col-12", _vm.recipe.slug] },
+                    [_vm._v("Étapes :")]
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "ol",
+                _vm._l(_vm.recipe.directions, function(direction, i) {
+                  return _c("li", [
+                    _c("p", [
+                      _vm._v(
+                        "\n                                " +
+                          _vm._s(direction.description) +
+                          "\n                            "
+                      )
+                    ])
+                  ])
+                }),
+                0
+              )
+            ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "row" })
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { class: ["footer", _vm.recipe.slug] }, [
+      _c("br"),
+      _c("br"),
+      _c("br"),
+      _c("br")
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "col-md-6 col-sm-12 col-xs-12 recipe__box" },
-      [_c("div", { staticClass: "wow" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -21504,7 +21544,7 @@ if (!self.fetch) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "/images/logo.png?42ad7d7d57fc5416132efbf874889bf2";
+module.exports = "/images/logo.png?57afbeea53a204822694522a96ba46b1";
 
 /***/ }),
 
@@ -22003,7 +22043,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Login_vue_vue_type_template_id_be5ebcfe___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Login.vue?vue&type=template&id=be5ebcfe& */ "./resources/js/views/Auth/Login.vue?vue&type=template&id=be5ebcfe&");
-/* harmony import */ var _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Login.vue?vue&type=script&lang=js& */ "./resources/js/views/Auth/Login.vue?vue&type=script&lang=js&");
+/* harmony import */ var _auth_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./auth.js?vue&type=script&lang=js& */ "./resources/js/views/Auth/auth.js?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -22013,7 +22053,7 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _auth_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
   _Login_vue_vue_type_template_id_be5ebcfe___WEBPACK_IMPORTED_MODULE_0__["render"],
   _Login_vue_vue_type_template_id_be5ebcfe___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -22027,20 +22067,6 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/views/Auth/Login.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/Auth/Login.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/views/Auth/Login.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Login.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Auth/Login.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Login_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -22128,6 +22154,20 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_1629088a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/views/Auth/auth.js?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/views/Auth/auth.js?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_auth_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!./auth.js?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./resources/js/views/Auth/auth.js?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_auth_js_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -22409,8 +22449,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/grow/Desktop/projects/2/N-tayeb/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/grow/Desktop/projects/2/N-tayeb/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/grow/Desktop/projects/N-tayeb/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/grow/Desktop/projects/N-tayeb/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

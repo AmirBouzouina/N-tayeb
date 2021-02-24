@@ -7,6 +7,7 @@ $soupe:rgb(225, 177, 44,0.7);
 
 .entrees {
     color : $entree;
+    fill:$entree;
 }
 .entrees_titre {
     background-color : $entree;
@@ -17,8 +18,13 @@ $soupe:rgb(225, 177, 44,0.7);
 .entrees li:after {
     border-left-color:$entree;
 }
+.entrees dd {
+    background: $entree;
+    color:white;
+}
 .soupes {
     color : $soupe;
+    fill:$soupe;
 }
 .soupes_titre {
     background-color : $soupe;
@@ -30,9 +36,14 @@ $soupe:rgb(225, 177, 44,0.7);
     border-left-color:$soupe;
 }
 
+.soupes dd {
+    background: $soupe;
+    color:white;
+}
 
 .viande {
     color : $viande;
+    fill : $viande;
 }
 .viande_titre {
     background-color : $viande;
@@ -43,12 +54,23 @@ $soupe:rgb(225, 177, 44,0.7);
 .viande li:after {
     border-left-color:$viande;
 }
+
+.viande dd {
+    background: $viande;
+    color:white;
+}
 .dessert {
     color:$dessert;
     fill:$dessert;
+
 }
 .dessert_titre {
     background-color:$dessert;
+}
+
+.dessert dd {
+    background : $dessert;
+    color:white;
 }
 
 .dessert li:before {
@@ -60,6 +82,13 @@ $soupe:rgb(225, 177, 44,0.7);
 }
 .salades {
     color:$salade;
+    fill:$salade;
+}
+
+.salades dd {
+background:$salade;
+color:white;
+
 }
 .salades_titre {
  background-color:$salade;

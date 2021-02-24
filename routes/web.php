@@ -16,6 +16,13 @@ Route::get('/', function () {
 });
 
 
+Route::any('/', function()
+   {
+    return view('welcome');
+  });
+
+
+
 Route::group(['prefix' => 'wiw'], function () {
     Voyager::routes();
 });
