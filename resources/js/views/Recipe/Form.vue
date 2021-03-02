@@ -26,6 +26,7 @@
 					    <label>Catégorie de la recette</label>
 					    <select class="form__control" v-model="form.category">
 							<option disabled value="">Choisissez une catégorie</option>
+							<option >Boissons</option>
 							<option >Dessert</option>
 							<option >Entrées</option>
 							<option >Salades‎</option>

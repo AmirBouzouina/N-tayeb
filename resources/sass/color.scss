@@ -3,6 +3,7 @@ $viande:rgb(142, 68, 173,0.7);
 $dessert : rgb(234, 134, 133,0.7);
 $salade :rgb(76, 209, 55,0.7);
 $soupe:rgb(225, 177, 44,0.7);
+$plats:rgb(255, 102, 0,0.7);
 
 
 .entrees {
@@ -99,7 +100,25 @@ color:white;
 .salades li:after {
     border-left-color:$salade;
 }
+.plats {
+    color:$plats;
+    fill:$plats;
+}
 
+.plats dd {
+background:$plats;
+color:white;
+
+}
+.plats_titre {
+ background-color:$plats;
+}
+.plats li:before {
+    background : $plats;
+}
+.plats li:after {
+    border-left-color:$plats;
+}
 
 
 

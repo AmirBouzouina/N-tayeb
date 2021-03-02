@@ -6,7 +6,8 @@ use App\RecipeDirection;
 use App\Recipe;
 use App\User;
 use File;
-class RecipeController extends Controller
+use DB;
+class CatsController extends Controller
 {
     public function __construct()
     {
@@ -15,23 +16,21 @@ class RecipeController extends Controller
     }
     public function index()
     {
-    	$recipes = Recipe::where('valida' , 1 )->orderBy('created_at', 'desc')
-    		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
-        $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
+        $count =   DB::table('recipes')
+        ->select('category',DB::raw('count(category) AS count ')  )
+        ->where('valida',1)
+        ->groupBy('category')
+        ->get();
+
     	return response()
     		->json([
-    			'recipes' => $r
+    			'cats' => $count
     		]);
     }
 
 
 
-
-
-
-
     
-
 
 
 

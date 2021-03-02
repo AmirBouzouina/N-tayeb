@@ -110,6 +110,28 @@
   border-left-color: rgba(76, 209, 55, 0.7);
 }
 
+.plats {
+  color: rgba(255, 102, 0, 0.7);
+  fill: rgba(255, 102, 0, 0.7);
+}
+
+.plats dd {
+  background: rgba(255, 102, 0, 0.7);
+  color: white;
+}
+
+.plats_titre {
+  background-color: rgba(255, 102, 0, 0.7);
+}
+
+.plats li:before {
+  background: rgba(255, 102, 0, 0.7);
+}
+
+.plats li:after {
+  border-left-color: rgba(255, 102, 0, 0.7);
+}
+
 @font-face {
   font-family: "cake";
   src: url(/fonts/cake.ttf?4fceb52fc969d5b06871245fe1716533) format("truetype");
@@ -11278,8 +11300,8 @@ img {
   box-shadow: rgba(0, 0, 0, 0.09) 0 1px 0;
   background: #fff;
   margin: 10px;
-  height: 200px;
-  width: 200px;
+  height: 20vh;
+  width: 10vw;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;

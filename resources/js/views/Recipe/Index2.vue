@@ -5,8 +5,7 @@
 
 
 
-
-	<div class="row" >
+	<div class="row" > 
 		<div class="recipe__item col-md-4 col-sm-12 hvr-float"  v-for="recipe in recipes" v-bind:key="recipe.id"  >
     
 			<router-link class="recipe__inner" :to="`/recipes/${recipe.id}`"  :style="{backgroundImage:`url(/images/${recipe.image})`}" >

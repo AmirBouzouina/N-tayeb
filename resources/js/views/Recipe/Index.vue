@@ -1,31 +1,36 @@
+
 <template>
-	<div class="row container-fluid" style="width: 70vw;margin: auto;">
-		<div class="col-sm-6 col-md-4 col-lg-3 bloca mt-3 pr-1">
+	
+
+	<div class="row container-fluid" style="width: 100vw;margin: auto;">
+	
+
+<div class="row col-md-3" >
+    aaaaa
+    </div>
+
+	<div class="row col-md-9 bg" >
+           
+
+		<div :class="['recipe__item','col-md-2','col-sm-12','hvr-float']"  v-for="cat in cats" v-bind:key="cat.category"  >
+
+			<router-link :class="['recipe__inner', cat.category]" :to="`/recipes/${cat.category}`"  >
 			
-		</div>
-		<div class="col-12 col-md-8 col-lg-9  bloca mt-3">
 
+				<p class="recipe__name" :class="['recipe__subi_title', cat.category+'_titre']">{{cat.category}}</p>
 
-
-
-	<div class="row" >
-		<div class="recipe__item col-md-4 col-sm-12 hvr-float"  v-for="recipe in recipes" v-bind:key="recipe.id"  >
-    
-			<router-link class="recipe__inner" :to="`/recipes/${recipe.id}`"  :style="{backgroundImage:`url(/images/${recipe.image})`}" >
-			
-
-				<p class="recipe__name" :class="['recipe__subi_title', recipe.slug+'_titre']">{{recipe.name}}</p>
-			
 			</router-link>
+                                        <p class="recipe__name" >{{cat.count}} Recettes</p>
+
 		</div>
 	</div>
 
 		</div>
-		</div>
 
-	</div>
+	
 
 </template>
+
 
 
 
@@ -34,15 +39,15 @@
 	export default {
 		data() {
 			return {
-				recipes: []
+				cats: []
 
 			};
 
 		},
 		created() {
-			get('/api/recipes')
+			get('/api/cats')
 				.then((res) => {
-					this.recipes = res.data.recipes;
+					this.cats = res.data.cats;
 					} );
 
 

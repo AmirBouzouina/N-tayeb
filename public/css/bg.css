@@ -1,0 +1,24 @@
+.bg .soupes {
+  background-image: url(/images/soup.jpg?ab17a9116e5333505f68ad9d8c3e9a65);
+}
+
+.bg .viande {
+  background-image: url(/images/viande.webp?16e45fbc42ae9f24382fd51ab4fe415c);
+}
+
+.bg .dessert {
+  background-image: url(/images/dessert.jpg?5dda33a0830033f33af722d3d72bc3ab);
+}
+
+.bg .salades {
+  background-image: url(/images/salade.webp?d6be663bd5a5052b0838f64074824cad);
+}
+
+.bg .plats {
+  background-image: url(/images/plats.webp?55d5f7e4ee8764cc794d312af4ebf905);
+}
+
+.bg .entree {
+  background-image: url(/images/entree.jpeg?c4eb153e014defcb516edd338dc104cb);
+}
+
