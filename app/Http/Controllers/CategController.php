@@ -7,7 +7,7 @@ use App\Recipe;
 use App\User;
 use File;
 use DB;
-class CatsController extends Controller
+class CategController extends Controller
 {
     public function __construct()
     {
@@ -16,15 +16,15 @@ class CatsController extends Controller
     }
     public function index()
     {
-        $count =   DB::table('recipes')
-        ->select('category',DB::raw('count(category) AS count ')  )
+        $cats =   DB::table('recipes')
+        ->select('category','id')
         ->where('valida',1)
-        ->groupBy('category')
+        ->groupby ('category')
         ->get();
 
     	return response()
     		->json([
-    			'cats' => $count
+    			'Categories' => $cats
     		]);
     }
 

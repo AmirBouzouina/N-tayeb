@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 .bg .soupes {
   background-image: url(/images/soup.jpg?ab17a9116e5333505f68ad9d8c3e9a65);
 }
@@ -18,7 +20,7 @@
   background-image: url(/images/plats.webp?55d5f7e4ee8764cc794d312af4ebf905);
 }
 
-.bg .entree {
+.bg .entrée {
   background-image: url(/images/entree.jpeg?c4eb153e014defcb516edd338dc104cb);
 }
 

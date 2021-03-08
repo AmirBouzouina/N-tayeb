@@ -25,4 +25,6 @@ Route::post('/login','AuthController@login');
 Route::post('/logout','AuthController@logout');
 Route::resource('recipes','RecipeController');
 Route::resource('cats','CatsController');
+Route::resource('categories','CategController');
+
 

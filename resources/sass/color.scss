@@ -6,20 +6,22 @@ $soupe:rgb(225, 177, 44,0.7);
 $plats:rgb(255, 102, 0,0.7);
 
 
-.entrees {
+.entrée {
     color : $entree;
     fill:$entree;
 }
-.entrees_titre {
-    background-color : $entree;
-}
-.entrees li:before {
+
+.entréeli:before {
     background : $entree;
 }
-.entrees li:after {
+.entrée li:after {
     border-left-color:$entree;
 }
-.entrees dd {
+.entrée dd {
+    background: $entree;
+    color:white;
+}
+.entrée_titre {
     background: $entree;
     color:white;
 }

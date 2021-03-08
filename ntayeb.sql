@@ -7,7 +7,7 @@
 -- Server version: 8.0.20-0ubuntu0.20.04.1
 -- PHP Version: 7.4.6
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "ONLY_FULL_GROUP_BY";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";

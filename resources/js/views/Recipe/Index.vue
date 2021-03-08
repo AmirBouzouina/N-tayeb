@@ -2,11 +2,13 @@
 <template>
 	
 
-	<div class="row container-fluid" style="width: 100vw;margin: auto;">
+	<div class="row container-fluid home" style="width: 100vw;margin: auto;">
 	
 
-<div class="row col-md-3" >
-    aaaaa
+<div class="row col-md-3 px-0 " >
+    <div style="width:80%;height:100%;background-color:grey;">
+    a
+    </div>
     </div>
 
 	<div class="row col-md-9 bg" >
