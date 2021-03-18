@@ -1,4 +1,6 @@
 <template>
+    <div class="container px-0 mx-0">
+
 	<div class="recipe__show">
 		<div class="recipe__header">
 			<h3>Ajouter Ma recette</h3>
@@ -127,6 +129,8 @@
 				</div>
 			</div>
 		</div>
+	</div>
+
 	</div>
 </template>
 <script type="text/javascript">

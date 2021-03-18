@@ -1,4 +1,15 @@
 <template>
+    <div class="container px-0 mx-0">
+
+  
+	
+    <div class="flash flash__error" v-if="flash.error">
+			{{flash.error}}
+		</div>
+		<div class="flash flash__success" v-if="flash.success">
+			{{flash.success}}
+		</div>
+
     <div class="">
 	<div class="recipe__show wow bounceInUp" >
         <div class="row">
@@ -119,6 +130,8 @@
                             </div>
 
     </div>
+      </div>
+
 </template>
 
 <script type="text/javascript">

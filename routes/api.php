@@ -23,8 +23,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/register', 'AuthController@register');
 Route::post('/login','AuthController@login');
 Route::post('/logout','AuthController@logout');
-Route::resource('recipes','RecipeController');
+Route::resource('recettes','RecipeController');
 Route::resource('cats','CatsController');
-Route::resource('categories','CategController');
+Route::resource('category','CategController');
 
 

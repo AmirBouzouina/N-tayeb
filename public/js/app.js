@@ -1997,22 +1997,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -2266,66 +2250,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
-/* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
-/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      authState: _store_auth__WEBPACK_IMPORTED_MODULE_0__["default"].state,
-      isRemoving: false,
-      recipe: {
-        user: {},
-        ingredients: [],
-        directions: []
-      }
-    };
-  },
-  created: function created() {
-    var _this = this;
-
-    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["get"])("/api/recipes/".concat(this.$route.params.id)).then(function (res) {
-      _this.recipe = res.data.recipe;
-    });
-  },
-  methods: {
-    remove: function remove() {
-      var _this2 = this;
-
-      this.isRemoving = false;
-      Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["del"])("/api/recipes/".concat(this.$route.params.id)).then(function (res) {
-        if (res.data.deleted) {
-          _helpers_flash__WEBPACK_IMPORTED_MODULE_1__["default"].setSuccess('You have successfully deleted recipe!');
-
-          _this2.$router.push('/');
-        }
-      });
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Form.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Form.vue?vue&type=script&lang=js& ***!
@@ -2341,6 +2265,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
 /* harmony import */ var _helpers_form__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../helpers/form */ "./resources/js/helpers/form.js");
 /* harmony import */ var _components_ImageUpload_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/ImageUpload.vue */ "./resources/js/components/ImageUpload.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -2550,10 +2478,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2590,20 +2518,57 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      recipes: []
+      cats: []
     };
   },
   created: function created() {
     var _this = this;
 
-    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])('/api/recipes').then(function (res) {
-      _this.recipes = res.data.recipes;
+    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])('/api/cats').then(function (res) {
+      _this.cats = res.data.cats;
+    });
+    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])('/api/categories').then(function (res) {
+      _this.categories = res.data.categories;
     });
   }
+});
+$('.recipe__inner').click(function () {
+  var str = window.location.href;
+  str = str.substring('http://localhost/categorie/'.length) + '_titre';
+  $("#footer-basic").addClass(str);
+  $(".navbar").addClass(str);
 });
 
 /***/ }),
@@ -2620,6 +2585,21 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _store_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../store/auth */ "./resources/js/store/auth.js");
 /* harmony import */ var _helpers_flash__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../helpers/flash */ "./resources/js/helpers/flash.js");
 /* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2777,10 +2757,103 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["get"])("/api/recipes/".concat(this.$route.params.id)).then(function (res) {
+    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_2__["get"])("/api/recettes/".concat(this.$route.params.id)).then(function (res) {
       _this.recipe = res.data.recipe;
     });
   }
+});
+$(document).ready(function () {
+  var str = window.location.href;
+  str = str.substring('http://localhost/categorie/'.length) + '_titre';
+  $("#footer-basic").addClass(str);
+  $(".navbar").addClass(str);
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/cats/Cat.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/cats/Cat.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _helpers_api__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../helpers/api */ "./resources/js/helpers/api.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      category: {
+        recs: []
+      }
+    };
+  },
+  created: function created() {
+    var _this = this;
+
+    Object(_helpers_api__WEBPACK_IMPORTED_MODULE_0__["get"])("/api/category/".concat(this.$route.params.category)).then(function (res) {
+      _this.category = res.data.category;
+    });
+  }
+});
+$(document).ready(function () {
+  var str = window.location.href;
+  str = str.substring('http://localhost/categorie/'.length) + '_titre';
+  $("#footer-basic").addClass(str);
+  $(".navbar").addClass(str);
 });
 
 /***/ }),
@@ -2837,1191 +2910,6 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
-
-/***/ }),
-
-/***/ "./node_modules/es6-promise/dist/es6-promise.js":
-/*!******************************************************!*\
-  !*** ./node_modules/es6-promise/dist/es6-promise.js ***!
-  \******************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-/* WEBPACK VAR INJECTION */(function(process, global) {/*!
- * @overview es6-promise - a tiny implementation of Promises/A+.
- * @copyright Copyright (c) 2014 Yehuda Katz, Tom Dale, Stefan Penner and contributors (Conversion to ES6 API by Jake Archibald)
- * @license   Licensed under MIT license
- *            See https://raw.githubusercontent.com/stefanpenner/es6-promise/master/LICENSE
- * @version   v4.2.8+1e68dce6
- */
-
-(function (global, factory) {
-	 true ? module.exports = factory() :
-	undefined;
-}(this, (function () { 'use strict';
-
-function objectOrFunction(x) {
-  var type = typeof x;
-  return x !== null && (type === 'object' || type === 'function');
-}
-
-function isFunction(x) {
-  return typeof x === 'function';
-}
-
-
-
-var _isArray = void 0;
-if (Array.isArray) {
-  _isArray = Array.isArray;
-} else {
-  _isArray = function (x) {
-    return Object.prototype.toString.call(x) === '[object Array]';
-  };
-}
-
-var isArray = _isArray;
-
-var len = 0;
-var vertxNext = void 0;
-var customSchedulerFn = void 0;
-
-var asap = function asap(callback, arg) {
-  queue[len] = callback;
-  queue[len + 1] = arg;
-  len += 2;
-  if (len === 2) {
-    // If len is 2, that means that we need to schedule an async flush.
-    // If additional callbacks are queued before the queue is flushed, they
-    // will be processed by this flush that we are scheduling.
-    if (customSchedulerFn) {
-      customSchedulerFn(flush);
-    } else {
-      scheduleFlush();
-    }
-  }
-};
-
-function setScheduler(scheduleFn) {
-  customSchedulerFn = scheduleFn;
-}
-
-function setAsap(asapFn) {
-  asap = asapFn;
-}
-
-var browserWindow = typeof window !== 'undefined' ? window : undefined;
-var browserGlobal = browserWindow || {};
-var BrowserMutationObserver = browserGlobal.MutationObserver || browserGlobal.WebKitMutationObserver;
-var isNode = typeof self === 'undefined' && typeof process !== 'undefined' && {}.toString.call(process) === '[object process]';
-
-// test for web worker but not in IE10
-var isWorker = typeof Uint8ClampedArray !== 'undefined' && typeof importScripts !== 'undefined' && typeof MessageChannel !== 'undefined';
-
-// node
-function useNextTick() {
-  // node version 0.10.x displays a deprecation warning when nextTick is used recursively
-  // see https://github.com/cujojs/when/issues/410 for details
-  return function () {
-    return process.nextTick(flush);
-  };
-}
-
-// vertx
-function useVertxTimer() {
-  if (typeof vertxNext !== 'undefined') {
-    return function () {
-      vertxNext(flush);
-    };
-  }
-
-  return useSetTimeout();
-}
-
-function useMutationObserver() {
-  var iterations = 0;
-  var observer = new BrowserMutationObserver(flush);
-  var node = document.createTextNode('');
-  observer.observe(node, { characterData: true });
-
-  return function () {
-    node.data = iterations = ++iterations % 2;
-  };
-}
-
-// web worker
-function useMessageChannel() {
-  var channel = new MessageChannel();
-  channel.port1.onmessage = flush;
-  return function () {
-    return channel.port2.postMessage(0);
-  };
-}
-
-function useSetTimeout() {
-  // Store setTimeout reference so es6-promise will be unaffected by
-  // other code modifying setTimeout (like sinon.useFakeTimers())
-  var globalSetTimeout = setTimeout;
-  return function () {
-    return globalSetTimeout(flush, 1);
-  };
-}
-
-var queue = new Array(1000);
-function flush() {
-  for (var i = 0; i < len; i += 2) {
-    var callback = queue[i];
-    var arg = queue[i + 1];
-
-    callback(arg);
-
-    queue[i] = undefined;
-    queue[i + 1] = undefined;
-  }
-
-  len = 0;
-}
-
-function attemptVertx() {
-  try {
-    var vertx = Function('return this')().require('vertx');
-    vertxNext = vertx.runOnLoop || vertx.runOnContext;
-    return useVertxTimer();
-  } catch (e) {
-    return useSetTimeout();
-  }
-}
-
-var scheduleFlush = void 0;
-// Decide what async method to use to triggering processing of queued callbacks:
-if (isNode) {
-  scheduleFlush = useNextTick();
-} else if (BrowserMutationObserver) {
-  scheduleFlush = useMutationObserver();
-} else if (isWorker) {
-  scheduleFlush = useMessageChannel();
-} else if (browserWindow === undefined && "function" === 'function') {
-  scheduleFlush = attemptVertx();
-} else {
-  scheduleFlush = useSetTimeout();
-}
-
-function then(onFulfillment, onRejection) {
-  var parent = this;
-
-  var child = new this.constructor(noop);
-
-  if (child[PROMISE_ID] === undefined) {
-    makePromise(child);
-  }
-
-  var _state = parent._state;
-
-
-  if (_state) {
-    var callback = arguments[_state - 1];
-    asap(function () {
-      return invokeCallback(_state, child, callback, parent._result);
-    });
-  } else {
-    subscribe(parent, child, onFulfillment, onRejection);
-  }
-
-  return child;
-}
-
-/**
-  `Promise.resolve` returns a promise that will become resolved with the
-  passed `value`. It is shorthand for the following:
-
-  ```javascript
-  let promise = new Promise(function(resolve, reject){
-    resolve(1);
-  });
-
-  promise.then(function(value){
-    // value === 1
-  });
-  ```
-
-  Instead of writing the above, your code now simply becomes the following:
-
-  ```javascript
-  let promise = Promise.resolve(1);
-
-  promise.then(function(value){
-    // value === 1
-  });
-  ```
-
-  @method resolve
-  @static
-  @param {Any} value value that the returned promise will be resolved with
-  Useful for tooling.
-  @return {Promise} a promise that will become fulfilled with the given
-  `value`
-*/
-function resolve$1(object) {
-  /*jshint validthis:true */
-  var Constructor = this;
-
-  if (object && typeof object === 'object' && object.constructor === Constructor) {
-    return object;
-  }
-
-  var promise = new Constructor(noop);
-  resolve(promise, object);
-  return promise;
-}
-
-var PROMISE_ID = Math.random().toString(36).substring(2);
-
-function noop() {}
-
-var PENDING = void 0;
-var FULFILLED = 1;
-var REJECTED = 2;
-
-function selfFulfillment() {
-  return new TypeError("You cannot resolve a promise with itself");
-}
-
-function cannotReturnOwn() {
-  return new TypeError('A promises callback cannot return that same promise.');
-}
-
-function tryThen(then$$1, value, fulfillmentHandler, rejectionHandler) {
-  try {
-    then$$1.call(value, fulfillmentHandler, rejectionHandler);
-  } catch (e) {
-    return e;
-  }
-}
-
-function handleForeignThenable(promise, thenable, then$$1) {
-  asap(function (promise) {
-    var sealed = false;
-    var error = tryThen(then$$1, thenable, function (value) {
-      if (sealed) {
-        return;
-      }
-      sealed = true;
-      if (thenable !== value) {
-        resolve(promise, value);
-      } else {
-        fulfill(promise, value);
-      }
-    }, function (reason) {
-      if (sealed) {
-        return;
-      }
-      sealed = true;
-
-      reject(promise, reason);
-    }, 'Settle: ' + (promise._label || ' unknown promise'));
-
-    if (!sealed && error) {
-      sealed = true;
-      reject(promise, error);
-    }
-  }, promise);
-}
-
-function handleOwnThenable(promise, thenable) {
-  if (thenable._state === FULFILLED) {
-    fulfill(promise, thenable._result);
-  } else if (thenable._state === REJECTED) {
-    reject(promise, thenable._result);
-  } else {
-    subscribe(thenable, undefined, function (value) {
-      return resolve(promise, value);
-    }, function (reason) {
-      return reject(promise, reason);
-    });
-  }
-}
-
-function handleMaybeThenable(promise, maybeThenable, then$$1) {
-  if (maybeThenable.constructor === promise.constructor && then$$1 === then && maybeThenable.constructor.resolve === resolve$1) {
-    handleOwnThenable(promise, maybeThenable);
-  } else {
-    if (then$$1 === undefined) {
-      fulfill(promise, maybeThenable);
-    } else if (isFunction(then$$1)) {
-      handleForeignThenable(promise, maybeThenable, then$$1);
-    } else {
-      fulfill(promise, maybeThenable);
-    }
-  }
-}
-
-function resolve(promise, value) {
-  if (promise === value) {
-    reject(promise, selfFulfillment());
-  } else if (objectOrFunction(value)) {
-    var then$$1 = void 0;
-    try {
-      then$$1 = value.then;
-    } catch (error) {
-      reject(promise, error);
-      return;
-    }
-    handleMaybeThenable(promise, value, then$$1);
-  } else {
-    fulfill(promise, value);
-  }
-}
-
-function publishRejection(promise) {
-  if (promise._onerror) {
-    promise._onerror(promise._result);
-  }
-
-  publish(promise);
-}
-
-function fulfill(promise, value) {
-  if (promise._state !== PENDING) {
-    return;
-  }
-
-  promise._result = value;
-  promise._state = FULFILLED;
-
-  if (promise._subscribers.length !== 0) {
-    asap(publish, promise);
-  }
-}
-
-function reject(promise, reason) {
-  if (promise._state !== PENDING) {
-    return;
-  }
-  promise._state = REJECTED;
-  promise._result = reason;
-
-  asap(publishRejection, promise);
-}
-
-function subscribe(parent, child, onFulfillment, onRejection) {
-  var _subscribers = parent._subscribers;
-  var length = _subscribers.length;
-
-
-  parent._onerror = null;
-
-  _subscribers[length] = child;
-  _subscribers[length + FULFILLED] = onFulfillment;
-  _subscribers[length + REJECTED] = onRejection;
-
-  if (length === 0 && parent._state) {
-    asap(publish, parent);
-  }
-}
-
-function publish(promise) {
-  var subscribers = promise._subscribers;
-  var settled = promise._state;
-
-  if (subscribers.length === 0) {
-    return;
-  }
-
-  var child = void 0,
-      callback = void 0,
-      detail = promise._result;
-
-  for (var i = 0; i < subscribers.length; i += 3) {
-    child = subscribers[i];
-    callback = subscribers[i + settled];
-
-    if (child) {
-      invokeCallback(settled, child, callback, detail);
-    } else {
-      callback(detail);
-    }
-  }
-
-  promise._subscribers.length = 0;
-}
-
-function invokeCallback(settled, promise, callback, detail) {
-  var hasCallback = isFunction(callback),
-      value = void 0,
-      error = void 0,
-      succeeded = true;
-
-  if (hasCallback) {
-    try {
-      value = callback(detail);
-    } catch (e) {
-      succeeded = false;
-      error = e;
-    }
-
-    if (promise === value) {
-      reject(promise, cannotReturnOwn());
-      return;
-    }
-  } else {
-    value = detail;
-  }
-
-  if (promise._state !== PENDING) {
-    // noop
-  } else if (hasCallback && succeeded) {
-    resolve(promise, value);
-  } else if (succeeded === false) {
-    reject(promise, error);
-  } else if (settled === FULFILLED) {
-    fulfill(promise, value);
-  } else if (settled === REJECTED) {
-    reject(promise, value);
-  }
-}
-
-function initializePromise(promise, resolver) {
-  try {
-    resolver(function resolvePromise(value) {
-      resolve(promise, value);
-    }, function rejectPromise(reason) {
-      reject(promise, reason);
-    });
-  } catch (e) {
-    reject(promise, e);
-  }
-}
-
-var id = 0;
-function nextId() {
-  return id++;
-}
-
-function makePromise(promise) {
-  promise[PROMISE_ID] = id++;
-  promise._state = undefined;
-  promise._result = undefined;
-  promise._subscribers = [];
-}
-
-function validationError() {
-  return new Error('Array Methods must be provided an Array');
-}
-
-var Enumerator = function () {
-  function Enumerator(Constructor, input) {
-    this._instanceConstructor = Constructor;
-    this.promise = new Constructor(noop);
-
-    if (!this.promise[PROMISE_ID]) {
-      makePromise(this.promise);
-    }
-
-    if (isArray(input)) {
-      this.length = input.length;
-      this._remaining = input.length;
-
-      this._result = new Array(this.length);
-
-      if (this.length === 0) {
-        fulfill(this.promise, this._result);
-      } else {
-        this.length = this.length || 0;
-        this._enumerate(input);
-        if (this._remaining === 0) {
-          fulfill(this.promise, this._result);
-        }
-      }
-    } else {
-      reject(this.promise, validationError());
-    }
-  }
-
-  Enumerator.prototype._enumerate = function _enumerate(input) {
-    for (var i = 0; this._state === PENDING && i < input.length; i++) {
-      this._eachEntry(input[i], i);
-    }
-  };
-
-  Enumerator.prototype._eachEntry = function _eachEntry(entry, i) {
-    var c = this._instanceConstructor;
-    var resolve$$1 = c.resolve;
-
-
-    if (resolve$$1 === resolve$1) {
-      var _then = void 0;
-      var error = void 0;
-      var didError = false;
-      try {
-        _then = entry.then;
-      } catch (e) {
-        didError = true;
-        error = e;
-      }
-
-      if (_then === then && entry._state !== PENDING) {
-        this._settledAt(entry._state, i, entry._result);
-      } else if (typeof _then !== 'function') {
-        this._remaining--;
-        this._result[i] = entry;
-      } else if (c === Promise$1) {
-        var promise = new c(noop);
-        if (didError) {
-          reject(promise, error);
-        } else {
-          handleMaybeThenable(promise, entry, _then);
-        }
-        this._willSettleAt(promise, i);
-      } else {
-        this._willSettleAt(new c(function (resolve$$1) {
-          return resolve$$1(entry);
-        }), i);
-      }
-    } else {
-      this._willSettleAt(resolve$$1(entry), i);
-    }
-  };
-
-  Enumerator.prototype._settledAt = function _settledAt(state, i, value) {
-    var promise = this.promise;
-
-
-    if (promise._state === PENDING) {
-      this._remaining--;
-
-      if (state === REJECTED) {
-        reject(promise, value);
-      } else {
-        this._result[i] = value;
-      }
-    }
-
-    if (this._remaining === 0) {
-      fulfill(promise, this._result);
-    }
-  };
-
-  Enumerator.prototype._willSettleAt = function _willSettleAt(promise, i) {
-    var enumerator = this;
-
-    subscribe(promise, undefined, function (value) {
-      return enumerator._settledAt(FULFILLED, i, value);
-    }, function (reason) {
-      return enumerator._settledAt(REJECTED, i, reason);
-    });
-  };
-
-  return Enumerator;
-}();
-
-/**
-  `Promise.all` accepts an array of promises, and returns a new promise which
-  is fulfilled with an array of fulfillment values for the passed promises, or
-  rejected with the reason of the first passed promise to be rejected. It casts all
-  elements of the passed iterable to promises as it runs this algorithm.
-
-  Example:
-
-  ```javascript
-  let promise1 = resolve(1);
-  let promise2 = resolve(2);
-  let promise3 = resolve(3);
-  let promises = [ promise1, promise2, promise3 ];
-
-  Promise.all(promises).then(function(array){
-    // The array here would be [ 1, 2, 3 ];
-  });
-  ```
-
-  If any of the `promises` given to `all` are rejected, the first promise
-  that is rejected will be given as an argument to the returned promises's
-  rejection handler. For example:
-
-  Example:
-
-  ```javascript
-  let promise1 = resolve(1);
-  let promise2 = reject(new Error("2"));
-  let promise3 = reject(new Error("3"));
-  let promises = [ promise1, promise2, promise3 ];
-
-  Promise.all(promises).then(function(array){
-    // Code here never runs because there are rejected promises!
-  }, function(error) {
-    // error.message === "2"
-  });
-  ```
-
-  @method all
-  @static
-  @param {Array} entries array of promises
-  @param {String} label optional string for labeling the promise.
-  Useful for tooling.
-  @return {Promise} promise that is fulfilled when all `promises` have been
-  fulfilled, or rejected if any of them become rejected.
-  @static
-*/
-function all(entries) {
-  return new Enumerator(this, entries).promise;
-}
-
-/**
-  `Promise.race` returns a new promise which is settled in the same way as the
-  first passed promise to settle.
-
-  Example:
-
-  ```javascript
-  let promise1 = new Promise(function(resolve, reject){
-    setTimeout(function(){
-      resolve('promise 1');
-    }, 200);
-  });
-
-  let promise2 = new Promise(function(resolve, reject){
-    setTimeout(function(){
-      resolve('promise 2');
-    }, 100);
-  });
-
-  Promise.race([promise1, promise2]).then(function(result){
-    // result === 'promise 2' because it was resolved before promise1
-    // was resolved.
-  });
-  ```
-
-  `Promise.race` is deterministic in that only the state of the first
-  settled promise matters. For example, even if other promises given to the
-  `promises` array argument are resolved, but the first settled promise has
-  become rejected before the other promises became fulfilled, the returned
-  promise will become rejected:
-
-  ```javascript
-  let promise1 = new Promise(function(resolve, reject){
-    setTimeout(function(){
-      resolve('promise 1');
-    }, 200);
-  });
-
-  let promise2 = new Promise(function(resolve, reject){
-    setTimeout(function(){
-      reject(new Error('promise 2'));
-    }, 100);
-  });
-
-  Promise.race([promise1, promise2]).then(function(result){
-    // Code here never runs
-  }, function(reason){
-    // reason.message === 'promise 2' because promise 2 became rejected before
-    // promise 1 became fulfilled
-  });
-  ```
-
-  An example real-world use case is implementing timeouts:
-
-  ```javascript
-  Promise.race([ajax('foo.json'), timeout(5000)])
-  ```
-
-  @method race
-  @static
-  @param {Array} promises array of promises to observe
-  Useful for tooling.
-  @return {Promise} a promise which settles in the same way as the first passed
-  promise to settle.
-*/
-function race(entries) {
-  /*jshint validthis:true */
-  var Constructor = this;
-
-  if (!isArray(entries)) {
-    return new Constructor(function (_, reject) {
-      return reject(new TypeError('You must pass an array to race.'));
-    });
-  } else {
-    return new Constructor(function (resolve, reject) {
-      var length = entries.length;
-      for (var i = 0; i < length; i++) {
-        Constructor.resolve(entries[i]).then(resolve, reject);
-      }
-    });
-  }
-}
-
-/**
-  `Promise.reject` returns a promise rejected with the passed `reason`.
-  It is shorthand for the following:
-
-  ```javascript
-  let promise = new Promise(function(resolve, reject){
-    reject(new Error('WHOOPS'));
-  });
-
-  promise.then(function(value){
-    // Code here doesn't run because the promise is rejected!
-  }, function(reason){
-    // reason.message === 'WHOOPS'
-  });
-  ```
-
-  Instead of writing the above, your code now simply becomes the following:
-
-  ```javascript
-  let promise = Promise.reject(new Error('WHOOPS'));
-
-  promise.then(function(value){
-    // Code here doesn't run because the promise is rejected!
-  }, function(reason){
-    // reason.message === 'WHOOPS'
-  });
-  ```
-
-  @method reject
-  @static
-  @param {Any} reason value that the returned promise will be rejected with.
-  Useful for tooling.
-  @return {Promise} a promise rejected with the given `reason`.
-*/
-function reject$1(reason) {
-  /*jshint validthis:true */
-  var Constructor = this;
-  var promise = new Constructor(noop);
-  reject(promise, reason);
-  return promise;
-}
-
-function needsResolver() {
-  throw new TypeError('You must pass a resolver function as the first argument to the promise constructor');
-}
-
-function needsNew() {
-  throw new TypeError("Failed to construct 'Promise': Please use the 'new' operator, this object constructor cannot be called as a function.");
-}
-
-/**
-  Promise objects represent the eventual result of an asynchronous operation. The
-  primary way of interacting with a promise is through its `then` method, which
-  registers callbacks to receive either a promise's eventual value or the reason
-  why the promise cannot be fulfilled.
-
-  Terminology
-  -----------
-
-  - `promise` is an object or function with a `then` method whose behavior conforms to this specification.
-  - `thenable` is an object or function that defines a `then` method.
-  - `value` is any legal JavaScript value (including undefined, a thenable, or a promise).
-  - `exception` is a value that is thrown using the throw statement.
-  - `reason` is a value that indicates why a promise was rejected.
-  - `settled` the final resting state of a promise, fulfilled or rejected.
-
-  A promise can be in one of three states: pending, fulfilled, or rejected.
-
-  Promises that are fulfilled have a fulfillment value and are in the fulfilled
-  state.  Promises that are rejected have a rejection reason and are in the
-  rejected state.  A fulfillment value is never a thenable.
-
-  Promises can also be said to *resolve* a value.  If this value is also a
-  promise, then the original promise's settled state will match the value's
-  settled state.  So a promise that *resolves* a promise that rejects will
-  itself reject, and a promise that *resolves* a promise that fulfills will
-  itself fulfill.
-
-
-  Basic Usage:
-  ------------
-
-  ```js
-  let promise = new Promise(function(resolve, reject) {
-    // on success
-    resolve(value);
-
-    // on failure
-    reject(reason);
-  });
-
-  promise.then(function(value) {
-    // on fulfillment
-  }, function(reason) {
-    // on rejection
-  });
-  ```
-
-  Advanced Usage:
-  ---------------
-
-  Promises shine when abstracting away asynchronous interactions such as
-  `XMLHttpRequest`s.
-
-  ```js
-  function getJSON(url) {
-    return new Promise(function(resolve, reject){
-      let xhr = new XMLHttpRequest();
-
-      xhr.open('GET', url);
-      xhr.onreadystatechange = handler;
-      xhr.responseType = 'json';
-      xhr.setRequestHeader('Accept', 'application/json');
-      xhr.send();
-
-      function handler() {
-        if (this.readyState === this.DONE) {
-          if (this.status === 200) {
-            resolve(this.response);
-          } else {
-            reject(new Error('getJSON: `' + url + '` failed with status: [' + this.status + ']'));
-          }
-        }
-      };
-    });
-  }
-
-  getJSON('/posts.json').then(function(json) {
-    // on fulfillment
-  }, function(reason) {
-    // on rejection
-  });
-  ```
-
-  Unlike callbacks, promises are great composable primitives.
-
-  ```js
-  Promise.all([
-    getJSON('/posts'),
-    getJSON('/comments')
-  ]).then(function(values){
-    values[0] // => postsJSON
-    values[1] // => commentsJSON
-
-    return values;
-  });
-  ```
-
-  @class Promise
-  @param {Function} resolver
-  Useful for tooling.
-  @constructor
-*/
-
-var Promise$1 = function () {
-  function Promise(resolver) {
-    this[PROMISE_ID] = nextId();
-    this._result = this._state = undefined;
-    this._subscribers = [];
-
-    if (noop !== resolver) {
-      typeof resolver !== 'function' && needsResolver();
-      this instanceof Promise ? initializePromise(this, resolver) : needsNew();
-    }
-  }
-
-  /**
-  The primary way of interacting with a promise is through its `then` method,
-  which registers callbacks to receive either a promise's eventual value or the
-  reason why the promise cannot be fulfilled.
-   ```js
-  findUser().then(function(user){
-    // user is available
-  }, function(reason){
-    // user is unavailable, and you are given the reason why
-  });
-  ```
-   Chaining
-  --------
-   The return value of `then` is itself a promise.  This second, 'downstream'
-  promise is resolved with the return value of the first promise's fulfillment
-  or rejection handler, or rejected if the handler throws an exception.
-   ```js
-  findUser().then(function (user) {
-    return user.name;
-  }, function (reason) {
-    return 'default name';
-  }).then(function (userName) {
-    // If `findUser` fulfilled, `userName` will be the user's name, otherwise it
-    // will be `'default name'`
-  });
-   findUser().then(function (user) {
-    throw new Error('Found user, but still unhappy');
-  }, function (reason) {
-    throw new Error('`findUser` rejected and we're unhappy');
-  }).then(function (value) {
-    // never reached
-  }, function (reason) {
-    // if `findUser` fulfilled, `reason` will be 'Found user, but still unhappy'.
-    // If `findUser` rejected, `reason` will be '`findUser` rejected and we're unhappy'.
-  });
-  ```
-  If the downstream promise does not specify a rejection handler, rejection reasons will be propagated further downstream.
-   ```js
-  findUser().then(function (user) {
-    throw new PedagogicalException('Upstream error');
-  }).then(function (value) {
-    // never reached
-  }).then(function (value) {
-    // never reached
-  }, function (reason) {
-    // The `PedgagocialException` is propagated all the way down to here
-  });
-  ```
-   Assimilation
-  ------------
-   Sometimes the value you want to propagate to a downstream promise can only be
-  retrieved asynchronously. This can be achieved by returning a promise in the
-  fulfillment or rejection handler. The downstream promise will then be pending
-  until the returned promise is settled. This is called *assimilation*.
-   ```js
-  findUser().then(function (user) {
-    return findCommentsByAuthor(user);
-  }).then(function (comments) {
-    // The user's comments are now available
-  });
-  ```
-   If the assimliated promise rejects, then the downstream promise will also reject.
-   ```js
-  findUser().then(function (user) {
-    return findCommentsByAuthor(user);
-  }).then(function (comments) {
-    // If `findCommentsByAuthor` fulfills, we'll have the value here
-  }, function (reason) {
-    // If `findCommentsByAuthor` rejects, we'll have the reason here
-  });
-  ```
-   Simple Example
-  --------------
-   Synchronous Example
-   ```javascript
-  let result;
-   try {
-    result = findResult();
-    // success
-  } catch(reason) {
-    // failure
-  }
-  ```
-   Errback Example
-   ```js
-  findResult(function(result, err){
-    if (err) {
-      // failure
-    } else {
-      // success
-    }
-  });
-  ```
-   Promise Example;
-   ```javascript
-  findResult().then(function(result){
-    // success
-  }, function(reason){
-    // failure
-  });
-  ```
-   Advanced Example
-  --------------
-   Synchronous Example
-   ```javascript
-  let author, books;
-   try {
-    author = findAuthor();
-    books  = findBooksByAuthor(author);
-    // success
-  } catch(reason) {
-    // failure
-  }
-  ```
-   Errback Example
-   ```js
-   function foundBooks(books) {
-   }
-   function failure(reason) {
-   }
-   findAuthor(function(author, err){
-    if (err) {
-      failure(err);
-      // failure
-    } else {
-      try {
-        findBoooksByAuthor(author, function(books, err) {
-          if (err) {
-            failure(err);
-          } else {
-            try {
-              foundBooks(books);
-            } catch(reason) {
-              failure(reason);
-            }
-          }
-        });
-      } catch(error) {
-        failure(err);
-      }
-      // success
-    }
-  });
-  ```
-   Promise Example;
-   ```javascript
-  findAuthor().
-    then(findBooksByAuthor).
-    then(function(books){
-      // found books
-  }).catch(function(reason){
-    // something went wrong
-  });
-  ```
-   @method then
-  @param {Function} onFulfilled
-  @param {Function} onRejected
-  Useful for tooling.
-  @return {Promise}
-  */
-
-  /**
-  `catch` is simply sugar for `then(undefined, onRejection)` which makes it the same
-  as the catch block of a try/catch statement.
-  ```js
-  function findAuthor(){
-  throw new Error('couldn't find that author');
-  }
-  // synchronous
-  try {
-  findAuthor();
-  } catch(reason) {
-  // something went wrong
-  }
-  // async with promises
-  findAuthor().catch(function(reason){
-  // something went wrong
-  });
-  ```
-  @method catch
-  @param {Function} onRejection
-  Useful for tooling.
-  @return {Promise}
-  */
-
-
-  Promise.prototype.catch = function _catch(onRejection) {
-    return this.then(null, onRejection);
-  };
-
-  /**
-    `finally` will be invoked regardless of the promise's fate just as native
-    try/catch/finally behaves
-  
-    Synchronous example:
-  
-    ```js
-    findAuthor() {
-      if (Math.random() > 0.5) {
-        throw new Error();
-      }
-      return new Author();
-    }
-  
-    try {
-      return findAuthor(); // succeed or fail
-    } catch(error) {
-      return findOtherAuther();
-    } finally {
-      // always runs
-      // doesn't affect the return value
-    }
-    ```
-  
-    Asynchronous example:
-  
-    ```js
-    findAuthor().catch(function(reason){
-      return findOtherAuther();
-    }).finally(function(){
-      // author was either found, or not
-    });
-    ```
-  
-    @method finally
-    @param {Function} callback
-    @return {Promise}
-  */
-
-
-  Promise.prototype.finally = function _finally(callback) {
-    var promise = this;
-    var constructor = promise.constructor;
-
-    if (isFunction(callback)) {
-      return promise.then(function (value) {
-        return constructor.resolve(callback()).then(function () {
-          return value;
-        });
-      }, function (reason) {
-        return constructor.resolve(callback()).then(function () {
-          throw reason;
-        });
-      });
-    }
-
-    return promise.then(callback, callback);
-  };
-
-  return Promise;
-}();
-
-Promise$1.prototype.then = then;
-Promise$1.all = all;
-Promise$1.race = race;
-Promise$1.resolve = resolve$1;
-Promise$1.reject = reject$1;
-Promise$1._setScheduler = setScheduler;
-Promise$1._setAsap = setAsap;
-Promise$1._asap = asap;
-
-/*global self*/
-function polyfill() {
-  var local = void 0;
-
-  if (typeof global !== 'undefined') {
-    local = global;
-  } else if (typeof self !== 'undefined') {
-    local = self;
-  } else {
-    try {
-      local = Function('return this')();
-    } catch (e) {
-      throw new Error('polyfill failed because global object is unavailable in this environment');
-    }
-  }
-
-  var P = local.Promise;
-
-  if (P) {
-    var promiseToString = null;
-    try {
-      promiseToString = Object.prototype.toString.call(P.resolve());
-    } catch (e) {
-      // silently ignored
-    }
-
-    if (promiseToString === '[object Promise]' && !P.cast) {
-      return;
-    }
-  }
-
-  local.Promise = Promise$1;
-}
-
-// Strange compat..
-Promise$1.polyfill = polyfill;
-Promise$1.Promise = Promise$1;
-
-return Promise$1;
-
-})));
-
-
-
-//# sourceMappingURL=es6-promise.map
-
-/* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../process/browser.js */ "./node_modules/process/browser.js"), __webpack_require__(/*! ./../../webpack/buildin/global.js */ "./node_modules/webpack/buildin/global.js")))
 
 /***/ }),
 
@@ -4510,7 +3398,6 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container px-0 mx-0" },
     [
       _c("div", { staticClass: "navbar" }, [
         _c(
@@ -4595,74 +3482,12 @@ var render = function() {
         )
       ]),
       _vm._v(" "),
-      _vm.flash.error
-        ? _c("div", { staticClass: "flash flash__error" }, [
-            _vm._v("\n\t\t\t" + _vm._s(_vm.flash.error) + "\n\t\t")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _vm.flash.success
-        ? _c("div", { staticClass: "flash flash__success" }, [
-            _vm._v("\n\t\t\t" + _vm._s(_vm.flash.success) + "\n\t\t")
-          ])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("router-view"),
-      _vm._v(" "),
-      _vm._m(0)
+      _c("router-view")
     ],
     1
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "footer-basic" }, [
-      _c("footer", [
-        _c("div", { staticClass: "social" }, [
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon ion-social-instagram" })
-          ]),
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon ion-social-snapchat" })
-          ]),
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon ion-social-twitter" })
-          ]),
-          _c("a", { attrs: { href: "#" } }, [
-            _c("i", { staticClass: "icon ion-social-facebook" })
-          ])
-        ]),
-        _vm._v(" "),
-        _c("ul", { staticClass: "list-inline" }, [
-          _c("li", { staticClass: "list-inline-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-inline-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Services")])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-inline-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("About")])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-inline-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Terms")])
-          ]),
-          _vm._v(" "),
-          _c("li", { staticClass: "list-inline-item" }, [
-            _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy Policy")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("p", { staticClass: "copyright" }, [_vm._v("Company Name © 2018")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -5066,30 +3891,6 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8& ***!
-  \********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("p", [_vm._v(" aaaaaa ")])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-
-
-/***/ }),
-
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Form.vue?vue&type=template&id=00bc0c14&":
 /*!*********************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Form.vue?vue&type=template&id=00bc0c14& ***!
@@ -5105,470 +3906,550 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "recipe__show" }, [
-    _c("div", { staticClass: "recipe__header" }, [
-      _c("h3", [_vm._v("Ajouter Ma recette")]),
-      _vm._v(" "),
-      _c("div", [
-        _c(
-          "button",
-          {
-            staticClass: "btn btn__primary",
-            attrs: { disabled: _vm.isProcessing },
-            on: { click: _vm.save }
-          },
-          [_vm._v("Enregistrer")]
-        ),
+  return _c("div", { staticClass: "container px-0 mx-0" }, [
+    _c("div", { staticClass: "recipe__show" }, [
+      _c("div", { staticClass: "recipe__header" }, [
+        _c("h3", [_vm._v("Ajouter Ma recette")]),
         _vm._v(" "),
-        _c(
-          "button",
-          {
-            staticClass: "btn",
-            attrs: { disabled: _vm.isProcessing },
-            on: {
-              click: function($event) {
-                return _vm.$router.back()
+        _c("div", [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn__primary",
+              attrs: { disabled: _vm.isProcessing },
+              on: { click: _vm.save }
+            },
+            [_vm._v("Enregistrer")]
+          ),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn",
+              attrs: { disabled: _vm.isProcessing },
+              on: {
+                click: function($event) {
+                  return _vm.$router.back()
+                }
               }
-            }
-          },
-          [_vm._v("Annuler")]
-        )
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "recipe__row" }, [
-      _c("div", { staticClass: "recipe__image" }, [
-        _c(
-          "div",
-          { staticClass: "recipe__box" },
-          [
-            _c("image-upload", {
-              model: {
-                value: _vm.form.image,
-                callback: function($$v) {
-                  _vm.$set(_vm.form, "image", $$v)
-                },
-                expression: "form.image"
-              }
-            }),
-            _vm._v(" "),
-            _vm.error.image
-              ? _c("small", { staticClass: "error__control" }, [
-                  _vm._v(_vm._s(_vm.error.image[0]))
-                ])
-              : _vm._e()
-          ],
-          1
-        )
+            },
+            [_vm._v("Annuler")]
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "recipe__details" }, [
-        _c("div", { staticClass: "recipe__details_inner" }, [
-          _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Nom de la recette")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.name,
-                  expression: "form.name"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text", placeholder: "Nom de la recette" },
-              domProps: { value: _vm.form.name },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "name", $event.target.value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _vm.error.name
-              ? _c("small", { staticClass: "error__control" }, [
-                  _vm._v(_vm._s(_vm.error.name[0]))
-                ])
-              : _vm._e()
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Catégorie de la recette")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.category,
-                    expression: "form.category"
-                  }
-                ],
-                staticClass: "form__control",
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "category",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { disabled: "", value: "" } }, [
-                  _vm._v("Choisissez une catégorie")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Boissons")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Dessert")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Entrées")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Salades‎")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Plats")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Viande")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Poissons‎‎")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Soupes‎")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Pâtes & Riz")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Pains")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("‎Sauces")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Cuisine :")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.cuisine,
-                    expression: "form.cuisine"
-                  }
-                ],
-                staticClass: "form__control",
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "cuisine",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { disabled: "", value: "" } }, [
-                  _vm._v("Choisissez une cuisine")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Algérienne")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Algéroise")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Marocaine")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Tunisienne")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Italienne")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Indienne")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Française")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Grecque")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Vegétariene")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Syrienne")])
-              ]
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group" }, [
-            _c("label", [_vm._v("Description")]),
-            _vm._v(" "),
-            _c("textarea", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.description,
-                  expression: "form.description"
-                }
-              ],
-              staticClass: "form__control form__description",
-              domProps: { value: _vm.form.description },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "description", $event.target.value)
-                }
-              }
-            })
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "recipe__details2" }, [
-      _c("div", { staticClass: "recipe__row2" }, [
-        _c("div", { staticClass: "recipe__details_inner" }, [
-          _c("div", { staticClass: "form__group2" }, [
-            _c("label", [_vm._v("Temps de préparation")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.prep,
-                  expression: "form.prep"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text", placeholder: "En minutes" },
-              domProps: { value: _vm.form.prep },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "prep", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group2" }, [
-            _c("label", [_vm._v("Temps de cuisson")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.cook,
-                  expression: "form.cook"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text", placeholder: "En minutes" },
-              domProps: { value: _vm.form.cook },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "cook", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group2" }, [
-            _c("label", [_vm._v("Pour : nombre personnes")]),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.form.yield,
-                  expression: "form.yield"
-                }
-              ],
-              staticClass: "form__control",
-              attrs: { type: "text", placeholder: "Nombre de portions" },
-              domProps: { value: _vm.form.yield },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
-                  }
-                  _vm.$set(_vm.form, "yield", $event.target.value)
-                }
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "form__group2" }, [
-            _c("label", [_vm._v("Difficulté")]),
-            _vm._v(" "),
-            _c(
-              "select",
-              {
-                directives: [
-                  {
-                    name: "model",
-                    rawName: "v-model",
-                    value: _vm.form.difficulty,
-                    expression: "form.difficulty"
-                  }
-                ],
-                staticClass: "form__control",
-                on: {
-                  change: function($event) {
-                    var $$selectedVal = Array.prototype.filter
-                      .call($event.target.options, function(o) {
-                        return o.selected
-                      })
-                      .map(function(o) {
-                        var val = "_value" in o ? o._value : o.value
-                        return val
-                      })
-                    _vm.$set(
-                      _vm.form,
-                      "difficulty",
-                      $event.target.multiple ? $$selectedVal : $$selectedVal[0]
-                    )
-                  }
-                }
-              },
-              [
-                _c("option", { attrs: { disabled: "", value: "" } }, [
-                  _vm._v("Choisissez")
-                ]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Facile")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Moyenne")]),
-                _vm._v(" "),
-                _c("option", [_vm._v("Difficile")])
-              ]
-            )
-          ])
-        ])
-      ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "recipe__row" }, [
-      _c("div", { staticClass: "recipe__ingredients" }, [
-        _c("div", { staticClass: "recipe__box" }, [
+      _c("div", { staticClass: "recipe__row" }, [
+        _c("div", { staticClass: "recipe__image" }, [
           _c(
             "div",
-            { staticClass: "row" },
+            { staticClass: "recipe__box" },
+            [
+              _c("image-upload", {
+                model: {
+                  value: _vm.form.image,
+                  callback: function($$v) {
+                    _vm.$set(_vm.form, "image", $$v)
+                  },
+                  expression: "form.image"
+                }
+              }),
+              _vm._v(" "),
+              _vm.error.image
+                ? _c("small", { staticClass: "error__control" }, [
+                    _vm._v(_vm._s(_vm.error.image[0]))
+                  ])
+                : _vm._e()
+            ],
+            1
+          )
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "recipe__details" }, [
+          _c("div", { staticClass: "recipe__details_inner" }, [
+            _c("div", { staticClass: "form__group" }, [
+              _c("label", [_vm._v("Nom de la recette")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.name,
+                    expression: "form.name"
+                  }
+                ],
+                staticClass: "form__control",
+                attrs: { type: "text", placeholder: "Nom de la recette" },
+                domProps: { value: _vm.form.name },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "name", $event.target.value)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _vm.error.name
+                ? _c("small", { staticClass: "error__control" }, [
+                    _vm._v(_vm._s(_vm.error.name[0]))
+                  ])
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group" }, [
+              _c("label", [_vm._v("Catégorie de la recette")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.category,
+                      expression: "form.category"
+                    }
+                  ],
+                  staticClass: "form__control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "category",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Choisissez une catégorie")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Boissons")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Dessert")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Entrées")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Salades‎")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Plats")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Viande")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Poissons‎‎")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Soupes‎")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Pâtes & Riz")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Pains")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("‎Sauces")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group" }, [
+              _c("label", [_vm._v("Cuisine :")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.cuisine,
+                      expression: "form.cuisine"
+                    }
+                  ],
+                  staticClass: "form__control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "cuisine",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Choisissez une cuisine")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Algérienne")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Algéroise")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Marocaine")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Tunisienne")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Italienne")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Indienne")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Française")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Grecque")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Vegétariene")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Syrienne")])
+                ]
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group" }, [
+              _c("label", [_vm._v("Description")]),
+              _vm._v(" "),
+              _c("textarea", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.description,
+                    expression: "form.description"
+                  }
+                ],
+                staticClass: "form__control form__description",
+                domProps: { value: _vm.form.description },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "description", $event.target.value)
+                  }
+                }
+              })
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "recipe__details2" }, [
+        _c("div", { staticClass: "recipe__row2" }, [
+          _c("div", { staticClass: "recipe__details_inner" }, [
+            _c("div", { staticClass: "form__group2" }, [
+              _c("label", [_vm._v("Temps de préparation")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.prep,
+                    expression: "form.prep"
+                  }
+                ],
+                staticClass: "form__control",
+                attrs: { type: "text", placeholder: "En minutes" },
+                domProps: { value: _vm.form.prep },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "prep", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group2" }, [
+              _c("label", [_vm._v("Temps de cuisson")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.cook,
+                    expression: "form.cook"
+                  }
+                ],
+                staticClass: "form__control",
+                attrs: { type: "text", placeholder: "En minutes" },
+                domProps: { value: _vm.form.cook },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "cook", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group2" }, [
+              _c("label", [_vm._v("Pour : nombre personnes")]),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.form.yield,
+                    expression: "form.yield"
+                  }
+                ],
+                staticClass: "form__control",
+                attrs: { type: "text", placeholder: "Nombre de portions" },
+                domProps: { value: _vm.form.yield },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.form, "yield", $event.target.value)
+                  }
+                }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form__group2" }, [
+              _c("label", [_vm._v("Difficulté")]),
+              _vm._v(" "),
+              _c(
+                "select",
+                {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.form.difficulty,
+                      expression: "form.difficulty"
+                    }
+                  ],
+                  staticClass: "form__control",
+                  on: {
+                    change: function($event) {
+                      var $$selectedVal = Array.prototype.filter
+                        .call($event.target.options, function(o) {
+                          return o.selected
+                        })
+                        .map(function(o) {
+                          var val = "_value" in o ? o._value : o.value
+                          return val
+                        })
+                      _vm.$set(
+                        _vm.form,
+                        "difficulty",
+                        $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      )
+                    }
+                  }
+                },
+                [
+                  _c("option", { attrs: { disabled: "", value: "" } }, [
+                    _vm._v("Choisissez")
+                  ]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Facile")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Moyenne")]),
+                  _vm._v(" "),
+                  _c("option", [_vm._v("Difficile")])
+                ]
+              )
+            ])
+          ])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "recipe__row" }, [
+        _c("div", { staticClass: "recipe__ingredients" }, [
+          _c("div", { staticClass: "recipe__box" }, [
+            _c(
+              "div",
+              { staticClass: "row" },
+              [
+                _c("h3", { staticClass: "recipe__sub_title" }, [
+                  _vm._v("Ingrédients")
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.form.ingredients, function(ingredient, index) {
+                  return _c("div", { staticClass: "recipe__form" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: ingredient.name,
+                          expression: "ingredient.name"
+                        }
+                      ],
+                      staticClass: "form__control form__control2",
+                      class: [
+                        _vm.error["ingredients." + index + ".name"]
+                          ? "error__bg"
+                          : ""
+                      ],
+                      attrs: { type: "text", placeholder: "Ingrédient" },
+                      domProps: { value: ingredient.name },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(ingredient, "name", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: ingredient.qty,
+                          expression: "ingredient.qty"
+                        }
+                      ],
+                      staticClass: "form__control form__qty form__qty2",
+                      class: [
+                        _vm.error["ingredients." + index + ".qty"]
+                          ? "error__bg"
+                          : ""
+                      ],
+                      attrs: { type: "text", placeholder: "Quantité" },
+                      domProps: { value: ingredient.qty },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(ingredient, "qty", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: ingredient.unit,
+                          expression: "ingredient.unit"
+                        }
+                      ],
+                      staticClass: "form__control form__qty form__qty2",
+                      class: [
+                        _vm.error["ingredients." + index + ".unit"]
+                          ? "error__bg"
+                          : ""
+                      ],
+                      attrs: { type: "text", placeholder: "Unité" },
+                      domProps: { value: ingredient.unit },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(ingredient, "unit", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn__danger",
+                        on: {
+                          click: function($event) {
+                            return _vm.remove("ingredients", index)
+                          }
+                        }
+                      },
+                      [_vm._v("×")]
+                    ),
+                    _vm._v(" "),
+                    _c("br")
+                  ])
+                }),
+                _vm._v(" "),
+                _c("small", { staticClass: "form__control2" }, [
+                  _vm._v("Ex :Carottes,Beurre,Viande-hachée ")
+                ]),
+                _vm._v(" "),
+                _c("small", { staticClass: "form__qty2" }, [
+                  _vm._v("Ex :Gr,Kg,CàC ")
+                ])
+              ],
+              2
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              { staticClass: "btn", on: { click: _vm.addIngredient } },
+              [_vm._v("Ajouter ingrédient")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "recipe__directions" }, [
+          _c(
+            "div",
+            { staticClass: "recipe__directions_inner" },
             [
               _c("h3", { staticClass: "recipe__sub_title" }, [
-                _vm._v("Ingrédients")
+                _vm._v("Étapes")
               ]),
               _vm._v(" "),
-              _vm._l(_vm.form.ingredients, function(ingredient, index) {
+              _vm._l(_vm.form.directions, function(direction, index) {
                 return _c("div", { staticClass: "recipe__form" }, [
-                  _c("input", {
+                  _c("textarea", {
                     directives: [
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: ingredient.name,
-                        expression: "ingredient.name"
+                        value: direction.description,
+                        expression: "direction.description"
                       }
                     ],
-                    staticClass: "form__control form__control2",
+                    staticClass: "form__control form__margin",
                     class: [
-                      _vm.error["ingredients." + index + ".name"]
+                      _vm.error["directions." + index + ".description"]
                         ? "error__bg"
                         : ""
                     ],
-                    attrs: { type: "text", placeholder: "Ingrédient" },
-                    domProps: { value: ingredient.name },
+                    domProps: { value: direction.description },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(ingredient, "name", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: ingredient.qty,
-                        expression: "ingredient.qty"
-                      }
-                    ],
-                    staticClass: "form__control form__qty form__qty2",
-                    class: [
-                      _vm.error["ingredients." + index + ".qty"]
-                        ? "error__bg"
-                        : ""
-                    ],
-                    attrs: { type: "text", placeholder: "Quantité" },
-                    domProps: { value: ingredient.qty },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(ingredient, "qty", $event.target.value)
-                      }
-                    }
-                  }),
-                  _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: ingredient.unit,
-                        expression: "ingredient.unit"
-                      }
-                    ],
-                    staticClass: "form__control form__qty form__qty2",
-                    class: [
-                      _vm.error["ingredients." + index + ".unit"]
-                        ? "error__bg"
-                        : ""
-                    ],
-                    attrs: { type: "text", placeholder: "Unité" },
-                    domProps: { value: ingredient.unit },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
-                        }
-                        _vm.$set(ingredient, "unit", $event.target.value)
+                        _vm.$set(direction, "description", $event.target.value)
                       }
                     }
                   }),
@@ -5579,94 +4460,24 @@ var render = function() {
                       staticClass: "btn btn__danger",
                       on: {
                         click: function($event) {
-                          return _vm.remove("ingredients", index)
+                          return _vm.remove("directions", index)
                         }
                       }
                     },
                     [_vm._v("×")]
-                  ),
-                  _vm._v(" "),
-                  _c("br")
+                  )
                 ])
               }),
               _vm._v(" "),
-              _c("small", { staticClass: "form__control2" }, [
-                _vm._v("Ex :Carottes,Beurre,Viande-hachée ")
-              ]),
-              _vm._v(" "),
-              _c("small", { staticClass: "form__qty2" }, [
-                _vm._v("Ex :Gr,Kg,CàC ")
-              ])
+              _c(
+                "button",
+                { staticClass: "btn", on: { click: _vm.addDirection } },
+                [_vm._v("Ajouter étape")]
+              )
             ],
             2
-          ),
-          _vm._v(" "),
-          _c(
-            "button",
-            { staticClass: "btn", on: { click: _vm.addIngredient } },
-            [_vm._v("Ajouter ingrédient")]
           )
         ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "recipe__directions" }, [
-        _c(
-          "div",
-          { staticClass: "recipe__directions_inner" },
-          [
-            _c("h3", { staticClass: "recipe__sub_title" }, [_vm._v("Étapes")]),
-            _vm._v(" "),
-            _vm._l(_vm.form.directions, function(direction, index) {
-              return _c("div", { staticClass: "recipe__form" }, [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: direction.description,
-                      expression: "direction.description"
-                    }
-                  ],
-                  staticClass: "form__control form__margin",
-                  class: [
-                    _vm.error["directions." + index + ".description"]
-                      ? "error__bg"
-                      : ""
-                  ],
-                  domProps: { value: direction.description },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(direction, "description", $event.target.value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn__danger",
-                    on: {
-                      click: function($event) {
-                        return _vm.remove("directions", index)
-                      }
-                    }
-                  },
-                  [_vm._v("×")]
-                )
-              ])
-            }),
-            _vm._v(" "),
-            _c(
-              "button",
-              { staticClass: "btn", on: { click: _vm.addDirection } },
-              [_vm._v("Ajouter étape")]
-            )
-          ],
-          2
-        )
       ])
     ])
   ])
@@ -5678,10 +4489,10 @@ render._withStripped = true
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252&":
-/*!***********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252& ***!
-  \***********************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910&":
+/*!**********************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910& ***!
+  \**********************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -5693,54 +4504,125 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "row container-fluid",
-      staticStyle: { width: "70vw", margin: "auto" }
-    },
-    [
+  return _c("div", [
+    _c("div", { staticClass: "container px-0 mx-0" }, [
       _c(
         "div",
-        { staticClass: "row" },
-        _vm._l(_vm.recipes, function(recipe) {
-          return _c(
+        {
+          staticClass: "row container-fluid home",
+          staticStyle: { width: "100vw", margin: "auto" }
+        },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
             "div",
-            {
-              key: recipe.id,
-              staticClass: "recipe__item col-md-5 col-sm-12 col-lg-4 hvr-float"
-            },
-            [
-              _c(
-                "router-link",
+            { staticClass: "row col-md-9 bg" },
+            _vm._l(_vm.cats, function(cat) {
+              return _c(
+                "div",
                 {
-                  staticClass: "recipe__inner",
-                  style: {
-                    backgroundImage: "url(/images/" + recipe.image + ")"
-                  },
-                  attrs: { to: "/recipes/" + recipe.id }
+                  key: cat.category,
+                  class: ["recipe__item", "col-md-2", "col-sm-12", "hvr-float"]
                 },
                 [
                   _c(
-                    "p",
+                    "router-link",
                     {
-                      staticClass: "recipe__name",
-                      class: ["recipe__subi_title", recipe.slug + "_titre"]
+                      class: ["recipe__inner", cat.category],
+                      attrs: { to: "/categorie/" + cat.category }
                     },
-                    [_vm._v(_vm._s(recipe.name))]
-                  )
-                ]
+                    [
+                      _c(
+                        "p",
+                        {
+                          staticClass: "recipe__name",
+                          class: ["recipe__subi_title", cat.category + "_titre"]
+                        },
+                        [_vm._v(_vm._s(cat.category))]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("p", { staticClass: "recipe__name" }, [
+                    _vm._v(_vm._s(cat.count) + " Recettes")
+                  ])
+                ],
+                1
               )
-            ],
-            1
+            }),
+            0
           )
-        }),
-        0
+        ]
       )
-    ]
-  )
+    ]),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row col-md-3 px-0 " }, [
+      _c("div", {
+        staticStyle: {
+          width: "80%",
+          height: "100%",
+          "background-color": "grey"
+        }
+      })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "footer-basic" }, [
+      _c("footer", [
+        _c("div", { staticClass: "social" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-instagram" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-snapchat" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-twitter" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-facebook" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-inline" }, [
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Services")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("About")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Terms")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy Policy")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "copyright" }, [_vm._v("Company Name © 2018")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -5762,329 +4644,536 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", {}, [
-    _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-12 " }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
-              _vm._v("  " + _vm._s(_vm.recipe.name))
-            ])
-          ]),
-          _vm._v(" "),
-          _c("br"),
-          _vm._v(" "),
-          _c("br")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-12" }, [
-          _c("div", { staticClass: "row haut" }, [
-            _c("div", { class: ["recipe__featim", "col-6", _vm.recipe.slug] }, [
-              _vm.recipe.image
-                ? _c("img", { attrs: { src: "/images/" + _vm.recipe.image } })
-                : _vm._e()
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-6 recipe__infos" }, [
-              _c("div", { staticClass: "recipe-info" }, [
-                _c("div", { staticClass: "container-fluid  row mx-0" }, [
-                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                    _c("p", [
-                      _c(
-                        "svg",
-                        {
-                          class: ["icon", _vm.recipe.slug],
-                          attrs: { viewBox: "0 0 512 512" }
-                        },
-                        [
-                          _c(
-                            "g",
-                            {
-                              attrs: { id: "Out_line", "data-name": "Out line" }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("g", [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
-                              }
-                            })
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
-                        _vm._v("      Préparation : ")
-                      ]),
-                      _c("br"),
-                      _c(
-                        "time",
-                        {
-                          attrs: {
-                            datetime: "<?php echo $pt; ?>",
-                            itemprop: "prepTime"
-                          }
-                        },
-                        [_vm._v(_vm._s(_vm.recipe.prep))]
-                      ),
-                      _vm._v(" Minutes ")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                    _c("p", [
-                      _c(
-                        "svg",
-                        {
-                          class: ["icon", _vm.recipe.slug],
-                          attrs: { viewBox: "0 0 512 512" }
-                        },
-                        [
-                          _c(
-                            "g",
-                            {
-                              attrs: { id: "Out_line", "data-name": "Out line" }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("g", [
-                            _c("path", {
-                              attrs: {
-                                d:
-                                  "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
-                              }
-                            })
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
-                        _vm._v("       Cuisson :")
-                      ]),
-                      _c("br"),
-                      _c("time", { attrs: { itemprop: "prepTime" } }, [
-                        _vm._v(_vm._s(_vm.recipe.cook))
-                      ]),
-                      _vm._v(" Minutes")
-                    ])
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-md-4 col-sm-12 text-center" }, [
-                    _c("p", [
-                      _c(
-                        "svg",
-                        {
-                          class: ["icon", _vm.recipe.slug],
-                          attrs: { viewBox: "0 0 512 512" }
-                        },
-                        [
-                          _c(
-                            "g",
-                            {
-                              attrs: { id: "Out_line", "data-name": "Out line" }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M34.96143,396.68652A32.75766,32.75766,0,0,1,32,383.0293v-9.7417A790.59356,790.59356,0,0,1,70.95117,128H246.134c-7.35144,23.08411-13.71539,46.67163-18.95086,70.26709l15.62011,3.46582C248.30328,176.94434,255.087,152.17249,262.95813,128H280a32.036,32.036,0,0,0,32-32V72a7.99977,7.99977,0,0,0-8-8H264a32.036,32.036,0,0,1,32-32h1.44824a32.06925,32.06925,0,0,1,30.87207,23.58008l11.77246,43.16553c2.792,10.23584,5.415,20.68115,7.79688,31.04589l15.59375-3.583c-2.42969-10.57373-5.106-21.23-7.9541-31.67286L343.75684,51.37012A48.10546,48.10546,0,0,0,297.44824,16H80A48.05436,48.05436,0,0,0,32,64V96a32.05585,32.05585,0,0,0,22.58533,30.58478A806.527,806.527,0,0,0,16,373.2876v9.7417A48.6442,48.6442,0,0,0,20.39893,403.314ZM296,80V96a16,16,0,0,1-32,0V80ZM48,96V64A32.036,32.036,0,0,1,80,32H260.252A47.80823,47.80823,0,0,0,248,64V96a31.80882,31.80882,0,0,0,4.29443,16H64A16.01833,16.01833,0,0,1,48,96Z"
-                                }
-                              }),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M417.82129,228.49219l-3.64258,15.58008C462.76172,255.43164,480,270.52588,480,280c0,8.145-11.56036,17.59692-32.93567,25.94861-3.73523-11.89856-18.76288-21.73657-44.83484-29.30164l-4.459,15.36621c22.22027,6.44727,33.00268,14.22864,34.12561,19.15247C400.11121,320.8374,353.69568,328,296,328c-57.69812,0-104.11511-7.16321-135.90015-16.83557,1.59888-7.55017,24.41449-20.3783,72.99341-27.07947l-2.18652-15.84961c-24.37354,3.36231-45.0874,8.57715-59.90137,15.08106-14.59808,6.40869-23.3302,14.00195-26.067,22.63317C123.56146,297.59766,112,288.14539,112,280c0-3.37256,2.74854-15.35449,38.1167-27.93945,26.94189-9.58643,64.7207-16.28418,106.377-18.85889l-.9873-15.96973c-43.10791,2.66455-82.44092,9.68018-110.75342,19.7544C104.458,251.32471,96,268.2915,96,280a135.40123,135.40123,0,0,0,9.24268,49.26758l16.18994,41.63183,14.91211-5.79882-16.18994-41.63184a120.26574,120.26574,0,0,1-4.58008-14.41125c10.26,6.85681,24.46173,12.98242,42.4209,18.22033C194.96729,338.06152,243.978,344,296,344s101.03271-5.93848,138.00439-16.72217c17.95917-5.23791,32.161-11.36352,42.4209-18.22033a120.26574,120.26574,0,0,1-4.58008,14.41125l-27.4663,70.62744a71.90524,71.90524,0,0,1-10.65039,18.59815l12.543,9.93261A87.87832,87.87832,0,0,0,459.291,399.895l27.4663-70.62744A135.40123,135.40123,0,0,0,496,280C496,251.08887,447.01855,235.31934,417.82129,228.49219Z"
-                                }
-                              }),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M354.31482,166.57275a164.02041,164.02041,0,0,0-90.45007,80.39893l-23.02,46.03027,14.31054,7.15625,23.021-46.03222a147.97176,147.97176,0,0,1,75.65851-70.2193,31.70933,31.70933,0,0,0,1.55115,4.56244c-22.067,18.579-41.89734,43.90338-56.27851,72.02942l-23.55029,45.75,14.22558,7.32324,23.56055-45.76953c13.34845-26.106,31.62927-49.54255,51.91767-66.72779a31.889,31.889,0,0,0,2.786,1.88306,31.22786,31.22786,0,0,0,3.30023,1.70624q-4.8036,8.99753-10.018,18.72052-13.08765,24.42846-26.96728,50.64843l-18.14161,34.22022,14.13672,7.49414,18.15284-34.24219q13.80541-26.23682,26.92236-50.56445c4.13519-7.71826,8.1112-15.14014,11.862-22.17664a146.04536,146.04536,0,0,1-17.67743,78.80555l-11.23486,20.60009,14.04687,7.66114,11.23389-20.59815A162.04587,162.04587,0,0,0,402.77118,201.273a31.03527,31.03527,0,0,0,8.11847-8.84137L474.56494,88.23486a31.32289,31.32289,0,0,0-53.45459-32.6665L357.43506,159.76514A31.55046,31.55046,0,0,0,354.31482,166.57275Zm16.77258,1.53516L434.7627,63.91162a15.32313,15.32313,0,1,1,26.1499,15.98047L397.2373,184.08838a15.32313,15.32313,0,1,1-26.1499-15.98047Z"
-                                }
-                              }),
-                              _c("path", {
-                                attrs: {
-                                  d:
-                                    "M414.2627,417.91455a30.017,30.017,0,0,0-22.88721-7.71191l-7.55493.68689A56.01807,56.01807,0,0,0,336,384H104a56.03137,56.03137,0,0,0-47.84167,26.89038l-7.53235-.68481a29.91695,29.91695,0,1,0-2.69287,59.71093c.895,0,1.79443-.04052,2.69238-.12207l7.5321-.68469A56.36491,56.36491,0,0,0,104,496H336a55.5933,55.5933,0,0,0,39.59375-16.3999,56.29266,56.29266,0,0,0,8.26105-10.48657l7.53094.68481c.90137.08057,1.81787.12158,2.72412.12158a29.91842,29.91842,0,0,0,20.15284-52.00537ZM47.17676,453.85986A13.91812,13.91812,0,1,1,45.874,426.08057q.64746,0,1.30323.05957l48.16406,4.37841a9.52054,9.52054,0,0,1,0,18.9629h.00049ZM74.91791,467.4043,96.79,465.416h.00049A25.52089,25.52089,0,0,0,96.79,414.584L74.87628,412.5918c.27844-.29492.55585-.59058.84393-.87793A39.99923,39.99923,0,1,1,104,480,40.21831,40.21831,0,0,1,74.91791,467.4043Zm289.36188.88183A39.70208,39.70208,0,0,1,336,480H143.13831a55.87567,55.87567,0,0,0,0-80H336a39.99815,39.99815,0,0,1,28.27979,68.28613Zm29.83007-14.36621c-.43115,0-.86718-.01953-1.28515-.05713l-2.48725-.22607a56.35543,56.35543,0,0,0-.024-27.27149l2.50683-.228a13.91993,13.91993,0,1,1,1.28955,27.78271Z"
-                                }
-                              })
-                            ]
-                          )
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("br"),
-                      _vm._v(" "),
-                      _c("span", { class: ["recipe__inf", _vm.recipe.slug] }, [
-                        _vm._v(" Difficulté : ")
-                      ]),
-                      _vm._v(" "),
-                      _c("br"),
-                      _c("time", { attrs: { itemprop: "prepTime" } }, [
-                        _vm._v(_vm._s(_vm.recipe.difficulty))
-                      ])
-                    ])
-                  ])
-                ])
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { class: [_vm.recipe.slug] }, [_vm._v(" Cuisine:")]),
-                _vm._v(" " + _vm._s(_vm.recipe.cuisine))
-              ]),
-              _vm._v(" "),
-              _c("p", [
-                _c("span", { class: [_vm.recipe.slug] }, [
-                  _vm._v("Catégorie: ")
-                ]),
-                _vm._v(" " + _vm._s(_vm.recipe.category))
-              ]),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("p"),
-              _c(
-                "h3",
-                { class: ["col-12", "recipe__sub_title", _vm.recipe.slug] },
-                [_vm._v("Description")]
-              ),
-              _vm._v(" "),
-              _c("p"),
-              _vm._v(" "),
-              _c("br"),
-              _vm._v(" "),
-              _c("p", [_vm._v(_vm._s(_vm.recipe.description) + " ")]),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass: "col-12",
-                  staticStyle: { position: "absolute", bottom: "0", right: "0" }
-                },
-                [
-                  _c("small", { staticStyle: { float: "right" } }, [
-                    _vm._v(
-                      "Recette ajoutée par : " +
-                        _vm._s(_vm.recipe.user.name) +
-                        " "
-                    )
-                  ])
-                ]
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("br"),
-        _vm._v(" "),
-        _c("div", { staticClass: "row mr-0 ml-0 col-12 wow slideInUp" }, [
-          _c("div", { staticClass: "col-4 recipe__box recipe__row" }, [
+  return _c("div", { staticClass: "container px-0 mx-0" }, [
+    _c("div", {}, [
+      _c("div", { staticClass: "recipe__show wow bounceInUp" }, [
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col-12 " }, [
             _c("div", { staticClass: "col-12" }, [
-              _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
-                _vm._v("Ingrédients")
+              _c("h1", { class: ["recipe__title", _vm.recipe.slug] }, [
+                _vm._v("  " + _vm._s(_vm.recipe.name))
               ])
             ]),
             _vm._v(" "),
             _c("br"),
             _vm._v(" "),
-            _c("div", { staticClass: "col-12" }, [
-              _c("p", { class: ["recipe__yielding", _vm.recipe.slug] }, [
-                _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
-              ])
-            ]),
-            _vm._v(" "),
-            _c(
-              "dl",
-              {
-                class: [_vm.recipe.slug, "ingredients-list", "mt-9", "col-12"]
-              },
-              _vm._l(_vm.recipe.ingredients, function(ingredient) {
-                return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
-                  _c("p", { staticClass: "ingredient-item" }, [
-                    _c("span", [_vm._v(_vm._s(ingredient.name))]),
-                    _vm._v(" "),
-                    _c("span", { staticClass: "qty" }, [
-                      _vm._v(
-                        _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
-                      )
-                    ])
-                  ])
-                ])
-              }),
-              0
-            )
+            _c("br")
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: " recipe__directions col-8" }, [
-            _c("div", { staticClass: "recipe__row   " }, [
+          _c("div", { staticClass: "col-12" }, [
+            _c("div", { staticClass: "row haut" }, [
               _c(
                 "div",
-                { class: ["recipe__directions_inner", _vm.recipe.slug] },
+                { class: ["recipe__featim", "col-6", _vm.recipe.slug] },
                 [
-                  _c(
-                    "h3",
-                    { class: ["recipe__sub_title", "col-12", _vm.recipe.slug] },
-                    [_vm._v("Étapes :")]
-                  )
+                  _vm.recipe.image
+                    ? _c("img", {
+                        attrs: { src: "/images/" + _vm.recipe.image }
+                      })
+                    : _vm._e()
                 ]
               ),
               _vm._v(" "),
-              _c(
-                "ol",
-                _vm._l(_vm.recipe.directions, function(direction, i) {
-                  return _c("li", [
-                    _c("p", [
+              _c("div", { staticClass: "col-6 recipe__infos" }, [
+                _c("div", { staticClass: "recipe-info" }, [
+                  _c("div", { staticClass: "container-fluid  row mx-0" }, [
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 col-sm-12 text-center" },
+                      [
+                        _c("p", [
+                          _c(
+                            "svg",
+                            {
+                              class: ["icon", _vm.recipe.slug],
+                              attrs: { viewBox: "0 0 512 512" }
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  attrs: {
+                                    id: "Out_line",
+                                    "data-name": "Out line"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
+                                  }
+                                })
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: ["recipe__inf", _vm.recipe.slug] },
+                            [_vm._v("      Préparation : ")]
+                          ),
+                          _c("br"),
+                          _c(
+                            "time",
+                            {
+                              attrs: {
+                                datetime: "<?php echo $pt; ?>",
+                                itemprop: "prepTime"
+                              }
+                            },
+                            [_vm._v(_vm._s(_vm.recipe.prep))]
+                          ),
+                          _vm._v(" Minutes ")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 col-sm-12 text-center" },
+                      [
+                        _c("p", [
+                          _c(
+                            "svg",
+                            {
+                              class: ["icon", _vm.recipe.slug],
+                              attrs: { viewBox: "0 0 512 512" }
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  attrs: {
+                                    id: "Out_line",
+                                    "data-name": "Out line"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978\n\t\t\tc0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952\n\t\t\tC357.766,320.208,355.981,307.775,347.216,301.211z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("g", [
+                                _c("path", {
+                                  attrs: {
+                                    d:
+                                      "M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341\n\t\t\tc-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341\n\t\t\tS375.275,472.341,256,472.341z"
+                                  }
+                                })
+                              ])
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: ["recipe__inf", _vm.recipe.slug] },
+                            [_vm._v("       Cuisson :")]
+                          ),
+                          _c("br"),
+                          _c("time", { attrs: { itemprop: "prepTime" } }, [
+                            _vm._v(_vm._s(_vm.recipe.cook))
+                          ]),
+                          _vm._v(" Minutes")
+                        ])
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "col-md-4 col-sm-12 text-center" },
+                      [
+                        _c("p", [
+                          _c(
+                            "svg",
+                            {
+                              class: ["icon", _vm.recipe.slug],
+                              attrs: { viewBox: "0 0 512 512" }
+                            },
+                            [
+                              _c(
+                                "g",
+                                {
+                                  attrs: {
+                                    id: "Out_line",
+                                    "data-name": "Out line"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M34.96143,396.68652A32.75766,32.75766,0,0,1,32,383.0293v-9.7417A790.59356,790.59356,0,0,1,70.95117,128H246.134c-7.35144,23.08411-13.71539,46.67163-18.95086,70.26709l15.62011,3.46582C248.30328,176.94434,255.087,152.17249,262.95813,128H280a32.036,32.036,0,0,0,32-32V72a7.99977,7.99977,0,0,0-8-8H264a32.036,32.036,0,0,1,32-32h1.44824a32.06925,32.06925,0,0,1,30.87207,23.58008l11.77246,43.16553c2.792,10.23584,5.415,20.68115,7.79688,31.04589l15.59375-3.583c-2.42969-10.57373-5.106-21.23-7.9541-31.67286L343.75684,51.37012A48.10546,48.10546,0,0,0,297.44824,16H80A48.05436,48.05436,0,0,0,32,64V96a32.05585,32.05585,0,0,0,22.58533,30.58478A806.527,806.527,0,0,0,16,373.2876v9.7417A48.6442,48.6442,0,0,0,20.39893,403.314ZM296,80V96a16,16,0,0,1-32,0V80ZM48,96V64A32.036,32.036,0,0,1,80,32H260.252A47.80823,47.80823,0,0,0,248,64V96a31.80882,31.80882,0,0,0,4.29443,16H64A16.01833,16.01833,0,0,1,48,96Z"
+                                    }
+                                  }),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M417.82129,228.49219l-3.64258,15.58008C462.76172,255.43164,480,270.52588,480,280c0,8.145-11.56036,17.59692-32.93567,25.94861-3.73523-11.89856-18.76288-21.73657-44.83484-29.30164l-4.459,15.36621c22.22027,6.44727,33.00268,14.22864,34.12561,19.15247C400.11121,320.8374,353.69568,328,296,328c-57.69812,0-104.11511-7.16321-135.90015-16.83557,1.59888-7.55017,24.41449-20.3783,72.99341-27.07947l-2.18652-15.84961c-24.37354,3.36231-45.0874,8.57715-59.90137,15.08106-14.59808,6.40869-23.3302,14.00195-26.067,22.63317C123.56146,297.59766,112,288.14539,112,280c0-3.37256,2.74854-15.35449,38.1167-27.93945,26.94189-9.58643,64.7207-16.28418,106.377-18.85889l-.9873-15.96973c-43.10791,2.66455-82.44092,9.68018-110.75342,19.7544C104.458,251.32471,96,268.2915,96,280a135.40123,135.40123,0,0,0,9.24268,49.26758l16.18994,41.63183,14.91211-5.79882-16.18994-41.63184a120.26574,120.26574,0,0,1-4.58008-14.41125c10.26,6.85681,24.46173,12.98242,42.4209,18.22033C194.96729,338.06152,243.978,344,296,344s101.03271-5.93848,138.00439-16.72217c17.95917-5.23791,32.161-11.36352,42.4209-18.22033a120.26574,120.26574,0,0,1-4.58008,14.41125l-27.4663,70.62744a71.90524,71.90524,0,0,1-10.65039,18.59815l12.543,9.93261A87.87832,87.87832,0,0,0,459.291,399.895l27.4663-70.62744A135.40123,135.40123,0,0,0,496,280C496,251.08887,447.01855,235.31934,417.82129,228.49219Z"
+                                    }
+                                  }),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M354.31482,166.57275a164.02041,164.02041,0,0,0-90.45007,80.39893l-23.02,46.03027,14.31054,7.15625,23.021-46.03222a147.97176,147.97176,0,0,1,75.65851-70.2193,31.70933,31.70933,0,0,0,1.55115,4.56244c-22.067,18.579-41.89734,43.90338-56.27851,72.02942l-23.55029,45.75,14.22558,7.32324,23.56055-45.76953c13.34845-26.106,31.62927-49.54255,51.91767-66.72779a31.889,31.889,0,0,0,2.786,1.88306,31.22786,31.22786,0,0,0,3.30023,1.70624q-4.8036,8.99753-10.018,18.72052-13.08765,24.42846-26.96728,50.64843l-18.14161,34.22022,14.13672,7.49414,18.15284-34.24219q13.80541-26.23682,26.92236-50.56445c4.13519-7.71826,8.1112-15.14014,11.862-22.17664a146.04536,146.04536,0,0,1-17.67743,78.80555l-11.23486,20.60009,14.04687,7.66114,11.23389-20.59815A162.04587,162.04587,0,0,0,402.77118,201.273a31.03527,31.03527,0,0,0,8.11847-8.84137L474.56494,88.23486a31.32289,31.32289,0,0,0-53.45459-32.6665L357.43506,159.76514A31.55046,31.55046,0,0,0,354.31482,166.57275Zm16.77258,1.53516L434.7627,63.91162a15.32313,15.32313,0,1,1,26.1499,15.98047L397.2373,184.08838a15.32313,15.32313,0,1,1-26.1499-15.98047Z"
+                                    }
+                                  }),
+                                  _c("path", {
+                                    attrs: {
+                                      d:
+                                        "M414.2627,417.91455a30.017,30.017,0,0,0-22.88721-7.71191l-7.55493.68689A56.01807,56.01807,0,0,0,336,384H104a56.03137,56.03137,0,0,0-47.84167,26.89038l-7.53235-.68481a29.91695,29.91695,0,1,0-2.69287,59.71093c.895,0,1.79443-.04052,2.69238-.12207l7.5321-.68469A56.36491,56.36491,0,0,0,104,496H336a55.5933,55.5933,0,0,0,39.59375-16.3999,56.29266,56.29266,0,0,0,8.26105-10.48657l7.53094.68481c.90137.08057,1.81787.12158,2.72412.12158a29.91842,29.91842,0,0,0,20.15284-52.00537ZM47.17676,453.85986A13.91812,13.91812,0,1,1,45.874,426.08057q.64746,0,1.30323.05957l48.16406,4.37841a9.52054,9.52054,0,0,1,0,18.9629h.00049ZM74.91791,467.4043,96.79,465.416h.00049A25.52089,25.52089,0,0,0,96.79,414.584L74.87628,412.5918c.27844-.29492.55585-.59058.84393-.87793A39.99923,39.99923,0,1,1,104,480,40.21831,40.21831,0,0,1,74.91791,467.4043Zm289.36188.88183A39.70208,39.70208,0,0,1,336,480H143.13831a55.87567,55.87567,0,0,0,0-80H336a39.99815,39.99815,0,0,1,28.27979,68.28613Zm29.83007-14.36621c-.43115,0-.86718-.01953-1.28515-.05713l-2.48725-.22607a56.35543,56.35543,0,0,0-.024-27.27149l2.50683-.228a13.91993,13.91993,0,1,1,1.28955,27.78271Z"
+                                    }
+                                  })
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _vm._v(" "),
+                          _c(
+                            "span",
+                            { class: ["recipe__inf", _vm.recipe.slug] },
+                            [_vm._v(" Difficulté : ")]
+                          ),
+                          _vm._v(" "),
+                          _c("br"),
+                          _c("time", { attrs: { itemprop: "prepTime" } }, [
+                            _vm._v(_vm._s(_vm.recipe.difficulty))
+                          ])
+                        ])
+                      ]
+                    )
+                  ])
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { class: [_vm.recipe.slug] }, [
+                    _vm._v(" Cuisine:")
+                  ]),
+                  _vm._v(" " + _vm._s(_vm.recipe.cuisine))
+                ]),
+                _vm._v(" "),
+                _c("p", [
+                  _c("span", { class: [_vm.recipe.slug] }, [
+                    _vm._v("Catégorie: ")
+                  ]),
+                  _vm._v(" " + _vm._s(_vm.recipe.category))
+                ]),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("p"),
+                _c(
+                  "h3",
+                  { class: ["col-12", "recipe__sub_title", _vm.recipe.slug] },
+                  [_vm._v("Description")]
+                ),
+                _vm._v(" "),
+                _c("p"),
+                _vm._v(" "),
+                _c("br"),
+                _vm._v(" "),
+                _c("p", [_vm._v(_vm._s(_vm.recipe.description) + " ")]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "col-12",
+                    staticStyle: {
+                      position: "absolute",
+                      bottom: "0",
+                      right: "0"
+                    }
+                  },
+                  [
+                    _c("small", { staticStyle: { float: "right" } }, [
                       _vm._v(
-                        "\n                                " +
-                          _vm._s(direction.description) +
-                          "\n                            "
+                        "Recette ajoutée par : " +
+                          _vm._s(_vm.recipe.user.name) +
+                          " "
                       )
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("br"),
+          _vm._v(" "),
+          _c("div", { staticClass: "row mr-0 ml-0 col-12 wow slideInUp" }, [
+            _c("div", { staticClass: "col-4 recipe__box recipe__row" }, [
+              _c("div", { staticClass: "col-12" }, [
+                _c("h3", { class: ["recipe__sub_title", _vm.recipe.slug] }, [
+                  _vm._v("Ingrédients")
+                ])
+              ]),
+              _vm._v(" "),
+              _c("br"),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-12" }, [
+                _c("p", { class: ["recipe__yielding", _vm.recipe.slug] }, [
+                  _vm._v(" Pour: " + _vm._s(_vm.recipe.yield) + " Personnes")
+                ])
+              ]),
+              _vm._v(" "),
+              _c(
+                "dl",
+                {
+                  class: [_vm.recipe.slug, "ingredients-list", "mt-9", "col-12"]
+                },
+                _vm._l(_vm.recipe.ingredients, function(ingredient) {
+                  return _c("dd", { attrs: { itemprop: "recipeIngredient" } }, [
+                    _c("p", { staticClass: "ingredient-item" }, [
+                      _c("span", [_vm._v(_vm._s(ingredient.name))]),
+                      _vm._v(" "),
+                      _c("span", { staticClass: "qty" }, [
+                        _vm._v(
+                          _vm._s(ingredient.qty) + " " + _vm._s(ingredient.unit)
+                        )
+                      ])
                     ])
                   ])
                 }),
                 0
               )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: " recipe__directions col-8" }, [
+              _c("div", { staticClass: "recipe__row   " }, [
+                _c(
+                  "div",
+                  { class: ["recipe__directions_inner", _vm.recipe.slug] },
+                  [
+                    _c(
+                      "h3",
+                      {
+                        class: ["recipe__sub_title", "col-12", _vm.recipe.slug]
+                      },
+                      [_vm._v("Étapes :")]
+                    )
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "ol",
+                  _vm._l(_vm.recipe.directions, function(direction, i) {
+                    return _c("li", [
+                      _c("p", [
+                        _vm._v(
+                          "\n                                " +
+                            _vm._s(direction.description) +
+                            "\n                            "
+                        )
+                      ])
+                    ])
+                  }),
+                  0
+                )
+              ])
             ])
           ])
         ])
       ])
     ]),
     _vm._v(" "),
-    _c("div", { class: ["footer", _vm.recipe.slug] }, [
-      _c("br"),
-      _c("br"),
-      _c("br"),
-      _c("br")
-    ])
+    _vm._m(0)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "footer-basic" } }, [
+      _c("footer", [
+        _c("div", { staticClass: "social" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-instagram" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-snapchat" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-twitter" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-facebook" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-inline" }, [
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Services")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("About")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Terms")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy Policy")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "copyright" }, [_vm._v("Company Name © 2018")])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa&":
+/*!******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa& ***!
+  \******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container px-0 mx-0" }, [
+    _c(
+      "div",
+      {
+        staticClass: "row container-fluid",
+        staticStyle: { width: "70vw", margin: "auto" }
+      },
+      [
+        _c(
+          "div",
+          { staticClass: "row col-md-12 bg" },
+          _vm._l(_vm.category, function(rec) {
+            return _c(
+              "div",
+              {
+                key: rec.id,
+                class: ["recipe__item", "col-md-2", "col-sm-12", "hvr-float"]
+              },
+              [
+                _c(
+                  "router-link",
+                  {
+                    class: ["recipe__inner", rec.category],
+                    style: {
+                      backgroundImage: "url(/images/" + rec.image + ")"
+                    },
+                    attrs: { to: "/recettes/" + rec.id }
+                  },
+                  [
+                    _c(
+                      "p",
+                      {
+                        staticClass: "recipe__name",
+                        class: ["recipe__subi_title", rec.category + "_titre"]
+                      },
+                      [_vm._v(_vm._s(rec.name))]
+                    )
+                  ]
+                )
+              ],
+              1
+            )
+          }),
+          0
+        )
+      ]
+    ),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "footer-basic" } }, [
+      _c("footer", [
+        _c("div", { staticClass: "social" }, [
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-instagram" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-snapchat" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-twitter" })
+          ]),
+          _c("a", { attrs: { href: "#" } }, [
+            _c("i", { staticClass: "icon ion-social-facebook" })
+          ])
+        ]),
+        _vm._v(" "),
+        _c("ul", { staticClass: "list-inline" }, [
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Home")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Services")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("About")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Terms")])
+          ]),
+          _vm._v(" "),
+          _c("li", { staticClass: "list-inline-item" }, [
+            _c("a", { attrs: { href: "#" } }, [_vm._v("Privacy Policy")])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "copyright" }, [_vm._v("Company Name © 2018")])
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -21778,10 +20867,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _App_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./App.vue */ "./resources/js/App.vue");
 /* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
-/* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! es6-promise */ "./node_modules/es6-promise/dist/es6-promise.js");
-/* harmony import */ var es6_promise__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(es6_promise__WEBPACK_IMPORTED_MODULE_3__);
-/* harmony import */ var whatwg_fetch__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
-
+/* harmony import */ var whatwg_fetch__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! whatwg-fetch */ "./node_modules/whatwg-fetch/fetch.js");
 
 
 
@@ -22098,11 +21184,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _views_Auth_Login_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../views/Auth/Login.vue */ "./resources/js/views/Auth/Login.vue");
 /* harmony import */ var _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../views/Auth/Register.vue */ "./resources/js/views/Auth/Register.vue");
-/* harmony import */ var _views_Recipe_Index2_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/Recipe/Index2.vue */ "./resources/js/views/Recipe/Index2.vue");
+/* harmony import */ var _views_Recipe_Index_vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../views/Recipe/Index.vue */ "./resources/js/views/Recipe/Index.vue");
 /* harmony import */ var _views_Recipe_Show2_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../views/Recipe/Show2.vue */ "./resources/js/views/Recipe/Show2.vue");
-/* harmony import */ var _views_Recipe_Cat_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/Recipe/Cat.vue */ "./resources/js/views/Recipe/Cat.vue");
+/* harmony import */ var _views_cats_Cat_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../views/cats/Cat.vue */ "./resources/js/views/cats/Cat.vue");
 /* harmony import */ var _views_Recipe_Form_vue__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../views/Recipe/Form.vue */ "./resources/js/views/Recipe/Form.vue");
 /* harmony import */ var _views_NotFound_vue__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../views/NotFound.vue */ "./resources/js/views/NotFound.vue");
+
 
 
 
@@ -22117,7 +21204,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
   routes: [{
     path: '/',
-    component: _views_Recipe_Index2_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _views_Recipe_Index_vue__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/recipes/create',
     component: _views_Recipe_Form_vue__WEBPACK_IMPORTED_MODULE_7__["default"],
@@ -22131,11 +21218,11 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       mode: 'edit'
     }
   }, {
-    path: '/recipes/:id',
+    path: '/recettes/:id',
     component: _views_Recipe_Show2_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
   }, {
-    path: '/recipes/:category',
-    component: _views_Recipe_Show2_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+    path: '/categorie/:category',
+    component: _views_cats_Cat_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
   }, {
     path: '/register',
     component: _views_Auth_Register_vue__WEBPACK_IMPORTED_MODULE_3__["default"]
@@ -22377,75 +21464,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/Recipe/Cat.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/views/Recipe/Cat.vue ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cat.vue?vue&type=template&id=546bc0d8& */ "./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8&");
-/* harmony import */ var _Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cat.vue?vue&type=script&lang=js& */ "./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/views/Recipe/Cat.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Cat.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Cat.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8& ***!
-  \**************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Cat.vue?vue&type=template&id=546bc0d8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Cat.vue?vue&type=template&id=546bc0d8&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_546bc0d8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/views/Recipe/Form.vue":
 /*!********************************************!*\
   !*** ./resources/js/views/Recipe/Form.vue ***!
@@ -22515,17 +21533,17 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/Recipe/Index2.vue":
-/*!**********************************************!*\
-  !*** ./resources/js/views/Recipe/Index2.vue ***!
-  \**********************************************/
+/***/ "./resources/js/views/Recipe/Index.vue":
+/*!*********************************************!*\
+  !*** ./resources/js/views/Recipe/Index.vue ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index2.vue?vue&type=template&id=0c895252& */ "./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252&");
-/* harmony import */ var _Index2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index2.vue?vue&type=script&lang=js& */ "./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js&");
+/* harmony import */ var _Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Index.vue?vue&type=template&id=5b3d7910& */ "./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910&");
+/* harmony import */ var _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Index.vue?vue&type=script&lang=js& */ "./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -22535,9 +21553,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _Index2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -22547,38 +21565,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/views/Recipe/Index2.vue"
+component.options.__file = "resources/js/views/Recipe/Index.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js&":
-/*!***********************************************************************!*\
-  !*** ./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************/
+/***/ "./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index2.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index2.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index2_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252&":
-/*!*****************************************************************************!*\
-  !*** ./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252& ***!
-  \*****************************************************************************/
+/***/ "./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910& ***!
+  \****************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index2.vue?vue&type=template&id=0c895252& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index2.vue?vue&type=template&id=0c895252&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Index.vue?vue&type=template&id=5b3d7910& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Recipe/Index.vue?vue&type=template&id=5b3d7910&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index2_vue_vue_type_template_id_0c895252___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Index_vue_vue_type_template_id_5b3d7910___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
@@ -22648,6 +21666,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show2_vue_vue_type_template_id_17641b93___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Show2_vue_vue_type_template_id_17641b93___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/cats/Cat.vue":
+/*!*****************************************!*\
+  !*** ./resources/js/views/cats/Cat.vue ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Cat.vue?vue&type=template&id=ef540ffa& */ "./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa&");
+/* harmony import */ var _Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Cat.vue?vue&type=script&lang=js& */ "./resources/js/views/cats/Cat.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/cats/Cat.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/cats/Cat.vue?vue&type=script&lang=js&":
+/*!******************************************************************!*\
+  !*** ./resources/js/views/cats/Cat.vue?vue&type=script&lang=js& ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Cat.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/cats/Cat.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa&":
+/*!************************************************************************!*\
+  !*** ./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa& ***!
+  \************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Cat.vue?vue&type=template&id=ef540ffa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/cats/Cat.vue?vue&type=template&id=ef540ffa&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Cat_vue_vue_type_template_id_ef540ffa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

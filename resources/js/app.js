@@ -2,8 +2,9 @@ import Vue from 'vue'
 
 import App from './App.vue'
 import router from './router'
-import 'es6-promise'
 import 'whatwg-fetch'
+
+
 
 
 const app = new Vue({
@@ -12,5 +13,6 @@ const app = new Vue({
 	template: `<app></app>`,
 	components: { App },
 	router,
+
 
 })

@@ -1,7 +1,6 @@
 
 	<template>
-    <div class="container px-0 mx-0">
-
+<div>
     <div class="navbar"> 
 		<div class="row" style="width:70vw;margin:auto;">
 			<div class="navbar__brand col-6">
@@ -22,37 +21,22 @@
 				</li>
 			</ul>
 		</div>
-		</div>
 
 
-    <div class="flash flash__error" v-if="flash.error">
-			{{flash.error}}
 		</div>
-		<div class="flash flash__success" v-if="flash.success">
-			{{flash.success}}
-		</div>
+
 
 
 
 		<router-view></router-view>
-<div class="footer-basic">
-        <footer>
-            <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
-            <ul class="list-inline">
-                <li class="list-inline-item"><a href="#">Home</a></li>
-                <li class="list-inline-item"><a href="#">Services</a></li>
-                <li class="list-inline-item"><a href="#">About</a></li>
-                <li class="list-inline-item"><a href="#">Terms</a></li>
-                <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
-            </ul>
-            <p class="copyright">Company Name © 2018</p>
-        </footer>
-    </div>
-    </div>
-	
 
+
+</div>
 	
 </template>
+
+
+
 <script type="text/javascript">
 	import Auth from './store/auth'
 	import Flash from './helpers/flash'
@@ -107,4 +91,6 @@
 			}
 		}
 	}
+
+
 </script>
