@@ -14,7 +14,7 @@
 					<router-link to="/register">Créer un compte</router-link>
 				</li>
 				<li class="navbar__item"  v-if="auth">
-					<router-link to="/recipes/create">Ajouter ma recette</router-link>
+					<router-link to="/recettes/ajouter">Ajouter ma recette</router-link>
 				</li>
 				<li class="navbar__item"  v-if="auth">
 					<a @click.stop="logout">Se déconnecter</a>

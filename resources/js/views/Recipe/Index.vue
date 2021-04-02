@@ -1,6 +1,10 @@
 
 <template>
 <div>
+	
+
+
+	
 	    <div class="container px-0 mx-0">
 
 
@@ -81,15 +85,15 @@
 		}
 	};
 
-		$('.recipe__inner').click(function(){ 
-		
-var str = window.location.href
+;		
+var str = window.location.href 
+
+	 if ( str != ('http://localhost/') ) {
 	 str = (str.substring('http://localhost/categorie/'.length))+('_titre');
          $("#footer-basic").addClass(str);
 		 $(".navbar").addClass(str);
+};
 
-
-		 });	
 
 
 </script>

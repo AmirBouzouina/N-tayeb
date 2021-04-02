@@ -25,9 +25,9 @@
 
 
 		</div>
-<div id="footer-basic"  >
 
-<footer >
+	 <div id="footer-basic"  >
+
             <div class="social"><a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-facebook"></i></a></div>
             <ul class="list-inline">
                 <li class="list-inline-item"><a href="#">Home</a></li>
@@ -37,10 +37,8 @@
                 <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
             </ul>
             <p class="copyright">Company Name © 2018</p>
-        </footer>
        
     </div>
-	 
 	</div>
 
 
@@ -78,16 +76,16 @@
 
 
 	}
+setTimeout(function () {
 
-	$(document).ready(function(){
-var str = window.location.href
+	var str = window.location.href 
+
+	 if ( str != ('http://localhost/') ) {
 	 str = (str.substring('http://localhost/categorie/'.length))+('_titre');
          $("#footer-basic").addClass(str);
 		 $(".navbar").addClass(str);
+};
 
-
-
-
-});
+}, 1000)
 
 </script>
