@@ -6,7 +6,7 @@ import RecipeIndex from '../views/Recipe/Index.vue'
 import RecipeShow from '../views/Recipe/Show2.vue'
 import CategoryIndex from '../views/cats/Cat.vue'
 import CategoryShow from '../views/cats/Cat.vue'
-
+import RecipeSearch from '../views/Recipe/Search.vue'
 import RecipeForm from '../views/Recipe/Ajout.vue'
 import NotFound from '../views/NotFound.vue'
 
@@ -17,7 +17,7 @@ const router = new VueRouter({
 	routes: [
 		{ path: '/', component: RecipeIndex },
 		{ path: '/recettes/ajouter', component: RecipeForm, meta: { mode: 'create' }},
-		{ path: '/recipes/:id/edit', component: RecipeForm, meta: { mode: 'edit' }},
+		{ path: '/recettes/search', component: RecipeSearch },
 		{ path: '/recettes/:id', component: RecipeShow },
 		{ path: '/categorie/:category', component: CategoryShow },
 		{ path: '/register', component: Register },

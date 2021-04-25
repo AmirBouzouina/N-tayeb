@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RecipeIngredient extends Model
 {
     protected $fillable = [
-    	'name', 'qty','unit'
+    	'ingredient_name', 'qty','unit'
     ];
 
     public $timestamps = false;
@@ -15,7 +15,7 @@ class RecipeIngredient extends Model
     public static function form()
     {
     	return [
-    		'name' => '',
+    		'ingredient_name' => '',
     		'qty' => '',
             'unit' => ''
     	];

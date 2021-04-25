@@ -16,7 +16,7 @@ class RecipeController extends Controller
     public function index()
     {
     	$recipes = Recipe::where('valida' , 1 )->orderBy('created_at', 'desc')
-    		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida']);
+    		->get(['id', 'name', 'image', 'cook','prep','category','cuisine','yield','difficulty','valida',]);
         $r = $recipes->map(function($r){$b = $r->toArray(); $b["slug"] = $r->slug(); return $b;});
     	return response()
     		->json([
@@ -27,7 +27,20 @@ class RecipeController extends Controller
 
 
 
+    public function show2($category)
+    {
+        $category =  DB::table('recipes')
+        ->select('id', 'name','image','category')
+        ->where('category',$category) 
 
+
+                ->get();
+        	return response()
+    		->json([
+    			'category' => $category]);
+                   
+ 
+    }
 
 
     

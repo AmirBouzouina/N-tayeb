@@ -26,5 +26,7 @@ Route::post('/logout','AuthController@logout');
 Route::resource('recettes','RecipeController');
 Route::resource('cats','CatsController');
 Route::resource('category','CategController');
+Route::resource('search','SearchController');
+
 
 

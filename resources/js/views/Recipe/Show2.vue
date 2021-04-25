@@ -100,7 +100,7 @@
 <div class="col-12">  <p :class="['recipe__yielding', recipe.slug]" > Pour: {{recipe.yield}} Personnes</p> </div>
                     <dl  :class="[recipe.slug,'ingredients-list','mt-9','col-12']" >
                     <dd  itemprop="recipeIngredient" v-for="ingredient in recipe.ingredients">
-                        <p class="ingredient-item"><span>{{ingredient.name}}</span>
+                        <p class="ingredient-item"><span>{{ingredient.ingredient_name}}</span>
                         <span class="qty">{{ingredient.qty}} {{ingredient.unit}}</span> </p>
                     </dd>
                 </dl>                    </div>

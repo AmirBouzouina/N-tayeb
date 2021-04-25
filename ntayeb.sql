@@ -509,7 +509,7 @@ INSERT INTO `recipe_directions` (`id`, `recipe_id`, `description`) VALUES
 CREATE TABLE `recipe_ingredients` (
   `id` bigint UNSIGNED NOT NULL,
   `recipe_id` int UNSIGNED NOT NULL,
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `ingredient_name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `qty` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `unit` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -518,7 +518,7 @@ CREATE TABLE `recipe_ingredients` (
 -- Dumping data for table `recipe_ingredients`
 --
 
-INSERT INTO `recipe_ingredients` (`id`, `recipe_id`, `name`, `qty`, `unit`) VALUES
+INSERT INTO `recipe_ingredients` (`id`, `recipe_id`, `ingredient_name`, `qty`, `unit`) VALUES
 (1, 1, 'Oignon', '1', 'Kg'),
 (2, 2, 'Viande', '1', 'Kg'),
 (3, 2, 'Oignon', '4', '7abbate'),
