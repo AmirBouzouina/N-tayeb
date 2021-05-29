@@ -17,7 +17,11 @@
     </div>
 
 	<div class="row col-md-9 bg" >
-           
+
+
+		<div class="col-12">
+		<h3> Les Catégories </h3>
+		</div>
 
 		<div :class="['recipe__item','col-md-2','col-sm-12','hvr-float']"  v-for="cat in cats" v-bind:key="cat.category"  >
 

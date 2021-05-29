@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+.bg {
+  text-align: center;
+}
+
 .bg .soupes {
   background-image: url(/images/soup.jpg?ab17a9116e5333505f68ad9d8c3e9a65);
 }

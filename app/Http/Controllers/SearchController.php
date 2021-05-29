@@ -19,10 +19,24 @@ class SearchController extends Controller
     {
     	$search =  DB::table('recipes')
         ->Join('recipe_ingredients','recipe_ingredients.recipe_id','=','recipes.id')
-        ->select('recipes.id','recipes.name','recipes.image','recipes.category',DB::raw('group_concat(recipe_ingredients.ingredient_name) AS ingredients'))
+        ->select('recipes.id','recipes.name','recipes.image','recipes.cuisine',DB::raw('group_concat(recipe_ingredients.ingredient_name) AS ingredients'))
         ->groupBy('recipes.id')
         ->get();
         	return response()
+    		->json([
+    			'search' => $search
+    		]);
+    }
+
+
+    public function show($id)
+    {
+        $search = DB::table('recipes')
+        ->Join('recipe_ingredients','recipe_ingredients.recipe_id','=','recipes.id')
+        ->where('recipes.id',$id)
+        ->select('recipes.id','recipes.name','recipes.image','recipes.category',DB::raw('group_concat(recipe_ingredients.ingredient_name) AS ingredients'))
+        ->get();
+        return response()
     		->json([
     			'search' => $search
     		]);
