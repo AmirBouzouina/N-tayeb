@@ -11,7 +11,7 @@
 		</div>
 
     <div class="">
-	<div class="recipe__show wow bounceInUp" >
+	<div class="recipe__show  " >
         <div class="row">
             <div class="col-12 ">
                 <div class="col-12">  <h1  :class="['recipe__title', recipe.slug]">  {{recipe.name}}</h1> </div>
@@ -54,7 +54,7 @@
 
         <div class="row mr-0 ml-0 recipe__box">
 
-                    <div class="row mr-0 ml-0 wow slideInUp">
+                    <div class="row mr-0 ml-0   ">
             <div class="col-12 recipe__box recipe__row">
 
  <h3 :class="['recipe__titles', 'col-12',recipe.slug]" >Ingrédients

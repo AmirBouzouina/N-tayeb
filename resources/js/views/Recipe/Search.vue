@@ -14,7 +14,10 @@
 
 				<p class="recipe__name" :class="['recipe__subi_title', recipes.category+'_titre']">{{recipes.name}}</p>
 
+
 			</router-link>
+                            <p >{{recipes.username}}</p>
+
 			</li>
 			
 		</ul>
@@ -84,6 +87,9 @@ export default {
                     return item;
                 }
 				else   if(item.ingredients.toLowerCase().sansAccent().indexOf(RecipeNamesearch) !== -1){
+                    return item;
+                }
+                else if (item.username.toLowerCase().sansAccent().indexOf(RecipeNamesearch) !== -1 ) {
                     return item;
                 }
 				

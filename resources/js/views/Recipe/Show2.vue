@@ -3,13 +3,24 @@
     <div class="container px-0 mx-0">
 
     <div class="">
-	<div class="recipe__show wow bounceInUp" >
+	<div class="recipe__show  " >
 
 
 
 
         <div class="row">
-            <div class="col-12 ">
+ 
+            <div class="col-12">
+
+
+
+                <div class="row haut">
+
+                <div :class="['recipe__featim','col-12', recipe.slug]" >
+                                       <img :src="`/images/${recipe.image}`" v-if="recipe.image">
+
+                </div>
+                           <div class="col-12 ">
                 <div class="col-12">  <h1  :class="['recipe__title', recipe.slug]">  {{recipe.name}}</h1> </div>
 
          
@@ -19,19 +30,29 @@
 
             </div>
 
-            <div class="col-12">
-
-
-
-                <div class="row haut">
-
-                <div :class="['recipe__featim','col-6', recipe.slug]" >
-                                       <img :src="`/images/${recipe.image}`" v-if="recipe.image">
-
-                </div>
             <div class="col-6 recipe__infos">
 
 
+
+                  <p>   <span :class="[recipe.slug]" > Cuisine:</span> {{recipe.cuisine}}</p>
+              <p>  <span :class="[recipe.slug]" >Catégorie: </span> {{recipe.category}}</p>
+<br/>
+<br/>
+
+
+
+                                     <div class="col-12" style="position:absolute;bottom:0;right:0;" ><small style="float:right">Recette ajoutée par : {{recipe.user.name}} </small></div>
+
+            </div>
+
+
+
+
+            </div>
+            
+
+            </div>
+            <br/>
        <div class="recipe-info">
 
                     <div class="container-fluid  row mx-0">
@@ -66,33 +87,13 @@
 
                     </div>
                 </div>
-                  <p>   <span :class="[recipe.slug]" > Cuisine:</span> {{recipe.cuisine}}</p>
-              <p>  <span :class="[recipe.slug]" >Catégorie: </span> {{recipe.category}}</p>
-<br/>
-<br/>
+
+
 <p><h3  :class="['col-12','recipe__sub_title', recipe.slug]" >Description</h3> </p> <br/>
                     <p>{{recipe.description}} </p> 
 
-
-                                     <div class="col-12" style="position:absolute;bottom:0;right:0;" ><small style="float:right">Recette ajoutée par : {{recipe.user.name}} </small></div>
-
-            </div>
-
-
-
-
-            </div>
-            
-
-            </div>
             <br/>
-
-
-
-
-
-            <br/>
-                    <div class="row mr-0 ml-0 col-12 wow slideInUp">
+                    <div class="row mr-0 ml-0 col-12   ">
             <div class="col-4 recipe__box recipe__row">
 
 <div class="col-12"> <h3  :class="['recipe__sub_title', recipe.slug]" >Ingrédients</h3> </div>
