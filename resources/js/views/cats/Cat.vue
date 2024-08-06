@@ -75,7 +75,7 @@
 		axios
 
 		
-			.get('http://localhost/api/recettes')
+			.get('http://localhost:8000/api/recettes')
 			.then(response => {
 				this.RecipeFeed = response.data.recipes;
 			})

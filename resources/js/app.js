@@ -5,13 +5,15 @@ import 'whatwg-fetch'
 
 
 
-
+window.Vue = require("vue").default;
 const app = new Vue({
 	el: '#root',
 
 	template: `<app></app>`,
 	components: { App },
 	router,
+
+
 
 }
 )

@@ -1,30 +1,28 @@
 @charset "UTF-8";
-
 .bg {
   text-align: center;
 }
 
 .bg .soupes {
-  background-image: url(/images/soup.jpg?ab17a9116e5333505f68ad9d8c3e9a65);
+  background-image: url(/images/soup.jpg?2c5d8e10158f64fabe8aae4ae85ad9d4);
 }
 
 .bg .viande {
-  background-image: url(/images/viande.webp?16e45fbc42ae9f24382fd51ab4fe415c);
+  background-image: url(/images/viande.webp?2c077fde163b5353853cacae8e5842ad);
 }
 
 .bg .dessert {
-  background-image: url(/images/dessert.jpg?5dda33a0830033f33af722d3d72bc3ab);
+  background-image: url(/images/dessert.jpg?cf4877fa4964d30e5dea458e9c7d67a9);
 }
 
 .bg .salades {
-  background-image: url(/images/salade.webp?d6be663bd5a5052b0838f64074824cad);
+  background-image: url(/images/salade.webp?1ee2be9471558744226ba3a690d4119a);
 }
 
 .bg .plats {
-  background-image: url(/images/plats.webp?55d5f7e4ee8764cc794d312af4ebf905);
+  background-image: url(/images/plats.webp?fb4d70f7b17c6e29773dc2b1310ad817);
 }
 
 .bg .entrée {
-  background-image: url(/images/entree.jpeg?c4eb153e014defcb516edd338dc104cb);
+  background-image: url(/images/entree.jpeg?250d39b0c5a309ccb0afa98ab6dde484);
 }
-
